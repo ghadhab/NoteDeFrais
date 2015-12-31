@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+        <ImageView
+            android:id="@+id/etat_NFacture"
+            android:layout_width="40dp"
+            android:layout_height="70dp"
+            android:src="@drawable/red_button"
+            />
+
+        <TextView
+            android:id="@+id/NoFacture_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="24dp"
+            android:text="No Facture"
+            android:layout_toRightOf="@+id/etat_NFacture"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/NoFacture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/NoFacture_Text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="textAutoComplete|textAutoCorrect">
+            <requestFocus />
+        </AutoCompleteTextView>
+        <ImageView
+        android:id="@+id/etat_MatriculeFiscale"
+        android:layout_width="40dp"
+        android:layout_height="70dp"
+        android:src="@drawable/red_button"
+        android:layout_below="@+id/etat_NFacture"
+        />
+        <TextView
+            android:id="@+id/Matricule_fiscale_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/NoFacture_Text"
+            android:layout_below="@+id/NoFacture"
+            android:layout_marginTop="26dp"
+            android:text="Matricule Fiscal"
+            android:layout_toRightOf="@+id/etat_MatriculeFiscale"
+          />
+
+        <AutoCompleteTextView
+            android:id="@+id/MatriculeFiscale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/Matricule_fiscale_Text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="textAutoComplete|textAutoCorrect">
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        <ImageView
+            android:id="@+id/etat_MF"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/red_button"
+            android:layout_below="@+id/etat_MatriculeFiscale"
+            />
+
+        <TextView
+            android:id="@+id/Mf_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Matricule_fiscale_Text"
+            android:layout_below="@+id/MatriculeFiscale"
+            android:layout_marginTop="26dp"
+            android:text="MF"
+            android:layout_toRightOf="@+id/etat_MF"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/MF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/Mf_text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="textAutoComplete|textAutoCorrect">
+            <requestFocus />
+        </AutoCompleteTextView>
+        <ImageView
+            android:id="@+id/etat_Tva"
+            android:layout_width="40dp"
+            android:layout_height="90dp"
+            android:src="@drawable/red_button"
+            android:layout_below="@+id/etat_MF"
+            />
+        <TextView
+            android:id="@+id/TVA_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Mf_text"
+            android:layout_below="@+id/MF"
+            android:layout_marginTop="26dp"
+            android:text="TVA"
+            android:layout_toRightOf="@+id/etat_Tva"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/TVA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/TVA_Text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="textAutoComplete|textAutoCorrect">
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        <ImageView
+            android:id="@+id/etat_TotalTTC"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/red_button"
+            android:layout_below="@+id/etat_Tva"
+            />
+
+        <TextView
+            android:id="@+id/TotalTTC_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/TVA_Text"
+            android:layout_below="@+id/TVA"
+            android:layout_marginTop="26dp"
+            android:text="Tottal T.T.C"
+            android:layout_toRightOf="@+id/etat_TotalTTC"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/TottalTTC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/TotalTTC_text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="textAutoComplete|textAutoCorrect">
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        <ImageView
+            android:id="@+id/etat_HTVA"
+            android:layout_width="40dp"
+            android:layout_height="90dp"
+            android:src="@drawable/red_button"
+            android:layout_below="@+id/etat_TotalTTC"
+            />
+
+        <TextView
+            android:id="@+id/Htva_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/TotalTTC_text"
+            android:layout_below="@+id/TottalTTC"
+            android:layout_marginTop="26dp"
+            android:text="HTVA"
+            android:layout_toRightOf="@+id/etat_HTVA"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/HTVA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/Htva_text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="textAutoComplete|textAutoCorrect">
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        <ImageView
+            android:id="@+id/etat_NTel"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:src="@drawable/red_button"
+            android:layout_below="@+id/etat_HTVA"
+            />
+
+        <TextView
+            android:id="@+id/Tel_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Htva_text"
+            android:layout_below="@+id/HTVA"
+            android:layout_marginTop="26dp"
+            android:text="No Tel"
+            android:layout_toRightOf="@+id/etat_NTel"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/Tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/Tel_text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="textAutoComplete|textAutoCorrect">
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        <ImageView
+            android:id="@+id/etat_NFax"
+            android:layout_width="40dp"
+            android:layout_height="90dp"
+            android:src="@drawable/red_button"
+            android:layout_below="@+id/etat_NTel"
+            />
+
+        <TextView
+            android:id="@+id/Fax_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Tel_text"
+            android:layout_below="@+id/Tel"
+            android:layout_marginTop="26dp"
+            android:text="No Fax"
+            android:layout_toRightOf="@+id/etat_NFax"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/Fax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/Fax_text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="textAutoComplete|textAutoCorrect">
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        <ImageView
+            android:id="@+id/etat_Email"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:src="@drawable/red_button"
+            android:layout_below="@+id/etat_NFax"
+            />
+
+        <TextView
+            android:id="@+id/Email_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Fax_text"
+            android:layout_below="@+id/Fax"
+            android:layout_marginTop="26dp"
+            android:text="Email"
+            android:layout_toRightOf="@+id/etat_Email"/>
+
+
+        <AutoCompleteTextView
+            android:id="@+id/Email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/Email_Text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="textAutoComplete|textAutoCorrect">
+            <requestFocus />
+        </AutoCompleteTextView>
+
+
+        <ImageView
+            android:id="@+id/etat_Site"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:src="@drawable/red_button"
+            android:layout_below="@+id/etat_Email"
+            />
+
+        <TextView
+            android:id="@+id/Web_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Email_Text"
+            android:layout_below="@+id/Email"
+            android:layout_marginTop="26dp"
+            android:text="Site Web"
+            android:layout_toRightOf="@+id/etat_Site"/>
+
+
+        <AutoCompleteTextView
+            android:id="@+id/Web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/Web_Text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="textAutoComplete|textAutoCorrect">
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        <ImageView
+            android:id="@+id/etat_Date"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:src="@drawable/red_button"
+            android:layout_below="@+id/etat_Site"
+            />
+
+
+        <TextView
+            android:id="@+id/Date_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Web_Text"
+            android:layout_below="@+id/Web"
+            android:layout_marginTop="26dp"
+            android:text="Date"
+            android:layout_toRightOf="@+id/etat_Date"/>
+
+
+        <EditText
+            android:id="@+id/Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="onDateClicked"
+            android:layout_alignTop="@+id/Date_Text"
+            android:ems="10">
+        </EditText>
+
+
+
+        <TextView
+            android:id="@+id/DesignationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Date_Text"
+            android:layout_below="@+id/Date"
+            android:layout_marginTop="26dp"
+            android:text="Désignation"
+            android:layout_toRightOf="@+id/etat_Designation"/>
+
+
+        <EditText
+            android:id="@+id/Designation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/DesignationText"
+            android:ems="10"
+            />
+
+
+        <!--android:onClick="onDateClicked"-->
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/Designation"
+            android:layout_below="@+id/Designation"
+            android:layout_marginTop="21dp"
+            android:text="submit" />
+    </RelativeLayout>
+</ScrollView>

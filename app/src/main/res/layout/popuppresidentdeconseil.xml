@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_element"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#444444"
+    android:orientation="vertical"
+    android:padding="10sp" >
+    <TextView
+        android:id="@+id/txtViewDG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Select :" />
+    <EditText
+        android:id="@+id/EditTextDG"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        />
+    <TextView
+        android:id="@+id/txtViewPresidentDeConseil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Nom et Prenom" />
+    <EditText
+        android:id="@+id/EditTextPresidentDeConseil"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+ />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp">
+        <TextView
+            android:id="@+id/textViewDuMandat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:text="Du :" />
+        <EditText
+            android:id="@+id/editextDuMandat"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textViewDuMandat"
+            android:layout_marginTop="5sp"
+            android:inputType="date"/>
+        <TextView
+            android:id="@+id/textViewAuMandat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_toRightOf="@+id/editextDuMandat"
+            android:text="Au:" />
+        <EditText
+            android:id="@+id/editTextAuMandat"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textViewAuMandat"
+            android:layout_marginTop="5sp"
+            android:inputType="date"/>
+    </RelativeLayout>
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Cancel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"/>
+
+    <Button
+    android:id="@+id/Valider"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:text="Valider"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
+</LinearLayout>
+
+

@@ -1,0 +1,181 @@
+<ScrollView
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_element2"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#444444"
+    android:orientation="vertical"
+    android:padding="10sp" >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Personne Physique"
+        android:id="@+id/PersonnePhysique"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"/>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Personne Morale"
+        android:id="@+id/PersonneMorale"
+        android:layout_gravity="right"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/txtViewRaisonSocialeActioannaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Raison Sociale :" />
+    <EditText
+        android:id="@+id/EditTextRaisonSocialeActioannaire"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        />
+    <TextView
+        android:id="@+id/txtViewMatriculeFiscaleActioannaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Matricule Fiscal" />
+    <EditText
+        android:id="@+id/EditTextMatriculeFiscaleActioannaire"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        />
+    <TextView
+        android:id="@+id/txtViewNRegistreActioannaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="N° de registre de commerce" />
+    <EditText
+        android:id="@+id/EditTextNRegistreActioannaire"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        />
+
+    <TextView
+        android:id="@+id/txtViewActionnaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Actionnaire" />
+    <EditText
+        android:id="@+id/EditTextActionnaire"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        />
+    <TextView
+        android:id="@+id/txtViewAdresseActioannaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Adresse" />
+    <EditText
+        android:id="@+id/EditTextAdresseActioannaire"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        />
+    <!--<TextView
+        android:id="@+id/txtViewActivite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Activité" />
+    <EditText
+        android:id="@+id/EditTextActivite"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        />-->
+    <TextView
+        android:id="@+id/txtViewNombreDesAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Nombre Des Actions :" />
+    <EditText
+        android:id="@+id/EditTextNombreDesAction"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:inputType="numberDecimal"
+        />
+    <TextView
+        android:id="@+id/txtViewValeurNominale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Valeur Nominale :" />
+    <EditText
+        android:id="@+id/EditTextValeurNominale"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:inputType="numberDecimal"
+        />
+
+    <TextView
+        android:id="@+id/txtViewTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Total:" />
+    <EditText
+        android:id="@+id/EditTextTotal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:inputType="numberDecimal"
+        />
+    <TextView
+        android:id="@+id/textViewPartCapitalActionnaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Part dans le capital:" />
+    <EditText
+        android:id="@+id/EditTextPartCapitalActionnaire"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:inputType="numberDecimal"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/CancelActionnaire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="Cancel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"/>
+
+        <Button
+            android:id="@+id/ValiderActionnaire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valider"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+</LinearLayout>
+    </ScrollView>
+
+

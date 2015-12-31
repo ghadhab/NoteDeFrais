@@ -1,0 +1,6 @@
+include ':app', ':library_List'
+include ':leadtoolsDemos'
+include ':libraries:opencv'
+include ':lib_button_menu'
+include ':library-Swipe'
+

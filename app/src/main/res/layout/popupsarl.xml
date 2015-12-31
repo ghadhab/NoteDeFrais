@@ -1,0 +1,156 @@
+<ScrollView
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_element4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#444444"
+    android:orientation="vertical"
+    android:padding="10sp" >
+    <TextView
+        android:id="@+id/textViewNomAssocie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Associe:" />
+    <EditText
+        android:id="@+id/EditTextNomAssocie"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        />
+    <TextView
+        android:id="@+id/textViewNumberAssocie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Nombre de parts sociale:" />
+    <EditText
+        android:id="@+id/EditTextNumberAssocie"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:inputType="numberDecimal"
+        />
+    <TextView
+        android:id="@+id/textViewValeur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Valeur Nominale :" />
+    <EditText
+        android:id="@+id/EditTextNbrNominale"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:inputType="numberDecimal"
+        />
+    <TextView
+        android:id="@+id/textViewTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Total :" />
+    <EditText
+        android:id="@+id/EditTextTotal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:inputType="numberDecimal"
+        />
+    <TextView
+        android:id="@+id/textViewPartCapitalSarl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Part dans le capital:" />
+    <EditText
+        android:id="@+id/EditTextPartCapitalSarl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:inputType="numberDecimal"
+        />
+    <TextView
+        android:id="@+id/textViewGerant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:text="Gerant" />
+    <TextView
+        android:id="@+id/textViewNometPrenomGerant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:text="Nom et Prenom :" />
+    <EditText
+        android:id="@+id/EditTextNometPrenomGerant"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:inputType="text"
+        />
+    <TextView
+        android:id="@+id/textViewMandat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Mandat :" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp">
+    <TextView
+        android:id="@+id/textViewDuSarl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="Du :" />
+    <EditText
+        android:id="@+id/editextDuSarl"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+    android:layout_toRightOf="@+id/textViewDuSarl"
+        android:layout_marginTop="5sp"
+        android:inputType="date"/>
+    <TextView
+        android:id="@+id/textViewAuSarl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:layout_toRightOf="@+id/editextDuSarl"
+        android:text="Au:" />
+    <EditText
+        android:id="@+id/editTextAuSarl"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textViewAuSarl"
+        android:layout_marginTop="5sp"
+        android:inputType="date"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/CancelSarl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="Cancel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"/>
+
+        <Button
+            android:id="@+id/ValiderSarl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valider"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+</LinearLayout>
+</ScrollView>
+
+

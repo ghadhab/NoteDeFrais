@@ -1,0 +1,97 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     tools:context=".MainActivity"
+    android:background="@drawable/background">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <leadtools.controls.RasterImageViewer
+            android:id="@+id/imageviewer"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            />
+<!-- android:background="@drawable/background"-->
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/menu_labels_right"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            fab:menu_labels_ellipsize="end"
+            fab:menu_labels_singleLine="true"
+            fab:menu_backgroundColor="#ccffffff"
+            fab:menu_labels_position="left"
+            android:layout_above="@+id/btn_rotate_cw">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/ChoosePicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/image"
+                android:onClick="onSelectImage"
+                fab:fab_size="mini"
+                fab:fab_label="Choose Picture" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/Takepicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/takepicture"
+                android:onClick="onSelectImage"
+                fab:fab_size="mini"
+                fab:fab_label="Take picture" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/File"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/searchfile"
+                android:onClick="onSelectImage"
+                fab:fab_size="mini"
+                fab:fab_label="File" />
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+        <ImageButton
+        android:id="@+id/btn_rotate_cw"
+        android:src="@drawable/arrowright"
+            android:background="@android:color/transparent"
+        android:onClick="onImageAction"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+       android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+
+        />
+    <ImageButton
+        android:id="@+id/btn_rotate_ccw"
+        android:src="@drawable/arrowleft"
+        android:background="@android:color/transparent"
+        android:onClick="onImageAction"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+
+    <ImageButton
+        android:id="@+id/btn_recognize_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/recon"
+        android:background="@android:color/transparent"
+        android:onClick="onRecognizePage"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        />
+       <!-- android:layout_below="@+id/btn_rotate_ccw"-->
+    </RelativeLayout>
+
+</LinearLayout>

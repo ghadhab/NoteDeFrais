@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+>
+
+            <TextView
+                android:id="@+id/NomClient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="24dp"
+                android:text="Nom Client : " />
+
+            <TextView
+                android:id="@+id/GetNom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/NomClient"
+                android:layout_marginLeft="150dp"
+                android:text="Firstak"/>
+            <ImageView
+                android:id="@+id/Logo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignLeft="@+id/NomClient"
+                android:layout_marginLeft="250dp"
+                />
+
+<TextView
+    android:id="@+id/Tableau"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:layout_alignTop="@+id/NomClient"
+    android:layout_below="@+id/Logo"
+    android:layout_marginTop="60dp"
+    android:text="Tableau"
+    android:textSize="30dp"
+    android:textColor="@color/red"
+    android:textAlignment="center"
+    />
+            <Spinner
+                android:id="@+id/ListFacture"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Tableau"
+                android:layout_marginTop="20dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/NomClient"
+                android:layout_alignRight="@+id/Tableau"
+                android:layout_alignEnd="@+id/Tableau" />
+            <ImageButton
+                android:id="@+id/Add"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ajouter"
+                android:layout_below="@+id/Tableau"
+                android:layout_toRightOf="@+id/ListFacture"
+                />
+            <ImageButton
+                android:id="@+id/ImageFactureTraiter"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ListFacture"
+                android:layout_marginTop="25dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/tableau"
+                />
+</RelativeLayout>
+

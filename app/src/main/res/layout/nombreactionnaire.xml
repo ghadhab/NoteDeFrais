@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    >
+    <TextView
+        android:id="@+id/txtViewNombreactioannaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="Nombre D'actionnaire :" />
+    <EditText
+        android:id="@+id/EditTextNombreactioannaire"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:layout_toRightOf="@+id/txtViewNombreactioannaire"
+        android:inputType="number"
+
+        />
+    <Button
+        android:id="@+id/ValiderNombreactioannaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valider"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/EditTextNombreactioannaire"/>
+</RelativeLayout>

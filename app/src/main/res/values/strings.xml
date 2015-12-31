@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">"Comptable "</string>
+
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">Fullname</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_register">REGISTER</string>
+    <string name="btn_link_to_register">Not a member? Sign up now.</string>
+    <string name="btn_link_to_login">Already registred! Login Me.</string>
+    <string name="welcome">Welcome</string>
+    <string name="name">Fullname</string>
+
+
+    <string-array name="FactureArray">
+        <item>Facture1</item>
+        <item>Facture2</item>
+        <item>Facture3</item>
+        <item>Facture4</item>
+        <item>Facture5</item>
+    </string-array>
+
+    <string-array name="TableFormeSociete">
+        <item>Select la forme de la societe</item>
+        <item>SARL</item>
+        <item>SA</item>
+        <item>Entreprise individuelle</item>
+        <item>SUARL</item>
+    </string-array>
+</resources>
