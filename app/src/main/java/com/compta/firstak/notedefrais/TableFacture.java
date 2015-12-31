@@ -139,7 +139,7 @@ public class TableFacture extends Activity {
                         p = (rowCount * 10) - 30;
 
                     }
-                    if (id == p + 0) {
+                    if (id == p) {
                         textView.setInputType(InputType.TYPE_NULL);
                         textView.setText(MainActivity.Date);
                         a.add(textView.getText().toString());
