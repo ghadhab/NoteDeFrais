@@ -10,24 +10,28 @@
         android:id="@+id/textViewNomIndividuelle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Nom :" />
     <EditText
         android:id="@+id/EditTextNomNomIndividuelle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         />
     <TextView
         android:id="@+id/textViewPrenomIndividuelle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Prenom :" />
     <EditText
         android:id="@+id/EditTextPrenomIndividuelle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:inputType="text"
         />
@@ -35,12 +39,14 @@
         android:id="@+id/textViewMatriculeFiscale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Matricule Fiscale :" />
     <EditText
         android:id="@+id/EditTextMatriculeFiscale"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:inputType="text"
         />
@@ -48,6 +54,7 @@
         android:id="@+id/textViewAdresseEI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Adresse:" />
     <EditText
@@ -55,6 +62,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5sp"
+        android:textColor="@color/white"
         android:inputType="text"
         />
     <RelativeLayout

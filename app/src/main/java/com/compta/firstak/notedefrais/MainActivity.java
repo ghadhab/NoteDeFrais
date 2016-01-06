@@ -78,6 +78,7 @@ import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -101,9 +102,9 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionMenu menuLabelsRight;
     private List<FloatingActionMenu> menus = new ArrayList<>();
     private Handler mUiHandler = new Handler();
+public static String Année;
 
-
-
+    public static  DatePicker datePicker;
 
     private static final int IMAGE_GALLERY = 0x0001;
     private static final int IMAGE_CAPTURE = 0x0002;
@@ -148,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
     Boolean TestEmail;
     Boolean TestSie;
     Boolean TestDate;
+   static String imageFileName;
 
     static {
 
@@ -182,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        Année=String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
 
         //---------------------------------OpenCV------------------------
         BitmapFactory.Options bmpFactoryOptions = new BitmapFactory.Options();
@@ -406,7 +409,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            String imageFileName = null;
+             imageFileName = null;
             switch (requestCode) {
                 case IMAGE_GALLERY:
                     source1 = data.getData();
@@ -586,6 +589,8 @@ public class MainActivity extends AppCompatActivity {
 
         return newBitmap;
     }
+
+
     private void ProscessSaveImg(){
         if (source1 != null) {
             processedBitmap = ProcessingBitmap();

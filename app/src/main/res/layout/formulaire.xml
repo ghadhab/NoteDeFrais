@@ -20,6 +20,7 @@
             android:layout_marginLeft="18dp"
             android:layout_marginTop="24dp"
             android:text="No Facture"
+            android:textColor="@color/white"
             android:layout_toRightOf="@+id/etat_NFacture"/>
 
         <AutoCompleteTextView
@@ -30,6 +31,7 @@
             android:layout_alignTop="@+id/NoFacture_Text"
             android:ems="10"
             android:imeOptions="actionSearch"
+            android:textColor="@color/white"
             android:inputType="textAutoComplete|textAutoCorrect">
             <requestFocus />
         </AutoCompleteTextView>
@@ -48,6 +50,7 @@
             android:layout_below="@+id/NoFacture"
             android:layout_marginTop="26dp"
             android:text="Matricule Fiscal"
+            android:textColor="@color/white"
             android:layout_toRightOf="@+id/etat_MatriculeFiscale"
           />
 
@@ -59,6 +62,7 @@
             android:layout_alignTop="@+id/Matricule_fiscale_Text"
             android:ems="10"
             android:imeOptions="actionSearch"
+            android:textColor="@color/white"
             android:inputType="textAutoComplete|textAutoCorrect">
             <requestFocus />
         </AutoCompleteTextView>
@@ -78,6 +82,7 @@
             android:layout_alignLeft="@+id/Matricule_fiscale_Text"
             android:layout_below="@+id/MatriculeFiscale"
             android:layout_marginTop="26dp"
+            android:textColor="@color/white"
             android:text="MF"
             android:layout_toRightOf="@+id/etat_MF"/>
 
@@ -87,6 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/Mf_text"
+            android:textColor="@color/white"
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="textAutoComplete|textAutoCorrect">
@@ -105,6 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/Mf_text"
             android:layout_below="@+id/MF"
+            android:textColor="@color/white"
             android:layout_marginTop="26dp"
             android:text="TVA"
             android:layout_toRightOf="@+id/etat_Tva"/>
@@ -114,6 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:textColor="@color/white"
             android:layout_alignTop="@+id/TVA_Text"
             android:ems="10"
             android:imeOptions="actionSearch"
@@ -137,6 +145,7 @@
             android:layout_below="@+id/TVA"
             android:layout_marginTop="26dp"
             android:text="Tottal T.T.C"
+            android:textColor="@color/white"
             android:layout_toRightOf="@+id/etat_TotalTTC"/>
 
         <AutoCompleteTextView
@@ -145,6 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/TotalTTC_text"
+            android:textColor="@color/white"
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="textAutoComplete|textAutoCorrect">
@@ -166,6 +176,7 @@
             android:layout_alignLeft="@+id/TotalTTC_text"
             android:layout_below="@+id/TottalTTC"
             android:layout_marginTop="26dp"
+            android:textColor="@color/white"
             android:text="HTVA"
             android:layout_toRightOf="@+id/etat_HTVA"/>
 
@@ -175,6 +186,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/Htva_text"
+            android:textColor="@color/white"
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="textAutoComplete|textAutoCorrect">
@@ -195,6 +207,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/Htva_text"
             android:layout_below="@+id/HTVA"
+            android:textColor="@color/white"
             android:layout_marginTop="26dp"
             android:text="No Tel"
             android:layout_toRightOf="@+id/etat_NTel"/>
@@ -205,6 +218,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/Tel_text"
+            android:textColor="@color/white"
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="textAutoComplete|textAutoCorrect">
@@ -225,6 +239,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/Tel_text"
             android:layout_below="@+id/Tel"
+            android:textColor="@color/white"
             android:layout_marginTop="26dp"
             android:text="No Fax"
             android:layout_toRightOf="@+id/etat_NFax"/>
@@ -234,6 +249,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:textColor="@color/white"
             android:layout_alignTop="@+id/Fax_text"
             android:ems="10"
             android:imeOptions="actionSearch"
@@ -255,6 +271,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/Fax_text"
             android:layout_below="@+id/Fax"
+            android:textColor="@color/white"
             android:layout_marginTop="26dp"
             android:text="Email"
             android:layout_toRightOf="@+id/etat_Email"/>
@@ -266,6 +283,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/Email_Text"
+            android:textColor="@color/white"
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="textAutoComplete|textAutoCorrect">
@@ -288,6 +306,7 @@
             android:layout_alignLeft="@+id/Email_Text"
             android:layout_below="@+id/Email"
             android:layout_marginTop="26dp"
+            android:textColor="@color/white"
             android:text="Site Web"
             android:layout_toRightOf="@+id/etat_Site"/>
 
@@ -297,6 +316,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:textColor="@color/white"
             android:layout_alignTop="@+id/Web_Text"
             android:ems="10"
             android:imeOptions="actionSearch"
@@ -319,6 +339,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/Web_Text"
             android:layout_below="@+id/Web"
+            android:textColor="@color/white"
             android:layout_marginTop="26dp"
             android:text="Date"
             android:layout_toRightOf="@+id/etat_Date"/>
@@ -330,6 +351,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:onClick="onDateClicked"
+            android:textColor="@color/white"
             android:layout_alignTop="@+id/Date_Text"
             android:ems="10">
         </EditText>
@@ -342,6 +364,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/Date_Text"
             android:layout_below="@+id/Date"
+            android:textColor="@color/white"
             android:layout_marginTop="26dp"
             android:text="Désignation"
             android:layout_toRightOf="@+id/etat_Designation"/>
@@ -352,6 +375,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:textColor="@color/white"
             android:layout_alignTop="@+id/DesignationText"
             android:ems="10"
             />

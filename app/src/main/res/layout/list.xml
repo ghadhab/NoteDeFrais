@@ -4,7 +4,7 @@
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:descendantFocusability="blocksDescendants"
-	android:background="@drawable/backgroundd">
+	android:background="@drawable/background">
 <ListView
 	xmlns:android="http://schemas.android.com/apk/res/android"
   		android:layout_width="fill_parent"

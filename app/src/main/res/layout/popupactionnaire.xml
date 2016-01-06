@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:text="Personne Physique"
         android:id="@+id/PersonnePhysique"
+        android:textColor="@color/white"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"/>
 
@@ -26,6 +27,7 @@
         android:text="Personne Morale"
         android:id="@+id/PersonneMorale"
         android:layout_gravity="right"
+        android:textColor="@color/white"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"/>
     </RelativeLayout>
@@ -33,35 +35,41 @@
         android:id="@+id/txtViewRaisonSocialeActioannaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Raison Sociale :" />
     <EditText
         android:id="@+id/EditTextRaisonSocialeActioannaire"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         />
     <TextView
         android:id="@+id/txtViewMatriculeFiscaleActioannaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Matricule Fiscal" />
     <EditText
         android:id="@+id/EditTextMatriculeFiscaleActioannaire"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         />
     <TextView
         android:id="@+id/txtViewNRegistreActioannaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="N° de registre de commerce" />
     <EditText
         android:id="@+id/EditTextNRegistreActioannaire"
         android:layout_width="fill_parent"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_marginTop="5sp"
         />
@@ -70,24 +78,28 @@
         android:id="@+id/txtViewActionnaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Actionnaire" />
     <EditText
         android:id="@+id/EditTextActionnaire"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         />
     <TextView
         android:id="@+id/txtViewAdresseActioannaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Adresse" />
     <EditText
         android:id="@+id/EditTextAdresseActioannaire"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         />
     <!--<TextView
@@ -106,12 +118,14 @@
         android:id="@+id/txtViewNombreDesAction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Nombre Des Actions :" />
     <EditText
         android:id="@+id/EditTextNombreDesAction"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:inputType="numberDecimal"
         />
@@ -119,12 +133,14 @@
         android:id="@+id/txtViewValeurNominale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Valeur Nominale :" />
     <EditText
         android:id="@+id/EditTextValeurNominale"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:inputType="numberDecimal"
         />
@@ -133,12 +149,14 @@
         android:id="@+id/txtViewTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Total:" />
     <EditText
         android:id="@+id/EditTextTotal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:inputType="numberDecimal"
         />
@@ -146,12 +164,14 @@
         android:id="@+id/textViewPartCapitalActionnaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Part dans le capital:" />
     <EditText
         android:id="@+id/EditTextPartCapitalActionnaire"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:inputType="numberDecimal"
         />

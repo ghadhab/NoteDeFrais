@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceListItem"
         android:layout_centerInParent="true"
+        android:textColor="@color/white"
 
       />
 

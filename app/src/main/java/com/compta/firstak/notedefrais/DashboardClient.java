@@ -47,13 +47,8 @@ public  static int REQUEST_NUM_FACTURE=12;
 //if(TableFacture.rowCount>0) {
     TableFacture.rowCount = TableFacture.rowCount - 3;
 //}
-
-        Nom=(TextView)findViewById(R.id.nom);
         getNom=(TextView)findViewById(R.id.GetNom);
-        Tableaux=(TextView)findViewById(R.id.Tableau);
 
-        getNom.setTextSize(20);
-        getNom.setTextColor(Color.BLUE);
 
         TableauImg=(ImageButton)findViewById(R.id.ImageFactureTraiter);
 
@@ -86,6 +81,7 @@ Add=(ImageButton)findViewById(R.id.Add);
         Spinner spinner = (Spinner) findViewById(R.id.ListFacture);
         spinner.setOnItemSelectedListener(this);
          spinnerArray =  new ArrayList<>();
+        spinnerArray.add("");
         spinnerArray.add("Facture 1");
         spinnerArray.add("Facture 2");
         spinnerArray.add("Facture 3");

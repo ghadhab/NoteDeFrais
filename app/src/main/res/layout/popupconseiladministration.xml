@@ -10,12 +10,14 @@
         android:id="@+id/txtViewNomConseilAdministration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         android:text="Nom et Prenom :" />
     <EditText
         android:id="@+id/EditTextNomConseilAdministration"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="5sp"
         />
     <RelativeLayout
@@ -37,6 +39,7 @@
                 android:id="@+id/textViewDuConseil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_marginTop="5sp"
                 android:text="Du :" />
             <EditText
@@ -44,12 +47,14 @@
                 android:layout_width="150sp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textViewDuConseil"
+                android:textColor="@color/white"
                 android:layout_marginTop="5sp"
                 android:inputType="date"/>
             <TextView
                 android:id="@+id/textViewAuConseil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_marginTop="5sp"
                 android:layout_toRightOf="@+id/editextDuConseil"
                 android:text="Au:" />
@@ -58,6 +63,7 @@
                 android:layout_width="150sp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/textViewAuConseil"
+                android:textColor="@color/white"
                 android:layout_marginTop="5sp"
                 android:inputType="date"/>
         </RelativeLayout>

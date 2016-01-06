@@ -22,7 +22,7 @@
                 android:id="@+id/Logo"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_alignLeft="@+id/NomClient"
+                android:background="@android:color/transparent"
                 android:layout_marginLeft="250dp"
                 android:layout_centerHorizontal= "true"
                 />
@@ -31,6 +31,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/Logo"
+                android:textColor="@color/white"
                 android:text="Raison Sociale"
   />
 
@@ -38,6 +39,7 @@
                 android:id="@+id/editTextRaisonSocialaClient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/textViewRaisonSocialeClientText"
                 android:singleLine="true" >
             </EditText>
@@ -45,6 +47,7 @@
                 android:id="@+id/textViewEmailAddress"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/editTextRaisonSocialaClient"
                 android:text="Email Client" />
 
@@ -52,6 +55,7 @@
                 android:id="@+id/editTextEmailAddressInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/textViewEmailAddress"
                 android:inputType="textEmailAddress" />
 
@@ -59,6 +63,7 @@
                 android:id="@+id/textViewPhoneNumber"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/editTextEmailAddressInput"
                 android:text=" Phone Number " />
 
@@ -66,6 +71,7 @@
                 android:id="@+id/editTextPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/textViewPhoneNumber"
                 android:inputType="phone" />
 
@@ -73,6 +79,7 @@
                 android:id="@+id/textViewFax"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/editTextPhoneNumber"
                 android:text="Fax Client" />
 
@@ -80,6 +87,7 @@
                 android:id="@+id/editTextFax"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/textViewFax"
                 android:inputType="phone" />
 
@@ -88,6 +96,7 @@
                 android:id="@+id/textViewAdresse"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/editTextFax"
                 android:text="Adresse du client" />
 
@@ -95,6 +104,7 @@
                 android:id="@+id/editTextAdresse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/textViewAdresse"
                 android:inputType="text" />
 
@@ -102,6 +112,7 @@
             android:id="@+id/textViewMF"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+                android:textColor="@color/white"
             android:layout_below="@+id/editTextAdresse"
             android:text="Matricule Fiscale" />
 
@@ -109,12 +120,14 @@
                 android:id="@+id/editTextMF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/textViewMF"
                 android:inputType="text" />
             <TextView
                 android:id="@+id/textViewRC"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/editTextMF"
                 android:text="Registre de commerce" />
 
@@ -122,18 +135,21 @@
                 android:id="@+id/editTextRC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/textViewRC"
                 android:inputType="text" />
             <TextView
                 android:id="@+id/textViewCapital"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/editTextRC"
                 android:text="Capital" />
 
             <EditText
                 android:id="@+id/editTextCapital"
                 android:layout_width="match_parent"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textViewCapital"
                 android:inputType="text" />
@@ -141,24 +157,28 @@
             android:id="@+id/textViewActivite"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+                android:textColor="@color/white"
             android:layout_below="@+id/editTextCapital"
             android:text="Activité " />
             <EditText
                 android:id="@+id/editTextActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/textViewActivite"
                 android:inputType="text" />
             <TextView
                 android:id="@+id/textViewDate"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/editTextActivity"
                 android:text="constitution  " />
             <EditText
                 android:id="@+id/editTextDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_below="@+id/textViewDate"
                 android:inputType="date"
                 />
@@ -168,6 +188,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_below="@+id/editTextDate"
+                android:textColor="@color/white"
                 android:text="Forme de la societe  "
                 />
 

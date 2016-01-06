@@ -7,7 +7,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
@@ -40,7 +42,7 @@ public class TableFacture extends Activity {
     public static ArrayList<String> DictionnaireCodeComptable;
     public static ArrayList<String> CodeComptable;
     public static StringBuilder text;
-   static EditText textView;
+    static EditText textView;
     static TextView textView1;
     public static int id;
     static int rowCount;
@@ -50,18 +52,20 @@ public class TableFacture extends Activity {
     // ChoixPhotoResult ch1;
     public static ArrayList<String> a = new ArrayList<String>();
     public static ArrayList<String> couleur = new ArrayList<String>();
-    static int p;
+    int p=0;
     SharedPreferences.Editor prefsEditor;
     SharedPreferences prefs;
     static String[] playlists;
     TableRow tableRow;
+   static int next=0;
+    String NPiece;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-        String[] column = {"Date Saisie", "DATE PIECE", "N COMPTE GENERAL", "INTITULE COMPTE GENERAL",
+        String[] column = {"N Piece  | Date Saisie", "DATE PIECE", "N COMPTE GENERAL", "INTITULE COMPTE GENERAL",
                 "N COMPTE AUXILIAIRE", "INTITULE COMPTE AUXILIAIRE", "LIBELLE FACTURE", "DEBIT", "CREDIT", "SOLDE"};
 
 
@@ -77,7 +81,6 @@ public class TableFacture extends Activity {
         sv.addView(hsv);
         setContentView(sv);
         readRawTextFile(getApplicationContext(), R.raw.plancomptable1);
-//getTable(cl);
 
     }
 
@@ -100,7 +103,8 @@ public class TableFacture extends Activity {
             for (int n = 0; n < 10; n++) {
                 // 4) create textView
                 textView1 = new TextView(this);
-                textView1.setBackgroundColor(Color.WHITE);
+                textView1.setBackgroundColor(Color.parseColor("#791634"));
+                textView1.setTextColor(Color.WHITE);
                 textView1.setGravity(Gravity.CENTER);
                 textView1.setMaxLines(1);
 
@@ -115,7 +119,7 @@ public class TableFacture extends Activity {
 
         if (Formulaire.isNew == true) {
             rowCount = rowCount + 3;
-
+next=next+1;
             for (int i = 0; i < rowCount; i++) {
                 // 3) create tableRow
                 tableRow = new TableRow(this);
@@ -130,7 +134,7 @@ public class TableFacture extends Activity {
 
                     id = Integer.parseInt(s3);
                     textView = new EditText(this);
-                    textView.setBackgroundColor(Color.WHITE);
+                    textView.setTextColor(Color.WHITE);
                     textView.setGravity(Gravity.CENTER);
                     textView.setMaxLines(1);
 
@@ -141,10 +145,10 @@ public class TableFacture extends Activity {
                     }
                     if (id == p) {
                         textView.setInputType(InputType.TYPE_NULL);
-                        textView.setText(MainActivity.Date);
+                            textView.setText(next+"/"+ MainActivity.Année + "    " + MainActivity.Date);
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
-                        // textView.setBackgroundColor(Color.parseColor("#004774"));
+                        textView.setBackgroundColor(Color.parseColor("#004774"));
 
                     }
                     if (id == p + 1) {
@@ -152,14 +156,14 @@ public class TableFacture extends Activity {
                         textView.setText(Formulaire.DateText);
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
-                        //textView.setBackgroundColor(Color.parseColor("#004774"));
+                        textView.setBackgroundColor(Color.parseColor("#004774"));
                     }
                     if (id == p + 2) {
                         textView.setInputType(InputType.TYPE_NULL);
-                        textView.setText(MainActivityList.Code1);
+                        textView.setText(ParsingOcrResult.Code);
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
-                        // textView.setBackgroundColor(Color.parseColor("#004774"));
+                        textView.setBackgroundColor(Color.parseColor("#004774"));
                     }
                     if (id == p + 3) {
 
@@ -177,7 +181,7 @@ public class TableFacture extends Activity {
                                         MainActivityList.class);
                                 startActivity(intent);
                                 rowCount = rowCount - 3;
-                                // Formulaire.isNew = false;
+                                //Formulaire.isNew = false;
                             }
                         });
                         if (MainActivityList.strname1 != null) {
@@ -185,7 +189,7 @@ public class TableFacture extends Activity {
                         }
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
-                        // textView.setBackgroundColor(Color.parseColor("#004774"));
+                        textView.setBackgroundColor(Color.parseColor("#004774"));
                     }
                     if (id == p + 4) {
                         textView.setInputType(InputType.TYPE_NULL);
@@ -193,7 +197,7 @@ public class TableFacture extends Activity {
                         textView.setText(ParsingOcrResult.Code);
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
-                        //  textView.setBackgroundColor(Color.parseColor("#004774"));
+                        textView.setBackgroundColor(Color.parseColor("#004774"));
 
                     }
                     if (id == p + 5) {
@@ -218,54 +222,50 @@ public class TableFacture extends Activity {
                         }
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
-                        //  textView.setBackgroundColor(Color.parseColor("#004774"));
+                        textView.setBackgroundColor(Color.parseColor("#004774"));
 
                     }
                     if (id == p + 6) {
                         textView.setText(Formulaire.DesignationText);
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
-                        // textView.setBackgroundColor(Color.parseColor("#004774"));
+                        textView.setBackgroundColor(Color.parseColor("#004774"));
 
                     }
                     if (id == p + 7) {
                         textView.setText(String.valueOf(Formulaire.HTVAtext));
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
-                        // textView.setBackgroundColor(Color.parseColor("#004774"));
+                        textView.setBackgroundColor(Color.parseColor("#004774"));
 
                     }
                     if (id == p + 8) {
                         textView.setText("");
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
-                        // textView.setBackgroundColor(Color.parseColor("#004774"));
+                        textView.setBackgroundColor(Color.parseColor("#004774"));
 
                     }
                     if (id == p + 9) {
                         textView.setText(String.valueOf(Formulaire.HTVAtext));
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
-                        //  textView.setBackgroundColor(Color.parseColor("#004774"));
+                        textView.setBackgroundColor(Color.parseColor("#004774"));
 
                     }
-                 /* if(id==20){
-                      textView.setText("1/2015");
-
-                  }*/
 
                     if (id == p + 10) {
-                        textView.setText(MainActivity.Date);
+                        textView.setText(next+"/"+ MainActivity.Année + "    " + MainActivity.Date);
                         a.add(textView.getText().toString());
                         couleur.add("#206795");
-                        // textView.setBackgroundColor(Color.parseColor("#206795"));
+                        textView.setBackgroundColor(Color.parseColor("#206795"));
 
                     }
                     if (id == p + 11) {
                         textView.setText(Formulaire.DateText);
                         a.add(textView.getText().toString());
                         couleur.add("#206795");
-                        // textView.setBackgroundColor(Color.parseColor("#206795"));
+                        textView.setBackgroundColor(Color.parseColor("#206795"));
 
                     }
                     if (id == p + 12) {
@@ -274,7 +274,7 @@ public class TableFacture extends Activity {
                         textView.setText("4366");
                         a.add(textView.getText().toString());
                         couleur.add("#206795");
-                        // textView.setBackgroundColor(Color.parseColor("#206795"));
+                        textView.setBackgroundColor(Color.parseColor("#206795"));
 
                     }
                     if (id == p + 13) {
@@ -299,7 +299,7 @@ public class TableFacture extends Activity {
                         }
                         a.add(textView.getText().toString());
                         couleur.add("#206795");
-                        // textView.setBackgroundColor(Color.parseColor("#206795"));
+                        textView.setBackgroundColor(Color.parseColor("#206795"));
                     }
                     if (id == p + 14) {
                         textView.setInputType(InputType.TYPE_NULL);
@@ -307,7 +307,7 @@ public class TableFacture extends Activity {
                         textView.setText("4366");
                         a.add(textView.getText().toString());
                         couleur.add("#206795");
-                        //  textView.setBackgroundColor(Color.parseColor("#206795"));
+                        textView.setBackgroundColor(Color.parseColor("#206795"));
 
                     }
                     if (id == p + 15) {
@@ -332,7 +332,7 @@ public class TableFacture extends Activity {
                         }
                         a.add(textView.getText().toString());
                         couleur.add("#206795");
-                        // textView.setBackgroundColor(Color.parseColor("#206795"));
+                        textView.setBackgroundColor(Color.parseColor("#206795"));
 
                     }
 
@@ -340,7 +340,7 @@ public class TableFacture extends Activity {
                         textView.setText(Formulaire.DesignationText);
                         a.add(textView.getText().toString());
                         couleur.add("#206795");
-                        // textView.setBackgroundColor(Color.parseColor("#206795"));
+                        textView.setBackgroundColor(Color.parseColor("#206795"));
                     }
                     if (id == p + 17) {
                         try {
@@ -349,7 +349,7 @@ public class TableFacture extends Activity {
                             textView.setText(TVaValue);
                             a.add(textView.getText().toString());
                             couleur.add("#206795");
-                            // textView.setBackgroundColor(Color.parseColor("#206795"));
+                            textView.setBackgroundColor(Color.parseColor("#206795"));
                         } catch (Exception ex) {
                         }
 
@@ -358,90 +358,101 @@ public class TableFacture extends Activity {
                         textView.setText("");
                         a.add(textView.getText().toString());
                         couleur.add("#206795");
-                        // textView.setBackgroundColor(Color.parseColor("#206795"));
+                        textView.setBackgroundColor(Color.parseColor("#206795"));
                     }
                     if (id == p + 19) {
                         textView.setText(TVaValue);
                         a.add(textView.getText().toString());
                         couleur.add("#206795");
-                        //  textView.setBackgroundColor(Color.parseColor("#206795"));
+                        textView.setBackgroundColor(Color.parseColor("#206795"));
                     }
                     if (id == p + 20) {
-                        textView.setText(MainActivity.Date);
+                     NPiece=next+"/"+ MainActivity.Année;
+                        textView.setOnClickListener(new View.OnClickListener() {
+
+                            @Override
+                            public void onClick(View view)
+                            {
+                               Intent intent = new Intent();
+                                intent.setAction(android.content.Intent.ACTION_VIEW);
+                                intent.addCategory(android.content.Intent.CATEGORY_DEFAULT);
+                                intent.setDataAndType(Uri.parse(Environment.getExternalStorageDirectory().getPath()+MainActivity.imageFileName),"image/*");
+                                startActivity(intent);
+                               // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MainActivity.imageFileName)));
+                            }
+
+                        });
+                        textView.setText(NPiece+ "    " + MainActivity.Date);
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
-                        //  textView.setBackgroundColor(Color.parseColor("#599cc6"));
+                        textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
                     if (id == p + 21) {
                         textView.setText(Formulaire.DateText);
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
-                        //  textView.setBackgroundColor(Color.parseColor("#599cc6"));
+                        textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
                     if (id == p + 22) {
                         textView.setText("4011");
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
-                        // textView.setBackgroundColor(Color.parseColor("#599cc6"));
+                        textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
                     if (id == p + 23) {
                         textView.setText("Fournisseurs d'exploitation");
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
-                        //  textView.setBackgroundColor(Color.parseColor("#599cc6"));
+                        textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
                     if (id == p + 24) {
                         textView.setText("4011");
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
-                        // textView.setBackgroundColor(Color.parseColor("#599cc6"));
+                        textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
                     if (id == p + 25) {
                         textView.setText("Fournisseurs d'exploitation");
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
-                        //textView.setBackgroundColor(Color.parseColor("#599cc6"));
+                        textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
 
                     if (id == p + 26) {
                         textView.setText(Formulaire.DesignationText);
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
-                        // textView.setBackgroundColor(Color.parseColor("#599cc6"));
+                        textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
                     if (id == p + 27) {
                         textView.setText("");
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
-                        // textView.setBackgroundColor(Color.parseColor("#599cc6"));
+                        textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
                     if (id == p + 28) {
                         textView.setText(Formulaire.TottalText);
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
-                        // textView.setBackgroundColor(Color.parseColor("#599cc6"));
+                        textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
                     if (id == p + 29) {
                         textView.setText(Formulaire.TottalText);
+                        //            textView.setBackgroundColor("#599cc6");
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
-                        // textView.setBackgroundColor(Color.parseColor("#599cc6"));
+                        textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
+                    // if (a.size() != 0) {
+     /*                   for (int b = 0; b < id; b++) {
+                           // String ss = a.get(b);
+                            textView.setText(a.get(b));
+                            textView.setBackgroundColor(Color.parseColor(couleur.get(b)));
+                            }*/
+                    // }
 
                     // 5) add textView to tableRow
                     tableRow.addView(textView, tableRowParams);
-
-
-
-                    if (a.size() != 0) {
-                        for (int b = 0; b < id; b++) {
-                            String ss = a.get(b);
-                            if (b != 0) {
-                                textView.setText(a.get(b));
-                                textView.setBackgroundColor(Color.parseColor(couleur.get(b)));
-                            }
-                        }
-                    }
 
                 }
 

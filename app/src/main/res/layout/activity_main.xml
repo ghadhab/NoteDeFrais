@@ -27,7 +27,10 @@
             android:paddingLeft="10dp"
             fab:menu_labels_ellipsize="end"
             fab:menu_labels_singleLine="true"
-            fab:menu_backgroundColor="#ccffffff"
+            fab:menu_backgroundColor="#254680"
+            fab:menu_colorNormal="#791634"
+            fab:menu_colorPressed="#791634"
+            fab:menu_colorRipple="#791634"
             fab:menu_labels_position="left"
             android:layout_above="@+id/btn_rotate_cw">
 
@@ -38,7 +41,8 @@
                 android:src="@drawable/image"
                 android:onClick="onSelectImage"
                 fab:fab_size="mini"
-                fab:fab_label="Choose Picture" />
+                fab:fab_label="Choose Picture"
+                style="@style/MenuButtonsSmall.Red"/>
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/Takepicture"
@@ -47,7 +51,8 @@
                 android:src="@drawable/takepicture"
                 android:onClick="onSelectImage"
                 fab:fab_size="mini"
-                fab:fab_label="Take picture" />
+                fab:fab_label="Take picture"
+                style="@style/MenuButtonsSmall.Red"/>
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/File"
@@ -56,7 +61,8 @@
                 android:src="@drawable/searchfile"
                 android:onClick="onSelectImage"
                 fab:fab_size="mini"
-                fab:fab_label="File" />
+                fab:fab_label="File"
+                style="@style/MenuButtonsSmall.Red"/>
 
         </com.github.clans.fab.FloatingActionMenu>
 
