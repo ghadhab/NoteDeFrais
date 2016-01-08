@@ -61,8 +61,6 @@ public class MainActivitySwipe extends ListActivity implements SwipeActionAdapte
         items.add("Client 14");
         items.add("Client 15");
         items.add("Client 16");
-        items.add("Client 17");
-        items.add("Client 18");
 
         ArrayAdapter<String> stringAdapter = new ArrayAdapter<>(
                 this,

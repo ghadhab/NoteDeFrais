@@ -129,7 +129,7 @@ public class LoginActivity extends Activity {
 								startActivity(intent);
 								finish();*/
 								Intent intent = new Intent(LoginActivity.this,
-										ListImageButton.class);
+										MainActivitySwipe.class);
 								startActivity(intent);
 								finish();
 							} else {

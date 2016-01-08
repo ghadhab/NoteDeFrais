@@ -226,7 +226,7 @@ public static String Année;
         programFab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, programFab1.getLabelText(), Toast.LENGTH_SHORT).show();
+              /*  Toast.makeText(MainActivity.this, programFab1.getLabelText(), Toast.LENGTH_SHORT).show();*/
             }
         });
 
@@ -416,8 +416,8 @@ public static String Année;
                     imageFileName = Utils.getGalleryPathName(this.getContentResolver(), data.getData());
                     ImageFile.add(imageFileName);
                     for (int i = 0; i < ImageFile.size(); i++) {
-                        Toast.makeText(getApplicationContext(), ImageFile.get(i),
-                                Toast.LENGTH_LONG).show();
+                     /*   Toast.makeText(getApplicationContext(), ImageFile.get(i),
+                                Toast.LENGTH_LONG).show();*/
                     }
 
 
@@ -521,7 +521,7 @@ public static String Année;
     private void updateImageInfo() {
         RasterImage image = mImageViewer.getImage();
         if (image != null) {
-            Toast.makeText(getApplicationContext(),
+     Toast.makeText(getApplicationContext(),
                     (String.format("(%1$s x %2$s)", image.getWidth(), image.getHeight())),
                     Toast.LENGTH_LONG).show();
 
@@ -571,10 +571,10 @@ public static String Année;
 
                 newCanvas.drawText(captionString,
                         0, rectText.height(), paintText);
-
+/*
                 Toast.makeText(getApplicationContext(),
                         "drawText: " + captionString,
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_LONG).show();*/
 
             }else{
                 Toast.makeText(getApplicationContext(),
@@ -648,8 +648,8 @@ public static String Année;
 
 
             } else {
-                Toast.makeText(getApplicationContext(), "use the zone Designation",
-                        Toast.LENGTH_LONG).show();
+              /*  Toast.makeText(getApplicationContext(), "use the zone Designation",
+                        Toast.LENGTH_LONG).show();*/
             }
 
 
@@ -818,10 +818,10 @@ public static String Année;
                 Messager.showError(MainActivity.this, "Error recognizing page", null);
             else {
                 OcrResult = result;
-                readRawTextFile(getApplicationContext(), R.raw.plancomptable1);
+                readRawTextFile(getApplicationContext(), R.raw.plancomptable2);
 
-                Toast.makeText(getApplicationContext(), OcrResult.toString(),
-                        Toast.LENGTH_LONG).show();
+              /*  Toast.makeText(getApplicationContext(), OcrResult.toString(),
+                        Toast.LENGTH_LONG).show();*/
                 Log.i("Resultat OCR", OcrResult);
                 if(OcrResult!=null&&DesignationResultat==null) {
                     ParsingOcrResult Parse = ParsingOcrResult.parsingOcr(OcrResult);

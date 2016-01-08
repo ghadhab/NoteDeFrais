@@ -154,7 +154,7 @@ if(extras.getBoolean("TestTel")==true){
        Nofacture.setText(ch.NoFacture);
         Matricule_fiscale.setText(ch.MatriculeFiscale);
         Mf.setText(ch.MF);
-        Tva.setText(ch.TVA);
+        Tva.setText(ch.TVA.replace("l","1").replace("o","0"));
         TottalTTC.setText(Double.toString(ch.Tottal));
         NoTel.setText(ch.Tel);
         NoFax.setText(ch.Fax);
@@ -190,9 +190,9 @@ if(extras.getBoolean("TestTel")==true){
                 HTVAtext = HTVA.getText().toString();
                 DesignationText = Designation.getText().toString();
                 ParsingOcrResult.ParseDesignation(DesignationText);
-               // Log.i("  ", "distaaaaaaaaance " + ParsingOcrResult.DesignationAtMin.toString() + "    Code  " + ParsingOcrResult.Code);
+                // Log.i("  ", "distaaaaaaaaance " + ParsingOcrResult.DesignationAtMin.toString() + "    Code  " + ParsingOcrResult.Code);
                 //Toast.makeText(getApplicationContext(), ParsingOcrResult.DesignationAtMin.toString() + "    Code  " + ParsingOcrResult.Code,
-                  //      Toast.LENGTH_LONG).show();
+                //      Toast.LENGTH_LONG).show();
                /* if(Submit.isClickable()) {
                     DashboardClient.spinnerArray.add("Facture"+i);
                     DashboardClient.adapter.notifyDataSetChanged();

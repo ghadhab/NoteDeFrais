@@ -160,7 +160,7 @@ next=next+1;
                     }
                     if (id == p + 2) {
                         textView.setInputType(InputType.TYPE_NULL);
-                        textView.setText(ParsingOcrResult.Code);
+                        textView.setText(ParsingOcrResult.DesignationAtMin);
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
                         textView.setBackgroundColor(Color.parseColor("#004774"));
@@ -168,7 +168,7 @@ next=next+1;
                     if (id == p + 3) {
 
                         textView.setInputType(InputType.TYPE_NULL);
-                        textView.setText(ParsingOcrResult.DesignationAtMin);
+                        textView.setText(ParsingOcrResult.Code);
                         textView.setOnClickListener(new View.OnClickListener() {
 
                             @Override
@@ -194,7 +194,7 @@ next=next+1;
                     if (id == p + 4) {
                         textView.setInputType(InputType.TYPE_NULL);
                         //textView.setText(MainActivityList.Code3);
-                        textView.setText(ParsingOcrResult.Code);
+                        textView.setText(ParsingOcrResult.DesignationAtMin);
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
                         textView.setBackgroundColor(Color.parseColor("#004774"));
@@ -202,7 +202,7 @@ next=next+1;
                     }
                     if (id == p + 5) {
                         textView.setInputType(InputType.TYPE_NULL);
-                        textView.setText(ParsingOcrResult.DesignationAtMin);
+                        textView.setText(ParsingOcrResult.Code);
                         textView.setOnClickListener(new View.OnClickListener() {
 
                             @Override
@@ -376,8 +376,9 @@ next=next+1;
                                Intent intent = new Intent();
                                 intent.setAction(android.content.Intent.ACTION_VIEW);
                                 intent.addCategory(android.content.Intent.CATEGORY_DEFAULT);
-                                intent.setDataAndType(Uri.parse(Environment.getExternalStorageDirectory().getPath()+MainActivity.imageFileName),"image/*");
+                                intent.setDataAndType(Uri.parse(MainActivity.imageFileName),"image/*");
                                 startActivity(intent);
+                             //  /storage/extSdCard/image.jpg
                                // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MainActivity.imageFileName)));
                             }
 

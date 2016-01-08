@@ -23,6 +23,7 @@
         android:layout_marginRight="16dp"
         android:src="@drawable/ajouter"
         app:fab_elevationCompat="8dp"
+        style="@style/MenuButtonsSmall.Red"
         fab:menu_labels_ellipsize="end"
         fab:menu_labels_singleLine="true"
         android:layout_alignParentRight="true"

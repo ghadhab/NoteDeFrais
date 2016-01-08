@@ -33,10 +33,10 @@ public class SA extends Activity{
                 "Acitionnaires",
         };
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+      /*  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, values);*/
 
-
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.textviewsa,values);
         // Assign adapter to ListView
         listView.setAdapter(adapter);
 

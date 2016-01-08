@@ -174,7 +174,7 @@ isclicked=true;
 
              //  new CreateNewClient().execute();
                 Intent intent = new Intent(AjouterClient.this,
-                        ListImageButton.class);
+                        MainActivitySwipe.class);
                 startActivity(intent);
                 finish();
 
@@ -347,10 +347,10 @@ isclicked=true;
                 bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
                 byte[] b = baos.toByteArray();
                 String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
-                Toast.makeText(this, imageEncoded, Toast.LENGTH_LONG).show();
+               // Toast.makeText(this, imageEncoded, Toast.LENGTH_LONG).show();
                 Log.e("LOOK", imageEncoded);
             } catch (Exception e) {
-                Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "wrong", Toast.LENGTH_LONG).show();
             }
         }
         if ( resultCode == RESULT_OK && null != data)

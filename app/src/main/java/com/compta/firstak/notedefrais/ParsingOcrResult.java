@@ -227,17 +227,17 @@ public class ParsingOcrResult extends Activity {
 
            //---------------------Matricule Fiscale-----------------------------
 
-            if(ComputeDistanceFiscale<=minValue ){
+         /*   if(ComputeDistanceFiscale<=minValue ){
                 minValue=ComputeDistanceFiscale;
                 // System.out.println("fiscale Compute  "+ocrWords[i]+"   "+getLevenshteinDistance("fiscale",ocrWords[i])+"  distance  : "+minValue );
                 if(ComputeDistanceFiscale==entier){
                     resultOcr.MatriculeFiscale= resultOcr.ocrWords[i+1];
                     //resultOcr.TestMatriculeFiscale=true;
                 }
-            }
+            }*/
 
-            if(resultOcr.ocrWords[i].length()>6){
-                if((resultOcr.ocrWords[i].replace("/","").replace("-","").length()==13)||(resultOcr.ocrWords[i].replace("/","").replace("-","").length()==12)){
+            if(resultOcr.ocrWords[i].length()>5){
+                if((resultOcr.ocrWords[i].replace("/","").replace("-","").replace(" ","").length()==13)||(resultOcr.ocrWords[i].replace("/","").replace("-","").replace(" ","").length()==12)){
                     String a=resultOcr.ocrWords[i].substring(0, 6);
                     String b=resultOcr.ocrWords[i].substring(resultOcr.ocrWords[i].length()-1);
                     if(tryParseTVA(a)&&tryParseTVA(b)){
@@ -246,7 +246,7 @@ public class ParsingOcrResult extends Activity {
                     }
 
                 }
-                if((resultOcr.ocrWords[i].replace("/","").replace("-","").length()==8)||(resultOcr.ocrWords[i].replace("/","").replace("-","").length()==7)){
+                if((resultOcr.ocrWords[i].replace("/","").replace("-", "").replace(" ","").length()==8)||(resultOcr.ocrWords[i].replace("/","").replace("-","").replace(" ","").length()==7)){
                     String a=resultOcr.ocrWords[i].substring(0, 6);
                     String b=resultOcr.ocrWords[i].substring(resultOcr.ocrWords[i].length()-1);
                     if(tryParseTVA(a)&&tryParseTVA(b)==false){
@@ -333,7 +333,7 @@ public class ParsingOcrResult extends Activity {
                         Tel = Tel1;
                     } else {*/
 
-           if (resultOcr.ocrWords[i].contains("tel") || resultOcr.ocrWords[i].contains("tél") ||resultOcr.ocrWords[i].contains("+216")) {
+           if (resultOcr.ocrWords[i].contains("tel") || resultOcr.ocrWords[i].contains("tél") ||resultOcr.ocrWords[i].contains("+216")||resultOcr.ocrWords[i].contains("gsm")) {
                 String Tel2 = GetNumeroTelOrFax(resultOcr.ocrWords, i);
               String Tel3=resultOcr.ocrWords[i+1];
                 if (Tel2.length() == 8 || (Tel2.length() == 11 && Tel2.contains("216"))) {
@@ -368,12 +368,12 @@ public class ParsingOcrResult extends Activity {
                 resultOcr.TestTottalTTC=false;
             }
            //-----------------------Mantant HTVA -------------------------------
-            if((Isnumber(resultOcr.ocrWords[i]) && (resultOcr.ocrWords[i].contains(".") || resultOcr.ocrWords[i].contains(",")))&&(resultOcr.ocrWords[i-1].contains("htva"))){
+          /*  if((Isnumber(resultOcr.ocrWords[i]) && (resultOcr.ocrWords[i].contains(".") || resultOcr.ocrWords[i].contains(",")))&&(resultOcr.ocrWords[i-1].contains("htva"))){
                // HTVA =ocrWords[i];
                 HtvaString=resultOcr.ocrWords[i];
                 resultOcr.TestHtva=true;
                 Log.i("Mantant HTVA : ",HtvaString);
-            }
+            }*/
 
 
 
@@ -562,7 +562,7 @@ Log.i("double","l"+value+"l");
     {
         boolean IsPhoneFax = true;
         try{
-            Integer.parseInt(word.replace("+", "").replace("-", "").replace(".", "").replace(" ", "").replace("/","").replace("fax","").replace("tel","").replace("[","1").replace("]","1"));
+            Integer.parseInt(word.replace("+", "").replace("-", "").replace(".", "").replace(" ", "").replace("/","").replace("fax","").replace("tel","").replace("[","1").replace("]","1").replace("l","1".replace("o","0")));
         }catch(NumberFormatException e){
             IsPhoneFax = false;
         }
@@ -571,7 +571,6 @@ Log.i("double","l"+value+"l");
 
     public static boolean Isnumber(String word)
     {
-
         boolean IsNumber = true;
         try{
             Number= Double.parseDouble(word.replace(".", ".").replace(",", ".").replace("+", "/").replace(" ", "").replace("-", "/"));
@@ -631,7 +630,7 @@ Log.i("double","l"+value+"l");
         String delimiterChars2 = "[|?~'*()<\\\":>+\\\\[\\\\]']";
         String Result2 = textLower2.replaceAll(delimiterChars2, replacement2);
         String[] DesignationText = Result2.split("\\s+");
-        for(int j=1;j<MainActivity.Dictionnaire.size();j++) {
+        for(int j=1;j<MainActivity.Dictionnaire.size();j=j+2) {
              Designation=MainActivity.Dictionnaire.get(j);
             String textLower1 = Designation.toLowerCase();
             String replacement1 = " ";
@@ -640,7 +639,7 @@ Log.i("double","l"+value+"l");
             String[] MotClé = ResultDesignation.split("\\s+");
             for (int k = 0; k < DesignationText.length - MotClé.length; k++) {
                 int computeDistance = getLevenshteinDistance(ResultDesignation, GetSubString(DesignationText, MotClé, k));
-                System.out.println("Substring   "+  GetSubString(DesignationText, MotClé, k)+"      Désignationnnn:     "+ ResultDesignation);
+                System.out.println("Substring   "+  GetSubString(DesignationText, MotClé, k)+"      Désignationnnn:     "+ Designation+"   Distance=   "+computeDistance);
                 if (computeDistance < minDistance || (computeDistance == minDistance && DesignationText.length > DesignationAtMin.length())) {
                     minDistance = computeDistance;
                     DesignationAtMin = Designation.toString();
@@ -653,10 +652,10 @@ Log.i("double","l"+value+"l");
                     Code=MainActivity.Dictionnaire.get(j - 1);
                 }
             }
-            Log.i("  ", "distaaaaaaaaance " + Integer.toString(minDistance) + "       " + DesignationAtMin.toString() + "    Code  " + Code);
+          //  Log.i("  ", "distaaaaaaaaance " + Integer.toString(minDistance) + "       " + DesignationAtMin.toString() + "    Code  " + Code);
 
         }
-        Log.i("  ", "distaaaaaaaaance " + Integer.toString(minDistance) + "       " + DesignationAtMin.toString()   );
+       // Log.i("  ", "distaaaaaaaaance " + Integer.toString(minDistance) + "       " + DesignationAtMin.toString()   );
     }
  /*  public static void ParseDesignation(String DesignatationTextMain) {
        int computeDistance=0;
