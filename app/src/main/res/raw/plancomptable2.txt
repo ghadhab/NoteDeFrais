@@ -20,7 +20,7 @@
 40974=Fournisseurs d'immobilisations
 4098=Rabais, remises, ristournes � obtenir et autres avoirs non encore re�us
 41=Clients & comptes rattach�s
-411=C=lients
+411=Clients
 4111=Clients - ventes de biens ou de prestations de services
 4117=Clients - retenues de garantie
 413=Clients - effets � recevoir
@@ -127,7 +127,6 @@
 4952=Cr�ances sur cession d'immobilisation
 4955=Cr�ances sur cession des valeurs mobili�res de placement
 4957=Autres comptes d�biteurs
-
 60=Achats (sauf 603)
 601=Achats stock�s - Mati�res premi�res et fournitures li�es
 602=Achats stock�s - Autres approvisionnements

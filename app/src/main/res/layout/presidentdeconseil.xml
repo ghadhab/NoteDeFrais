@@ -24,4 +24,9 @@
         android:background="@android:color/transparent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"/>
+    <include
+        android:id="@+id/view_details_network"
+        layout="@layout/view_network_failed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

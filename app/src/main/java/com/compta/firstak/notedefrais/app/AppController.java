@@ -5,10 +5,11 @@ import android.text.TextUtils;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
 public class AppController extends Application {
-
+	private ImageLoader mImageLoader;
 	public static final String TAG = AppController.class.getSimpleName();
 
 	private RequestQueue mRequestQueue;
@@ -37,6 +38,16 @@ public class AppController extends Application {
 		req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
 		getRequestQueue().add(req);
 	}
+
+	public ImageLoader getImageLoader() {
+		getRequestQueue();
+		if (mImageLoader == null) {
+			mImageLoader = new ImageLoader(this.mRequestQueue,
+					new LruBitmapCache());
+		}
+		return this.mImageLoader;
+	}
+
 
 	public <T> void addToRequestQueue(Request<T> req) {
 		req.setTag(TAG);

@@ -6,11 +6,35 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
+
+        <TextView
+            android:id="@+id/FournisseurText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="24dp"
+            android:text="Fournisseur"
+            android:textColor="@color/white"
+           />
+        <AutoCompleteTextView
+            android:id="@+id/Fournisseur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:textColor="@color/white"
+            android:inputType="textAutoComplete|textAutoCorrect"
+           >
+            <requestFocus />
+        </AutoCompleteTextView>
+
         <ImageView
             android:id="@+id/etat_NFacture"
             android:layout_width="40dp"
             android:layout_height="70dp"
             android:src="@drawable/red_button"
+            android:layout_below="@+id/FournisseurText"
             />
 
         <TextView
@@ -21,7 +45,8 @@
             android:layout_marginTop="24dp"
             android:text="No Facture"
             android:textColor="@color/white"
-            android:layout_toRightOf="@+id/etat_NFacture"/>
+            android:layout_toRightOf="@+id/etat_NFacture"
+            android:layout_below="@+id/FournisseurText"/>
 
         <AutoCompleteTextView
             android:id="@+id/NoFacture"
@@ -390,5 +415,11 @@
             android:layout_below="@+id/Designation"
             android:layout_marginTop="21dp"
             android:text="submit" />
+
+        <include
+            android:id="@+id/view_details_network"
+            layout="@layout/view_network_failed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 </ScrollView>

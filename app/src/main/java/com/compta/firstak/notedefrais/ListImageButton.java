@@ -1,9 +1,7 @@
 package com.compta.firstak.notedefrais;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,8 +10,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.compta.firstak.notedefrais.Gestion_Client.AjouterClient;
 import com.compta.firstak.notedefrais.app.JSONParser;
 
 import org.apache.http.NameValuePair;
@@ -143,6 +141,12 @@ public class ListImageButton extends Activity {
         }
 
     }
+
+
+
+
+
+
    /* class SupprimerAllClient extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {

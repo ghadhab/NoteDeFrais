@@ -6,6 +6,8 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +15,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,27 +24,37 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.compta.firstak.notedefrais.AjouterClient;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.compta.firstak.notedefrais.Gestion_Client.AjouterClient;
 import com.compta.firstak.notedefrais.R;
+import com.compta.firstak.notedefrais.app.AppConfig;
+import com.compta.firstak.notedefrais.app.AppController;
 import com.compta.firstak.notedefrais.app.JSONParser;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Created by mohamed on 10/08/2015.
@@ -62,7 +76,7 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
     Calendar myCalendar = Calendar.getInstance();
      static ListView lv;
     JSONParser jsonParser = new JSONParser();
-    private static String url_Ajout_SARL="http://192.168.43.247/comptable/Client/sarl.php";
+
     private static String url_Ajout_EntrepriseIndividuelle="http://192.168.43.247/comptable/Client/entrepriseindiv.php";
     private static String url_Ajout_Conseil="http://192.168.43.247/comptable/Client/conseil.php";
     private static String  url_Ajout_President="http://192.168.43.247/comptable/Client/president.php";
@@ -71,6 +85,10 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
     View  ViewEditActionnaire ;
     public static  int i;
     public static  int j;
+    private Button actualiserbutton;
+    private RelativeLayout networkFailed;
+    private  String reqGetClient;
+    private  String reqUpdateClient;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +99,8 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
 
 
 
+        actualiserbutton = (Button) findViewById(R.id.button1);
+        networkFailed = (RelativeLayout) findViewById(R.id.network_failed);
 
         ImageButton buttonSupprimer =
                 (ImageButton)findViewById(R.id.btnDelette);
@@ -640,7 +660,7 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
                                 Toast.LENGTH_LONG).show();*/
                         addItemList4();
                         lv.setAdapter(adapter);
-                       // new CreateNewSarl().execute();
+                        CreateNewSarl();
                         pwindo4.dismiss();
 
                        if(i>1) {
@@ -786,28 +806,92 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
         items.add(0,NomAssociesuarl );
         adapter.notifyDataSetChanged();
     }
-    class CreateNewSarl extends AsyncTask<String, String, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
 
-        protected String doInBackground(String... args) {
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("NomAssocie", NomAssocie));
-            params.add(new BasicNameValuePair("Nombre", String.valueOf(NombreAsoocie)));
-            params.add(new BasicNameValuePair("NbrNominale",String.valueOf(NbrNominale)));
-            params.add(new BasicNameValuePair("Total", String.valueOf(TotalAssocie)));
-            params.add(new BasicNameValuePair("NometPrenomGerant",NometPrenomGerant));
-            params.add(new BasicNameValuePair("PartCapitalSarl",String.valueOf(PartCapitalSarl)));
-            params.add(new BasicNameValuePair("id_client",String.valueOf(AjouterClient.id)));
-            JSONObject json = jsonParser.makeHttpRequest(url_Ajout_SARL, "POST", params);
+    //--------------------------------------------------------------------------------------
 
-            Log.d("Create Response", json.toString());
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) this
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager
+                .getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
-            return null;
+
+    void CreateNewSarl() {
+        actualiserbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateNewSarl();
+            }
+        });
+        if (isNetworkAvailable()) {
+            networkFailed.setVisibility(View.GONE);
+            // Tag used to cancel the request
+            reqUpdateClient = "json_obj_req_Add_Client";
+            Log.i("url_Ajout_SARL", AppConfig.url_Ajout_SARL);
+            final JSONObject postParam = new JSONObject();
+            try {
+                postParam.put("NomAssocie", NomAssocie);
+                postParam.put("Nombre", String.valueOf(NombreAsoocie));
+                postParam.put("NbrNominale",String.valueOf(NbrNominale));
+                postParam.put("Total", String.valueOf(TotalAssocie));
+                postParam.put("NometPrenomGerant",NometPrenomGerant);
+                postParam.put("PartCapitalSarl",String.valueOf(PartCapitalSarl));
+                postParam.put("id_client",String.valueOf(AjouterClient.id));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.POST,AppConfig.url_Ajout_SARL,
+                    postParam,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject ADDClientJsonFromJson) {
+                            Log.d("RespWSAddSarl",  ADDClientJsonFromJson.toString());
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorMessageVolley","Error: "+error.getMessage());
+                    VolleyLog.d("TAGVolley", "Error: " + error.getMessage());
+                    Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                            R.anim.abc_slide_in_bottom);
+                    networkFailed.startAnimation(animationTranslate);
+                    networkFailed.setVisibility(View.VISIBLE);
+                }
+            }) {
+
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    // headers.put("Content-Type", "application/json; charset=utf-8");
+                    return headers;
+                }
+
+                ;
+            };
+
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(jsonObjReq, reqUpdateClient);
+        } else {
+            Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.abc_slide_in_bottom);
+            networkFailed.startAnimation(animationTranslate);
+            networkFailed.setVisibility(View.VISIBLE);
         }
     }
+
+
+
+
+
+
+
+    //---------------------------------------------------------------------------------------
     class CreateNewEntrepriseIndiv extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {

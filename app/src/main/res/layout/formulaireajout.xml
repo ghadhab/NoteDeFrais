@@ -208,6 +208,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/FormeDeSociete" />
+
+            <include
+                android:id="@+id/view_details_network"
+                layout="@layout/view_network_failed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
         </RelativeLayout>
     </ScrollView>
 

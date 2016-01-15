@@ -36,7 +36,7 @@ dependencies {
     compile files('libs/leadtools.imageprocessing.color.jar')
     compile files('libs/leadtools.imageprocessing.core.jar')
     compile files('libs/leadtools.imageprocessing.effects.jar')
-    compile files('libs/volley.jar')
+    compile project(':volley')
     compile project(':libraries:opencv')
     compile project(':lib_button_menu')
     compile project(':library-Swipe')

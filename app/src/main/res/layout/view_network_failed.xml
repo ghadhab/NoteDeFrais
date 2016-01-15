@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:id="@+id/network_failed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/black"
+        android:alpha="0.9"
+
+        >
+        <TextView
+            android:text="Aucune connexion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="RÉESSAYER"
+            android:textColor="@android:color/holo_red_dark"
+            android:background="@drawable/reessayer_button_selector"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            />
+        <View
+            android:layout_width="2dp"
+            android:layout_height="40dp"
+
+            android:background="@android:color/darker_gray"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/button1"
+            android:layout_alignStart="@+id/button1"></View>
+    </RelativeLayout>
+
+</RelativeLayout>

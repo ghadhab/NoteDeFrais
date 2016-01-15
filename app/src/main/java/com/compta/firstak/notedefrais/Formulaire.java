@@ -3,6 +3,8 @@ package com.compta.firstak.notedefrais;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
@@ -10,16 +12,34 @@ import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.compta.firstak.notedefrais.ExpandableList.MainActivityList;
+import com.compta.firstak.notedefrais.app.AppConfig;
+import com.compta.firstak.notedefrais.app.AppController;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -28,16 +48,25 @@ import java.util.Calendar;
  */
 public class Formulaire extends Activity {
    // public static ChoixPhotoResult LastResult;
-    AutoCompleteTextView Nofacture, Matricule_fiscale, Mf, Tva, TottalTTC, NoTel, NoFax,Email,Web,HTVA;
+    AutoCompleteTextView Nofacture, Matricule_fiscale, Mf, Tva, TottalTTC, NoTel, NoFax,Email,Web,HTVA,Fournisseur;
     EditText  Date,Designation;
     Calendar myCalendar = Calendar.getInstance();
     Button Submit;
-   public static String TvaText,DesignationText,HTVAtext,TottalText,DateText,TvaListener,HTvaListener,TottalListener;
+   public static String GetTvaText,GetDesignationText,GetHTVAtext,GetTottalText,GetDateText,TvaListener,HTvaListener,TottalListener,GetNoFaxture,GetMatricule_fiscale,GetMF,GetNoTel ,GetNoFax ,GetEmail ,GetWeb,GetFournisseur;
     Double HTVAChange;
     public static boolean isNew;
     ChoixPhotoResult ch;
     ImageView Etat_NoFacture,Etat_MatriculeMatricule,Etat_Mf,Etat_Tva,Etat_TottalTTC,Etat_Htva,Etat_Notel,Etat_Nofax,Etat_Email,Etat_Site,Etat_Date;
 
+
+
+
+
+    private Button actualiserbutton;
+    private RelativeLayout networkFailed;
+    private  String reqAddFacture;
+    private  String reqGetFournisseur;
+    Bundle extras;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,8 +74,12 @@ public class Formulaire extends Activity {
 
         setContentView(R.layout.formulaire);
 
+        actualiserbutton = (Button) findViewById(R.id.button1);
+        networkFailed = (RelativeLayout) findViewById(R.id.network_failed);
+      //  getFournisseurJsonObject();
+       // MakeJsonArrayReq();
          ch = getIntent().getExtras().getParcelable("ch");
-        Bundle extras = getIntent().getExtras();
+         extras = getIntent().getExtras();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line,extras.getStringArray("OcrWordIntent"));
@@ -105,7 +138,8 @@ if(extras.getBoolean("TestTel")==true){
         }
 
 
-
+        Fournisseur= (AutoCompleteTextView) findViewById(R.id.Fournisseur);
+        Fournisseur.setAdapter(adapter);
         Nofacture = (AutoCompleteTextView) findViewById(R.id.NoFacture);
         Nofacture.setAdapter(adapter);
         Matricule_fiscale = (AutoCompleteTextView) findViewById(R.id.MatriculeFiscale);
@@ -184,12 +218,22 @@ if(extras.getBoolean("TestTel")==true){
             public void onClick(View v) {
                 isNew = true;
                 TableFacture.rowCount = TableFacture.rowCount + 3;
-                TvaText = Tva.getText().toString();
-                TottalText = TottalTTC.getText().toString();
-                DateText = Date.getText().toString();
-                HTVAtext = HTVA.getText().toString();
-                DesignationText = Designation.getText().toString();
-                ParsingOcrResult.ParseDesignation(DesignationText);
+
+
+                GetFournisseur=Fournisseur.getText().toString();
+                GetNoFaxture=Nofacture.getText().toString();
+                 GetMatricule_fiscale=Matricule_fiscale.getText().toString();
+                 GetMF=Mf.getText().toString();
+                 GetNoTel=NoTel.getText().toString();
+                 GetNoFax=NoFax.getText().toString();
+                 GetEmail=Email.getText().toString();
+                 GetWeb=Web.getText().toString();
+                GetTvaText = Tva.getText().toString();
+                GetTottalText = TottalTTC.getText().toString();
+                GetDateText = Date.getText().toString();
+                GetHTVAtext = HTVA.getText().toString();
+                GetDesignationText = Designation.getText().toString();
+                ParsingOcrResult.ParseDesignation(GetDesignationText);
                 // Log.i("  ", "distaaaaaaaaance " + ParsingOcrResult.DesignationAtMin.toString() + "    Code  " + ParsingOcrResult.Code);
                 //Toast.makeText(getApplicationContext(), ParsingOcrResult.DesignationAtMin.toString() + "    Code  " + ParsingOcrResult.Code,
                 //      Toast.LENGTH_LONG).show();
@@ -198,6 +242,8 @@ if(extras.getBoolean("TestTel")==true){
                     DashboardClient.adapter.notifyDataSetChanged();
                     i++;
                 }*/
+
+                AddFactureJsonObject();
 
                 Intent intent = new Intent(Formulaire.this,
                         TableFacture.class);
@@ -242,5 +288,198 @@ if(extras.getBoolean("TestTel")==true){
         Date.setText(sdf.format(myCalendar.getTime()));*/
 
     }
+
+    void getFournisseurJsonObject() {
+        actualiserbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFournisseurJsonObject();
+            }
+        });
+        if (isNetworkAvailable()) {
+          /*  if (progressDialog==null)
+            {
+                progressDialog = MyCustomProgressDialog.ctor(Formulaire.this, "Chargement ... ");
+                progressDialog.show();
+            }*/
+            networkFailed.setVisibility(View.GONE);
+            // Tag used to cancel the request
+            reqGetFournisseur = "json_obj_req_get_fournisseur";
+            Log.i("UrlGetFavorisByUser", AppConfig.URL_GET_ALL_FOURNISEUR );
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.GET,
+                    AppConfig.URL_GET_ALL_FOURNISEUR, null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject favorisJsonFromJson) {
+                            Log.d("RespWSGetFournisseurs", favorisJsonFromJson.toString());
+                           /* ArrayList<Favoris> listFavorises= JsonService.getFavoris(favorisJsonFromJson);
+                            RecyclerView.Adapter listFavorisAdap= new FavorisReycleViewAdapter(FavorisActivity.this, listFavorises);
+                            mRecyclerView.setAdapter(listFavorisAdap);
+                            progressDialog.dismiss();
+                            progressDialog=null;*/
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorMessageVolley","Error: "+error.getMessage());
+                    VolleyLog.d("TAGVolley", "Error: " + error.getMessage());
+                   /* progressDialog.dismiss();
+                    progressDialog=null;*/
+                    // hide the progress dialog
+                    Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                            R.anim.abc_slide_in_bottom);
+                    networkFailed.startAnimation(animationTranslate);
+                    networkFailed.setVisibility(View.VISIBLE);
+                }
+            });
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(jsonObjReq, reqGetFournisseur);
+        } else {
+            Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.abc_slide_in_bottom);
+            networkFailed.startAnimation(animationTranslate);
+            networkFailed.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void MakeJsonArrayReq() {
+
+        actualiserbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MakeJsonArrayReq();
+            }
+        });
+        if (isNetworkAvailable()) {
+        JsonArrayRequest jreq = new JsonArrayRequest(AppConfig.URL_GET_ALL_FOURNISEUR,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.i("ResponseWsGetFourniseur", response.toString());
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject jo = response.getJSONObject(i);
+                                String name = jo.getString("adresse");
+                                Log.i("MakeJsonArrayReq",name);
+                                //countries.add(name);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                      //  PD.dismiss();
+                       // adapter.notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.abc_slide_in_bottom);
+                networkFailed.startAnimation(animationTranslate);
+                networkFailed.setVisibility(View.VISIBLE);
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(jreq, "jreq");
+
+        } else {
+            Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.abc_slide_in_bottom);
+            networkFailed.startAnimation(animationTranslate);
+            networkFailed.setVisibility(View.VISIBLE);
+        }
+    }
+
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager
+                .getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    void AddFactureJsonObject() {
+        actualiserbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddFactureJsonObject();
+            }
+        });
+        if (isNetworkAvailable()) {
+            networkFailed.setVisibility(View.GONE);
+            // Tag used to cancel the request
+            reqAddFacture = "json_obj_req_Add_Client";
+            Log.i("UrlAddClientById", AppConfig.AddURLAddFacture);
+            final JSONObject postParam = new JSONObject();
+            try {
+               // Log.i("ClientJsonn", extras.getString("ClientJson"));
+               // postParam.put("client",extras.getString("ClientJson"));
+                postParam.put("fournisseur", GetFournisseur);
+                postParam.put("numFacture", GetNoFaxture);
+                postParam.put("matriculeFiscale", GetMatricule_fiscale);
+                postParam.put("mf", GetMF);
+                postParam.put("numTel", GetNoTel);
+                postParam.put("numFax", GetNoFax);
+                postParam.put("email", GetEmail);
+                postParam.put("siteWeb", GetWeb);
+                postParam.put("tva", GetTvaText);
+                postParam.put("totalttc",GetTottalText);
+                postParam.put("date", GetDateText);
+                postParam.put("htva", GetHTVAtext);
+                postParam.put("designation", GetDesignationText);
+
+
+                Log.i("postParam", postParam.toString());
+
+                Log.i("UrlAddClientById", AppConfig.AddURLAddFacture);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.POST,AppConfig.AddURLAddFacture,
+                    postParam,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject ADDClientJsonFromJson) {
+                            Log.d("RespWSAddFacture",  ADDClientJsonFromJson.toString());
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorMessageVolley","Error: "+error.getMessage());
+                    VolleyLog.d("TAGVolley", "Error: " + error.getMessage());
+                    Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                            R.anim.abc_slide_in_bottom);
+                    networkFailed.startAnimation(animationTranslate);
+                    networkFailed.setVisibility(View.VISIBLE);
+                }
+            }) {
+
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    // headers.put("Content-Type", "application/json; charset=utf-8");
+                    return headers;
+                }
+
+                ;
+            };
+
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(jsonObjReq, reqAddFacture);
+        } else {
+            Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.abc_slide_in_bottom);
+            networkFailed.startAnimation(animationTranslate);
+            networkFailed.setVisibility(View.VISIBLE);
+        }
+    }
+
 
 }

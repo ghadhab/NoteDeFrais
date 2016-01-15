@@ -153,7 +153,7 @@ next=next+1;
                     }
                     if (id == p + 1) {
                         textView.setInputType(InputType.TYPE_NULL);
-                        textView.setText(Formulaire.DateText);
+                        textView.setText(Formulaire.GetDateText);
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
                         textView.setBackgroundColor(Color.parseColor("#004774"));
@@ -226,14 +226,14 @@ next=next+1;
 
                     }
                     if (id == p + 6) {
-                        textView.setText(Formulaire.DesignationText);
+                        textView.setText(Formulaire.GetDesignationText);
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
                         textView.setBackgroundColor(Color.parseColor("#004774"));
 
                     }
                     if (id == p + 7) {
-                        textView.setText(String.valueOf(Formulaire.HTVAtext));
+                        textView.setText(String.valueOf(Formulaire.GetHTVAtext));
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
                         textView.setBackgroundColor(Color.parseColor("#004774"));
@@ -247,7 +247,7 @@ next=next+1;
 
                     }
                     if (id == p + 9) {
-                        textView.setText(String.valueOf(Formulaire.HTVAtext));
+                        textView.setText(String.valueOf(Formulaire.GetHTVAtext));
                         a.add(textView.getText().toString());
                         couleur.add("#004774");
                         textView.setBackgroundColor(Color.parseColor("#004774"));
@@ -262,7 +262,7 @@ next=next+1;
 
                     }
                     if (id == p + 11) {
-                        textView.setText(Formulaire.DateText);
+                        textView.setText(Formulaire.GetDateText);
                         a.add(textView.getText().toString());
                         couleur.add("#206795");
                         textView.setBackgroundColor(Color.parseColor("#206795"));
@@ -337,15 +337,15 @@ next=next+1;
                     }
 
                     if (id == p + 16) {
-                        textView.setText(Formulaire.DesignationText);
+                        textView.setText(Formulaire.GetDesignationText);
                         a.add(textView.getText().toString());
                         couleur.add("#206795");
                         textView.setBackgroundColor(Color.parseColor("#206795"));
                     }
                     if (id == p + 17) {
                         try {
-                            Double TVAi = Double.parseDouble(Formulaire.TvaText.replace("%", ""));
-                            TVaValue = String.valueOf(Double.parseDouble(Formulaire.HTVAtext) * (TVAi / 100));
+                            Double TVAi = Double.parseDouble(Formulaire.GetTvaText.replace("%", ""));
+                            TVaValue = String.valueOf(Double.parseDouble(Formulaire.GetHTVAtext) * (TVAi / 100));
                             textView.setText(TVaValue);
                             a.add(textView.getText().toString());
                             couleur.add("#206795");
@@ -389,7 +389,7 @@ next=next+1;
                         textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
                     if (id == p + 21) {
-                        textView.setText(Formulaire.DateText);
+                        textView.setText(Formulaire.GetDateText);
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
                         textView.setBackgroundColor(Color.parseColor("#599cc6"));
@@ -420,7 +420,7 @@ next=next+1;
                     }
 
                     if (id == p + 26) {
-                        textView.setText(Formulaire.DesignationText);
+                        textView.setText(Formulaire.GetDesignationText);
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
                         textView.setBackgroundColor(Color.parseColor("#599cc6"));
@@ -432,13 +432,13 @@ next=next+1;
                         textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
                     if (id == p + 28) {
-                        textView.setText(Formulaire.TottalText);
+                        textView.setText(Formulaire.GetTottalText);
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");
                         textView.setBackgroundColor(Color.parseColor("#599cc6"));
                     }
                     if (id == p + 29) {
-                        textView.setText(Formulaire.TottalText);
+                        textView.setText(Formulaire.GetTottalText);
                         //            textView.setBackgroundColor("#599cc6");
                         a.add(textView.getText().toString());
                         couleur.add("#599cc6");

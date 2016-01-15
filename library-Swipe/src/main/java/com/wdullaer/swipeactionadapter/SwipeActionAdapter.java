@@ -43,7 +43,6 @@ public class SwipeActionAdapter extends DecoratorAdapter implements
     private float mNormalSwipeFraction = 0.25f;
 
     protected HashMap<SwipeDirection, Integer> mBackgroundResIds = new HashMap<>();
-
     public SwipeActionAdapter(BaseAdapter baseAdapter){
         super(baseAdapter);
     }

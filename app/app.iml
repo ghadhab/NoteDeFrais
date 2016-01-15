@@ -94,8 +94,8 @@
     <orderEntry type="library" exported="" name="leadtools.forms.ocr" level="project" />
     <orderEntry type="library" exported="" name="leadtools.imageprocessing.effects" level="project" />
     <orderEntry type="library" exported="" name="leadtools.imageprocessing.core" level="project" />
-    <orderEntry type="library" exported="" name="volley" level="project" />
     <orderEntry type="module" module-name="library-Swipe" exported="" />
+    <orderEntry type="module" module-name="volley" exported="" />
     <orderEntry type="module" module-name="lib_button_menu" exported="" />
     <orderEntry type="module" module-name="leadtoolsDemos" exported="" />
     <orderEntry type="module" module-name="opencv" exported="" />
