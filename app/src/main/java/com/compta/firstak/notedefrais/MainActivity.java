@@ -82,6 +82,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.compta.firstak.notedefrais.Gestion_Client.Client;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
@@ -170,6 +171,8 @@ public static String Année;
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+
         // Set License
         Support.setLicense(this);
 
@@ -844,10 +847,11 @@ public static String Année;
                 }
             }
            if (OcrResult != null && DesignationResultat != null) {
-
+               //Client addedClient2 = getIntent().getExtras().getParcelable("client");
 
                 Intent intent = new Intent(MainActivity.this,
                         Formulaire.class);
+               //intent.putExtra("addedClient2",addedClient2);
                intent.putExtra("ch", ch);
                intent.putExtra("TestTel",TestTel);
                intent.putExtra("TestNfacture",TestNfacture);

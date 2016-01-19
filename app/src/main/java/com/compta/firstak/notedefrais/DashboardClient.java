@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.compta.firstak.notedefrais.Gestion_Client.Client;
 import com.compta.firstak.notedefrais.Gestion_Client.MainActivitySwipe;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public  static int REQUEST_NUM_FACTURE=12;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
+
 //if(TableFacture.rowCount>0) {
     TableFacture.rowCount = TableFacture.rowCount - 3;
 //}
@@ -51,8 +53,10 @@ Add=(ImageButton)findViewById(R.id.Add);
         Add.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent intent = new Intent(DashboardClient.this,
+                 Intent intent = new Intent(DashboardClient.this,
                         MainActivity.class);
+              //  Client addedClient1 = getIntent().getExtras().getParcelable("client");
+               // intent.putExtra("addedClient1",addedClient1);
                 startActivity(intent);
                 //finish();
             }

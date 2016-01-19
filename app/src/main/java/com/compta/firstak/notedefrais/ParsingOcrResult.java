@@ -368,14 +368,12 @@ public class ParsingOcrResult extends Activity {
                 resultOcr.TestTottalTTC=false;
             }
            //-----------------------Mantant HTVA -------------------------------
-          /*  if((Isnumber(resultOcr.ocrWords[i]) && (resultOcr.ocrWords[i].contains(".") || resultOcr.ocrWords[i].contains(",")))&&(resultOcr.ocrWords[i-1].contains("htva"))){
+           if((Isnumber(resultOcr.ocrWords[i]) && (resultOcr.ocrWords[i].contains(".") || resultOcr.ocrWords[i].contains(",")))&&(resultOcr.ocrWords[i-1].contains("htva"))){
                // HTVA =ocrWords[i];
                 HtvaString=resultOcr.ocrWords[i];
                 resultOcr.TestHtva=true;
                 Log.i("Mantant HTVA : ",HtvaString);
-            }*/
-
-
+            }
 
             //---------------------Date-----------------------------
            /* if(ComputeDistanceDate<=minValue5){

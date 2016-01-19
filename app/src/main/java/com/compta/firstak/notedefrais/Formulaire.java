@@ -30,6 +30,9 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.compta.firstak.notedefrais.ExpandableList.MainActivityList;
+import com.compta.firstak.notedefrais.Gestion_Client.AjouterClient;
+import com.compta.firstak.notedefrais.Gestion_Client.MainActivitySwipe;
+import com.compta.firstak.notedefrais.adapter.UsersAdapter;
 import com.compta.firstak.notedefrais.app.AppConfig;
 import com.compta.firstak.notedefrais.app.AppController;
 
@@ -65,7 +68,7 @@ public class Formulaire extends Activity {
     private Button actualiserbutton;
     private RelativeLayout networkFailed;
     private  String reqAddFacture;
-    private  String reqGetFournisseur;
+    private  String reqGetFournisseur,reqAddFournisseur;
     Bundle extras;
 
     @Override
@@ -209,8 +212,12 @@ if(extras.getBoolean("TestTel")==true){
 
             }
         });
+try {
+    HTVA.setText(Double.toString(ch.HTVA));
+}
+catch(Exception e){
 
-        HTVA.setText(Double.toString(ch.HTVA));
+}
         Submit = (Button) findViewById(R.id.submit);
         Submit.setOnClickListener(new View.OnClickListener() {
             int i = 0;
@@ -244,6 +251,7 @@ if(extras.getBoolean("TestTel")==true){
                 }*/
 
                 AddFactureJsonObject();
+                AddFournisseurJsonObject();
 
                 Intent intent = new Intent(Formulaire.this,
                         TableFacture.class);
@@ -413,10 +421,28 @@ if(extras.getBoolean("TestTel")==true){
             // Tag used to cancel the request
             reqAddFacture = "json_obj_req_Add_Client";
             Log.i("UrlAddClientById", AppConfig.AddURLAddFacture);
+            JSONObject obj=null;
+            try {
+
+                obj = new JSONObject();
+                obj.put("id", String.valueOf(UsersAdapter.idFromSelect ));
+
+                // obj = new JSONObject(String.valueOf(AjouterClient.id));
+
+                Log.d("My App", obj.toString());
+
+
+            } catch (Throwable t) {
+
+            }
             final JSONObject postParam = new JSONObject();
             try {
                // Log.i("ClientJsonn", extras.getString("ClientJson"));
                // postParam.put("client",extras.getString("ClientJson"));
+
+               // Log.i("ClientJsonn",MainActivitySwipe.addedClient.toString());
+                //postParam.put("client", MainActivitySwipe.addedClient);
+                postParam.put("client", obj);
                 postParam.put("fournisseur", GetFournisseur);
                 postParam.put("numFacture", GetNoFaxture);
                 postParam.put("matriculeFiscale", GetMatricule_fiscale);
@@ -481,5 +507,80 @@ if(extras.getBoolean("TestTel")==true){
         }
     }
 
+
+
+    void AddFournisseurJsonObject() {
+        actualiserbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddFournisseurJsonObject();
+            }
+        });
+        if (isNetworkAvailable()) {
+            networkFailed.setVisibility(View.GONE);
+            // Tag used to cancel the request
+            reqAddFournisseur = "json_obj_req_Add_Fournisseur";
+            Log.i("UrlAddFournisseur", AppConfig.AddURLAddFournisseur);
+
+            final JSONObject postParam = new JSONObject();
+            try {
+
+    postParam.put("fournisseur", GetFournisseur);
+    postParam.put("matriculeFiscal", GetMatricule_fiscale);
+    postParam.put("mf", GetMF);
+    postParam.put("tel", GetNoTel);
+    postParam.put("fax", GetNoFax);
+    postParam.put("email", GetEmail);
+    postParam.put("site", GetWeb);
+
+                Log.i("postParam", postParam.toString());
+
+                //Log.i("UrlAddFournisseur", AppConfig.AddURLAddFacture);
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.POST,AppConfig.AddURLAddFournisseur,
+                    postParam,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject ADDClientJsonFromJson) {
+                            Log.d("RespWSAddFournisseur",  ADDClientJsonFromJson.toString());
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorMessageVolley","Error: "+error.getMessage());
+                    VolleyLog.d("TAGVolley", "Error: " + error.getMessage());
+                    Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                            R.anim.abc_slide_in_bottom);
+                    networkFailed.startAnimation(animationTranslate);
+                    networkFailed.setVisibility(View.VISIBLE);
+                }
+            }) {
+
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    // headers.put("Content-Type", "application/json; charset=utf-8");
+                    return headers;
+                }
+
+                ;
+            };
+
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(jsonObjReq, reqAddFournisseur);
+        } else {
+            Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.abc_slide_in_bottom);
+            networkFailed.startAnimation(animationTranslate);
+            networkFailed.setVisibility(View.VISIBLE);
+        }
+    }
 
 }

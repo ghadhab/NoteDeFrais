@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -15,16 +17,32 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.compta.firstak.notedefrais.ExpandableList.MainActivityList;
+import com.compta.firstak.notedefrais.adapter.UsersAdapter;
+import com.compta.firstak.notedefrais.app.AppConfig;
+import com.compta.firstak.notedefrais.app.AppController;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -35,7 +53,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class TableFacture extends Activity {
@@ -59,10 +79,15 @@ public class TableFacture extends Activity {
     TableRow tableRow;
    static int next=0;
     String NPiece;
+   /* private Button actualiserbutton;
+    private RelativeLayout networkFailed;*/
+    private  String reqAddEcriture;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
 
         String[] column = {"N Piece  | Date Saisie", "DATE PIECE", "N COMPTE GENERAL", "INTITULE COMPTE GENERAL",
@@ -77,6 +102,8 @@ public class TableFacture extends Activity {
         ScrollView sv = new ScrollView(this);
         TableLayout tableLayout = createTableLayout(column, cl);
         HorizontalScrollView hsv = new HorizontalScrollView(this);
+     /*   actualiserbutton = (Button) findViewById(R.id.button1);
+        networkFailed = (RelativeLayout) findViewById(R.id.network_failed);*/
         hsv.addView(tableLayout);
         sv.addView(hsv);
         setContentView(sv);
@@ -517,4 +544,18 @@ next=next+1;
         Formulaire.isNew = false;
 
     }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager
+                .getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+
+
+
+
+
 }

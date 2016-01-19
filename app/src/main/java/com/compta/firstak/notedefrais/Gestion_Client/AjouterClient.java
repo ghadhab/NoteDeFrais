@@ -193,15 +193,7 @@ isclicked=true;
                 GetConstitution=DateConstruction.getText().toString();
 
                 AddClientJsonObject();
-                if (client!=null)
-                {
-                    // Prepare data intent
-                    Intent data = new Intent();
-                    data.putExtra("client", client);
-                    // Activity finished ok, return the data
-                    setResult(RESULT_OK, data);
-                }
-                finish();
+
 
 
 
@@ -266,7 +258,7 @@ isclicked=true;
             Intent intent = new Intent(AjouterClient.this,
                     PresidentDeConseil.class);
             startActivity(intent);
-           // new CreateNewClient().execute();
+            AddClientJsonObject();
 
         }
         if (position == 2) {
@@ -274,7 +266,7 @@ isclicked=true;
             Intent intent = new Intent(AjouterClient.this,
                    SA.class);
             startActivity(intent);
-           // new CreateNewClient().execute();
+            AddClientJsonObject();
 
         }
         if(position==3){
@@ -282,14 +274,14 @@ isclicked=true;
             Intent intent = new Intent(AjouterClient.this,
                     PresidentDeConseil.class);
             startActivity(intent);
-           // new CreateNewClient().execute();
+            AddClientJsonObject();
         }
         if(position==4){
             GetFormeSociete="SUARL";
             Intent intent = new Intent(AjouterClient.this,
                     PresidentDeConseil.class);
             startActivity(intent);
-          //  new CreateNewClient().execute();
+            AddClientJsonObject();
         }
 
     }
@@ -310,6 +302,7 @@ isclicked=true;
 
 
     void AddClientJsonObject() {
+        Log.i("AddClientJsonObject", "methodeEx");
         actualiserbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -362,6 +355,32 @@ isclicked=true;
                                 client=new Client();
                                 client.setId(id);
                                 client.setName(ADDClientJsonFromJson.getString("raisonSociale"));
+                                client.setEmail(ADDClientJsonFromJson.getString("email"));
+                                client.setPhone(ADDClientJsonFromJson.getString("phone"));
+                                client.setFax(ADDClientJsonFromJson.getString("fax"));
+                                client.setAdresse(ADDClientJsonFromJson.getString("adresse"));
+                                client.setMatriculeFiscale(ADDClientJsonFromJson.getString("matriculeFiscale"));
+                                client.setRegistre(ADDClientJsonFromJson.getString("registre"));
+                                client.setCapital(ADDClientJsonFromJson.getString("capital"));
+                                client.setActivite(ADDClientJsonFromJson.getString("activite"));
+                                client.setConstitution(ADDClientJsonFromJson.getString("constitution"));
+                                client.setFormeSociete(ADDClientJsonFromJson.getString("formeSociete"));
+                                if (!ADDClientJsonFromJson.isNull("archivage"))
+                                    client.setArchivage(ADDClientJsonFromJson.getString("archivage"));
+                                else
+                                {
+                                    client.setArchivage("");
+                                }
+
+                                if (client!=null)
+                                {
+                                    // Prepare data intent
+                                    Intent data = new Intent();
+                                    data.putExtra("client", client);
+                                    // Activity finished ok, return the data
+                                    setResult(RESULT_OK, data);
+                                }
+                                finish();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

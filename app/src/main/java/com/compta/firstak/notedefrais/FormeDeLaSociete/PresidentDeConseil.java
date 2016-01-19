@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -32,12 +33,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.compta.firstak.notedefrais.Gestion_Client.AjouterClient;
+import com.compta.firstak.notedefrais.Gestion_Client.MainActivitySwipe;
 import com.compta.firstak.notedefrais.R;
 import com.compta.firstak.notedefrais.app.AppConfig;
 import com.compta.firstak.notedefrais.app.AppController;
@@ -55,6 +59,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by mohamed on 10/08/2015.
@@ -77,17 +82,12 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
      static ListView lv;
     JSONParser jsonParser = new JSONParser();
 
-    private static String url_Ajout_EntrepriseIndividuelle="http://192.168.43.247/comptable/Client/entrepriseindiv.php";
-    private static String url_Ajout_Conseil="http://192.168.43.247/comptable/Client/conseil.php";
-    private static String  url_Ajout_President="http://192.168.43.247/comptable/Client/president.php";
-    private static String  url_Ajout_Actionnaire="http://192.168.43.247/comptable/Client/actionnaire.php";
-    private static String url_Ajout_SUARL="http://192.168.43.247/comptable/Client/suarl.php";
     View  ViewEditActionnaire ;
     public static  int i;
     public static  int j;
     private Button actualiserbutton;
     private RelativeLayout networkFailed;
-    private  String reqGetClient;
+    private  String reqAddEI,reqAddConseil, reqAddPresident, reqAddActionnaire,reqAddSuarl;
     private  String reqUpdateClient;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -307,7 +307,7 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
                     GetDG=EditTextDG.getText().toString();
                    addItemList();
                     lv.setAdapter(adapter);
-                   // new CreateNewPresident().execute();
+                    CreateNewPresident();
                     pwindo.dismiss();
                 }
             });
@@ -396,7 +396,7 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
                     try {
                         addItemList1();
                         lv.setAdapter(adapter);
-                       // new CreateNewConseil().execute();
+                      CreateNewConseil();
                         pwindo1.dismiss();
                     }
                     catch (Exception e) {
@@ -509,7 +509,7 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
 
                     addItemList2();
                     lv.setAdapter(adapter);
-                   // new CreateNewActionnaire().execute();
+                    CreateNewActionnaire();
                     pwindo2.dismiss();
                     if(j>1){
                         initiatePopupWindowActionnaire();
@@ -559,7 +559,7 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
                     AdresseEI=EditTextAdresseEI.getText().toString();
                     addItemList3();
                     lv.setAdapter(adapter);
-                   // new CreateNewEntrepriseIndiv().execute();
+                   CreateNewEntrepriseIndiv();
                     pwindo3.dismiss();
                 }
             });
@@ -715,7 +715,7 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
                     TotalAssociesuarl = Integer.parseInt(EditTextTotalsuarl.getText().toString());
                     addItemList5();
                     lv.setAdapter(adapter);
-                   // new CreateNewSuarl().execute();
+                    CreateNewSuarl();
                     pwindo5.dismiss();
 
                 }
@@ -828,17 +828,30 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
         if (isNetworkAvailable()) {
             networkFailed.setVisibility(View.GONE);
             // Tag used to cancel the request
-            reqUpdateClient = "json_obj_req_Add_Client";
+            reqUpdateClient = "json_obj_req_Add_Sarl";
             Log.i("url_Ajout_SARL", AppConfig.url_Ajout_SARL);
+            JSONObject obj=null;
+            try {
+
+                obj = new JSONObject();
+                obj.put("id", String.valueOf(AjouterClient.id));
+
+                // obj = new JSONObject(String.valueOf(AjouterClient.id));
+
+                Log.d("My App", obj.toString());
+
+            } catch (Throwable t) {
+
+            }
             final JSONObject postParam = new JSONObject();
             try {
-                postParam.put("NomAssocie", NomAssocie);
-                postParam.put("Nombre", String.valueOf(NombreAsoocie));
-                postParam.put("NbrNominale",String.valueOf(NbrNominale));
-                postParam.put("Total", String.valueOf(TotalAssocie));
-                postParam.put("NometPrenomGerant",NometPrenomGerant);
-                postParam.put("PartCapitalSarl",String.valueOf(PartCapitalSarl));
-                postParam.put("id_client",String.valueOf(AjouterClient.id));
+                postParam.put("client", obj);
+                postParam.put("nomAssocie", NomAssocie);
+                postParam.put("nombre", String.valueOf(NombreAsoocie));
+                postParam.put("nbrNominale",String.valueOf(NbrNominale));
+                postParam.put("total", String.valueOf(TotalAssocie));
+                postParam.put("nometPrenomGerant",NometPrenomGerant);
+                postParam.put("partCapitalSarl",String.valueOf(PartCapitalSarl));
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -892,108 +905,441 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
 
 
     //---------------------------------------------------------------------------------------
-    class CreateNewEntrepriseIndiv extends AsyncTask<String, String, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
+
+    void CreateNewEntrepriseIndiv() {
+        actualiserbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateNewEntrepriseIndiv();
+            }
+        });
+        if (isNetworkAvailable()) {
+            networkFailed.setVisibility(View.GONE);
+            // Tag used to cancel the request
+            reqAddEI = "json_obj_req_Add_EntrpriseIndivid";
+            Log.i("url_EntrepriseIndiv", AppConfig.url_Ajout_EntrepriseIndiv);
+           /* JSONObject jsonObj = new JSONObject();
+            try{
+                jsonObj.put("client",String.valueOf(AjouterClient.id));
+            }
+            catch (Exception e) {
+
+            }*/
+            JSONObject obj=null;
+            try {
+
+                obj = new JSONObject();
+                obj.put("id",String.valueOf(AjouterClient.id));
+
+                // obj = new JSONObject(String.valueOf(AjouterClient.id));
+
+                Log.d("My App", obj.toString());
+
+            } catch (Throwable t) {
+
+            }
+
+            final JSONObject postParam = new JSONObject();
+            try {
+                postParam.put("client", obj);
+                postParam.put("nomIndividuelle", NomIndividuelle);
+                postParam.put("prenomIndividuelle",PrenomIndividuelle);
+                postParam.put("matriculeFiscaleEi",MatriculeFiscaleEI);
+                postParam.put("adresseEi", AdresseEI);
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.POST,AppConfig.url_Ajout_EntrepriseIndiv,
+                    postParam,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject ADDClientJsonFromJson) {
+                            Log.d("RespWSAddEI",  ADDClientJsonFromJson.toString());
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorMessageVolley","Error: "+error.getMessage());
+                    VolleyLog.d("TAGVolley", "Error: " + error.getMessage());
+                    Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                            R.anim.abc_slide_in_bottom);
+                    networkFailed.startAnimation(animationTranslate);
+                    networkFailed.setVisibility(View.VISIBLE);
+                }
+            }) {
+
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    // headers.put("Content-Type", "application/json; charset=utf-8");
+                    return headers;
+                }
+
+                ;
+            };
+
+            jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(
+                    0,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(jsonObjReq, reqAddEI);
+        } else {
+            Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.abc_slide_in_bottom);
+            networkFailed.startAnimation(animationTranslate);
+            networkFailed.setVisibility(View.VISIBLE);
         }
+    }
 
-        protected String doInBackground(String... args) {
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("NomIndividuelle", NomIndividuelle));
-            params.add(new BasicNameValuePair("PrenomIndividuelle", PrenomIndividuelle));
-            params.add(new BasicNameValuePair("MatriculeFiscaleEI",MatriculeFiscaleEI));
-            params.add(new BasicNameValuePair("AdresseEI",AdresseEI));
-            params.add(new BasicNameValuePair("id_client",String.valueOf(AjouterClient.id)));
-            JSONObject json = jsonParser.makeHttpRequest(url_Ajout_EntrepriseIndividuelle, "POST", params);
 
-            Log.d("Create Response", json.toString());
 
-            return null;
+    void CreateNewConseil() {
+        actualiserbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateNewConseil();
+            }
+        });
+        if (isNetworkAvailable()) {
+            networkFailed.setVisibility(View.GONE);
+            // Tag used to cancel the request
+            reqAddConseil = "json_obj_req_Add_EntrpriseIndivid";
+            Log.i("url_Conseil", AppConfig.url_Ajout_Conseil);
+            JSONObject obj=null;
+            try {
+
+                obj = new JSONObject();
+                obj.put("id", String.valueOf(AjouterClient.id));
+
+                // obj = new JSONObject(String.valueOf(AjouterClient.id));
+
+                Log.d("My App", obj.toString());
+
+
+            } catch (Throwable t) {
+
+            }
+            final JSONObject postParam = new JSONObject();
+            try {
+                postParam.put("client", obj);
+                postParam.put("nom", NomIndividuelle);
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.POST,AppConfig.url_Ajout_Conseil,
+                    postParam,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject ADDClientJsonFromJson) {
+                            Log.d("RespWSAddEI",  ADDClientJsonFromJson.toString());
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorMessageVolley","Error: "+error.getMessage());
+                    VolleyLog.d("TAGVolley", "Error: " + error.getMessage());
+                    Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                            R.anim.abc_slide_in_bottom);
+                    networkFailed.startAnimation(animationTranslate);
+                    networkFailed.setVisibility(View.VISIBLE);
+                }
+            }) {
+
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    // headers.put("Content-Type", "application/json; charset=utf-8");
+                    return headers;
+                }
+
+                ;
+            };
+
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(jsonObjReq, reqAddConseil);
+        } else {
+            Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.abc_slide_in_bottom);
+            networkFailed.startAnimation(animationTranslate);
+            networkFailed.setVisibility(View.VISIBLE);
         }
     }
 
-    class CreateNewConseil extends AsyncTask<String, String, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
+
+
+    void CreateNewPresident() {
+        actualiserbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateNewPresident();
+            }
+        });
+        if (isNetworkAvailable()) {
+            networkFailed.setVisibility(View.GONE);
+            // Tag used to cancel the request
+            reqAddPresident = "json_obj_req_Add_President";
+            Log.i("url_President", AppConfig.url_Ajout_President);
+            JSONObject obj=null;
+            try {
+
+                obj = new JSONObject();
+                obj.put("id", String.valueOf(AjouterClient.id));
+
+                // obj = new JSONObject(String.valueOf(AjouterClient.id));
+
+                Log.d("My App", obj.toString());
+
+
+            } catch (Throwable t) {
+
+            }
+            final JSONObject postParam = new JSONObject();
+            try {
+                postParam.put("client", obj);
+                postParam.put("nomPresident", NomPresident);
+                postParam.put("dg", Choix);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.POST,AppConfig.url_Ajout_President,
+                    postParam,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject ADDClientJsonFromJson) {
+                            Log.d("RespWSAddPresident",  ADDClientJsonFromJson.toString());
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorMessageVolley","Error: "+error.getMessage());
+                    VolleyLog.d("TAGVolley", "Error: " + error.getMessage());
+                    Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                            R.anim.abc_slide_in_bottom);
+                    networkFailed.startAnimation(animationTranslate);
+                    networkFailed.setVisibility(View.VISIBLE);
+                }
+            }) {
+
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    // headers.put("Content-Type", "application/json; charset=utf-8");
+                    return headers;
+                }
+
+                ;
+            };
+
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(jsonObjReq,  reqAddPresident);
+        } else {
+            Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.abc_slide_in_bottom);
+            networkFailed.startAnimation(animationTranslate);
+            networkFailed.setVisibility(View.VISIBLE);
         }
+    }
 
-        protected String doInBackground(String... args) {
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("Nom", NomDuConseil));
-            params.add(new BasicNameValuePair("id_client",String.valueOf(AjouterClient.id)));
-            JSONObject json = jsonParser.makeHttpRequest(url_Ajout_Conseil, "POST", params);
 
-            Log.d("Create Response", json.toString());
 
-            return null;
+    void CreateNewActionnaire() {
+        actualiserbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateNewActionnaire();
+            }
+        });
+        if (isNetworkAvailable()) {
+            networkFailed.setVisibility(View.GONE);
+            // Tag used to cancel the request
+            reqAddActionnaire = "json_obj_req_Add_Actionnaire";
+            Log.i("url_Actionnaire", AppConfig.url_Ajout_Actionnaire);
+            JSONObject obj=null;
+            try {
+
+                obj = new JSONObject();
+                obj.put("id", String.valueOf(AjouterClient.id));
+
+                // obj = new JSONObject(String.valueOf(AjouterClient.id));
+
+                Log.d("My App", obj.toString());
+
+
+            } catch (Throwable t) {
+
+            }
+            final JSONObject postParam = new JSONObject();
+            try {
+                postParam.put("client", obj);
+                postParam.put("nomActionnaire", NomActionnaire);
+                postParam.put("nombreActionValue", String.valueOf(NombreActionValue));
+                postParam.put("valeurNominaleValue",String.valueOf(ValeurNominaleValue));
+                postParam.put("totalValue",String.valueOf(TotalValue));
+                postParam.put("partCapitalActionnaire",String.valueOf(PartCapitalActionnaire));
+                postParam.put("raisonSocialeActioannaire",RaisonSocialeActioannaire);
+                postParam.put("matriculeFiscaleActioannaire",MatriculeFiscaleActioannaire);
+                postParam.put("nregistreActioannaire",NRegistreActioannaire);
+                postParam.put("adresseActioannaire",AdresseActioannaire);
+                postParam.put("typeDactionnaire",TypeDactionnaire);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.POST,AppConfig.url_Ajout_Actionnaire,
+                    postParam,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject ADDClientJsonFromJson) {
+                            Log.d("RespWSAddPresident",  ADDClientJsonFromJson.toString());
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorMessageVolley","Error: "+error.getMessage());
+                    VolleyLog.d("TAGVolley", "Error: " + error.getMessage());
+                    Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                            R.anim.abc_slide_in_bottom);
+                    networkFailed.startAnimation(animationTranslate);
+                    networkFailed.setVisibility(View.VISIBLE);
+                }
+            }) {
+
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    return headers;
+                }
+
+                ;
+            };
+
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(jsonObjReq,  reqAddActionnaire);
+        } else {
+            Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.abc_slide_in_bottom);
+            networkFailed.startAnimation(animationTranslate);
+            networkFailed.setVisibility(View.VISIBLE);
         }
     }
 
-    class CreateNewPresident extends AsyncTask<String, String, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
 
-        protected String doInBackground(String... args) {
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("NomPresident", NomPresident));
-            params.add(new BasicNameValuePair("DG", Choix));
-            params.add(new BasicNameValuePair("id_client",String.valueOf(AjouterClient.id)));
-            JSONObject json = jsonParser.makeHttpRequest(url_Ajout_President, "POST", params);
 
-            Log.d("Create Response", json.toString());
+    void CreateNewSuarl() {
+        actualiserbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateNewSuarl();
+            }
+        });
+        if (isNetworkAvailable()) {
+            networkFailed.setVisibility(View.GONE);
+            // Tag used to cancel the request
+            reqAddSuarl = "json_obj_req_Add_Suarl";
+            Log.i("url_Suarl", AppConfig.url_Ajout_Suarl);
+            JSONObject obj=null;
+            try {
 
-            return null;
+                obj = new JSONObject();
+                obj.put("id", String.valueOf(AjouterClient.id));
+
+                // obj = new JSONObject(String.valueOf(AjouterClient.id));
+
+                Log.d("My App", obj.toString());
+
+
+            } catch (Throwable t) {
+
+            }
+            final JSONObject postParam = new JSONObject();
+            try {
+                postParam.put("client", obj);
+                postParam.put("nomAssociesuarl", NomAssociesuarl);
+                postParam.put("nombrePartSuarl",  String.valueOf(NombrePartSuarl));
+                postParam.put("nombreNominale",String.valueOf(NombreNominale));
+                postParam.put("totalAssociesuarl",String.valueOf(TotalAssociesuarl));
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.POST,AppConfig.url_Ajout_Suarl,
+                    postParam,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject ADDClientJsonFromJson) {
+                            Log.d("RespWSAddSuarl",  ADDClientJsonFromJson.toString());
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorMessageVolley","Error: "+error.getMessage());
+                    VolleyLog.d("TAGVolley", "Error: " + error.getMessage());
+                    Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                            R.anim.abc_slide_in_bottom);
+                    networkFailed.startAnimation(animationTranslate);
+                    networkFailed.setVisibility(View.VISIBLE);
+                }
+            }) {
+
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    return headers;
+                }
+
+                ;
+            };
+
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(jsonObjReq,  reqAddSuarl);
+        } else {
+            Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.abc_slide_in_bottom);
+            networkFailed.startAnimation(animationTranslate);
+            networkFailed.setVisibility(View.VISIBLE);
         }
     }
 
-    class CreateNewActionnaire extends AsyncTask<String, String, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
 
-        protected String doInBackground(String... args) {
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("NomActionnaire", NomActionnaire));
-            params.add(new BasicNameValuePair("NombreActionValue",String.valueOf(NombreActionValue)));
-            params.add(new BasicNameValuePair("ValeurNominaleValue",String.valueOf(ValeurNominaleValue)));
-            params.add(new BasicNameValuePair("TotalValue",String.valueOf(TotalValue)));
-            params.add(new BasicNameValuePair("id_client",String.valueOf(AjouterClient.id)));
-            params.add(new BasicNameValuePair("PartCapitalActionnaire",String.valueOf(PartCapitalActionnaire)));
-            params.add(new BasicNameValuePair("RaisonSocialeActioannaire",RaisonSocialeActioannaire));
-            params.add(new BasicNameValuePair("MatriculeFiscaleActioannaire",MatriculeFiscaleActioannaire));
-            params.add(new BasicNameValuePair("NRegistreActioannaire",NRegistreActioannaire));
-            params.add(new BasicNameValuePair("AdresseActioannaire",AdresseActioannaire));
-            params.add(new BasicNameValuePair("TypeDactionnaire",TypeDactionnaire));
 
-            JSONObject json = jsonParser.makeHttpRequest(url_Ajout_Actionnaire, "POST", params);
-            Log.d("Create Response", json.toString());
-            return null;
-        }
-    }
-    class CreateNewSuarl extends AsyncTask<String, String, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
 
-        protected String doInBackground(String... args) {
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("NomAssociesuarl", NomAssociesuarl));
-            params.add(new BasicNameValuePair("NombrePartSuarl", String.valueOf(NombrePartSuarl)));
-            params.add(new BasicNameValuePair("NombreNominale",String.valueOf(NombreNominale)));
-            params.add(new BasicNameValuePair("TotalAssociesuarl", String.valueOf(TotalAssociesuarl)));
-            params.add(new BasicNameValuePair("id_client",String.valueOf(AjouterClient.id)));
-            JSONObject json = jsonParser.makeHttpRequest(url_Ajout_SUARL, "POST", params);
 
-            Log.d("Create Response", json.toString());
 
-            return null;
-        }
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }

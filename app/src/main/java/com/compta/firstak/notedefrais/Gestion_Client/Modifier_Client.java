@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.compta.firstak.notedefrais.R;
+import com.compta.firstak.notedefrais.adapter.UsersAdapter;
 import com.compta.firstak.notedefrais.app.AppConfig;
 import com.compta.firstak.notedefrais.app.AppController;
 
@@ -103,8 +104,6 @@ public class Modifier_Client extends Activity {
 
                 Intent intent = new Intent(Modifier_Client.this,
                         MainActivitySwipe.class);
-              //  intent.putExtra("ClientJson", ClientJson);
-               // Log.i("ClientJson",ClientJson);
                 startActivity(intent);
                 finish();
 
@@ -140,9 +139,9 @@ public class Modifier_Client extends Activity {
         networkFailed.setVisibility(View.GONE);
         // Tag used to cancel the request
         reqGetClient = "json_obj_req_get_Client";
-        Log.i("UrlGetFavorisByUser", AppConfig.getURLGetClientById(16));
+        Log.i("UrlGetFavorisByUser", AppConfig.getURLGetClientById(MainActivitySwipe.idFromModifier));
         JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.GET,
-                AppConfig.getURLGetClientById(16), null,
+                AppConfig.getURLGetClientById(MainActivitySwipe.idFromModifier), null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject ClientJsonFromJson) {
@@ -215,7 +214,7 @@ public class Modifier_Client extends Activity {
             ////
             JSONObject postParam = new JSONObject();
             try {
-                postParam.put("id", 16);
+                postParam.put("id", MainActivitySwipe.idFromModifier);
                 postParam.put("raisonSociale", GetRaisonSociale);
                 postParam.put("logo", "kkkkk");
                 postParam.put("archivage", "false");

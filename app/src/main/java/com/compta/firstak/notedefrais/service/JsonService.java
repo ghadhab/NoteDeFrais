@@ -86,9 +86,13 @@ public class JsonService {
                 client.setActivite(json_data_article.getString("activite"));
                 client.setConstitution(json_data_article.getString("constitution"));
                 client.setFormeSociete(json_data_article.getString("formeSociete"));
+                if (!json_data_article.isNull("archivage"))
                 client.setArchivage(json_data_article.getString("archivage"));
+                else
+                {
+                    client.setArchivage("");
+                }
                 Log.i("clients", client.getName());
-
                 clientsList.add(client);
             }
 

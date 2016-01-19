@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TextView
+            android:id="@+id/FournisseurText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="24dp"
+            android:text="Fournisseur"
+            android:textColor="@color/white"
+           />
+        <EditText
+            android:id="@+id/Fournisseur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:textColor="@color/white"
+            android:inputType="text">
+        </EditText>
+
+
+        <TextView
+            android:id="@+id/NoFacture_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="34dp"
+            android:text="No Facture"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/etat_NFacture"
+            android:layout_below="@+id/FournisseurText"/>
+
+        <EditText
+            android:id="@+id/NoFacture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/NoFacture_Text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:textColor="@color/white"
+            android:inputType="text">
+        </EditText>
+
+        <TextView
+            android:id="@+id/Matricule_fiscale_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/NoFacture_Text"
+            android:layout_below="@+id/NoFacture"
+            android:layout_marginTop="26dp"
+            android:text="Matricule Fiscal"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/etat_MatriculeFiscale"
+          />
+
+        <EditText
+            android:id="@+id/MatriculeFiscale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/Matricule_fiscale_Text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:textColor="@color/white"
+            android:inputType="text">
+        </EditText>
+
+
+        <TextView
+            android:id="@+id/Mf_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Matricule_fiscale_Text"
+            android:layout_below="@+id/MatriculeFiscale"
+            android:layout_marginTop="26dp"
+            android:textColor="@color/white"
+            android:text="MF"
+            android:layout_toRightOf="@+id/etat_MF"/>
+
+        <EditText
+            android:id="@+id/MF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/Mf_text"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="text">
+        </EditText>
+
+        <TextView
+            android:id="@+id/TVA_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Mf_text"
+            android:layout_below="@+id/MF"
+            android:textColor="@color/white"
+            android:layout_marginTop="26dp"
+            android:text="TVA"
+            android:layout_toRightOf="@+id/etat_Tva"/>
+
+        <EditText
+            android:id="@+id/TVA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/white"
+            android:layout_alignTop="@+id/TVA_Text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="text">
+        </EditText>
+
+
+
+        <TextView
+            android:id="@+id/TotalTTC_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/TVA_Text"
+            android:layout_below="@+id/TVA"
+            android:layout_marginTop="26dp"
+            android:text="Tottal T.T.C"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/etat_TotalTTC"/>
+
+        <EditText
+            android:id="@+id/TottalTTC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/TotalTTC_text"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="text">
+        </EditText>
+
+
+
+        <TextView
+            android:id="@+id/Htva_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/TotalTTC_text"
+            android:layout_below="@+id/TottalTTC"
+            android:layout_marginTop="26dp"
+            android:textColor="@color/white"
+            android:text="HTVA"
+            android:layout_toRightOf="@+id/etat_HTVA"/>
+
+        <EditText
+            android:id="@+id/HTVA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/Htva_text"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="text">
+        </EditText>
+
+
+
+        <TextView
+            android:id="@+id/Tel_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Htva_text"
+            android:layout_below="@+id/HTVA"
+            android:textColor="@color/white"
+            android:layout_marginTop="26dp"
+            android:text="No Tel"
+            android:layout_toRightOf="@+id/etat_NTel"/>
+
+        <EditText
+            android:id="@+id/Tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/Tel_text"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="text">
+        </EditText>
+
+
+
+        <TextView
+            android:id="@+id/Fax_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Tel_text"
+            android:layout_below="@+id/Tel"
+            android:textColor="@color/white"
+            android:layout_marginTop="26dp"
+            android:text="No Fax"
+            android:layout_toRightOf="@+id/etat_NFax"/>
+
+        <EditText
+            android:id="@+id/Fax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/white"
+            android:layout_alignTop="@+id/Fax_text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="text">
+        </EditText>
+
+
+        <TextView
+            android:id="@+id/Email_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Fax_text"
+            android:layout_below="@+id/Fax"
+            android:textColor="@color/white"
+            android:layout_marginTop="26dp"
+            android:text="Email"
+            android:layout_toRightOf="@+id/etat_Email"/>
+
+
+        <EditText
+            android:id="@+id/Email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/Email_Text"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="text">
+        </EditText>
+
+
+
+        <TextView
+            android:id="@+id/Web_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Email_Text"
+            android:layout_below="@+id/Email"
+            android:layout_marginTop="26dp"
+            android:textColor="@color/white"
+            android:text="Site Web"
+            android:layout_toRightOf="@+id/etat_Site"/>
+
+
+        <EditText
+            android:id="@+id/Web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/white"
+            android:layout_alignTop="@+id/Web_Text"
+            android:ems="10"
+            android:imeOptions="actionSearch"
+            android:inputType="text">
+        </EditText>
+
+
+
+        <TextView
+            android:id="@+id/Date_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Web_Text"
+            android:layout_below="@+id/Web"
+            android:textColor="@color/white"
+            android:layout_marginTop="26dp"
+            android:text="Date"
+            android:layout_toRightOf="@+id/etat_Date"/>
+
+
+        <EditText
+            android:id="@+id/Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="onDateClicked"
+            android:textColor="@color/white"
+            android:layout_alignTop="@+id/Date_Text"
+            android:ems="10">
+        </EditText>
+
+
+
+        <TextView
+            android:id="@+id/DesignationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Date_Text"
+            android:layout_below="@+id/Date"
+            android:textColor="@color/white"
+            android:layout_marginTop="26dp"
+            android:text="Désignation"
+            android:layout_toRightOf="@+id/etat_Designation"/>
+
+
+        <EditText
+            android:id="@+id/Designation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/white"
+            android:layout_alignTop="@+id/DesignationText"
+            android:ems="10"
+            />
+
+
+        <!--android:onClick="onDateClicked"-->
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/Designation"
+            android:layout_below="@+id/Designation"
+            android:layout_marginTop="21dp"
+            android:text="submit" />
+
+        <include
+            android:id="@+id/view_details_network"
+            layout="@layout/view_network_failed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</ScrollView>
