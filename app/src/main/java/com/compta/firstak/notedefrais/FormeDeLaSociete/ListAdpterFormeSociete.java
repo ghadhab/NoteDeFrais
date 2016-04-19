@@ -1,9 +1,6 @@
 package com.compta.firstak.notedefrais.FormeDeLaSociete;
 
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.compta.firstak.notedefrais.ListImageButton;
+import com.compta.firstak.notedefrais.Gestion_Client.ListImageButton;
 import com.compta.firstak.notedefrais.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

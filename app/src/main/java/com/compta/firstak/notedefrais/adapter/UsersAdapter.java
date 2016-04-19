@@ -1,6 +1,5 @@
 package com.compta.firstak.notedefrais.adapter;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,15 +22,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.compta.firstak.notedefrais.DashboardClient;
-import com.compta.firstak.notedefrais.Gestion_Client.Client;
+import com.compta.firstak.notedefrais.Gestion_Client.DashboardClient;
+import com.compta.firstak.notedefrais.entity.Client;
 import com.compta.firstak.notedefrais.Gestion_Client.MainActivitySwipe;
-import com.compta.firstak.notedefrais.MainActivity;
 import com.compta.firstak.notedefrais.R;
 import com.compta.firstak.notedefrais.app.AppConfig;
 import com.compta.firstak.notedefrais.app.AppController;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -46,6 +43,7 @@ public class UsersAdapter extends ArrayAdapter<Client> {
     public static int idFromSelect;
     private MainActivitySwipe activity;
     private int idFromLongSelect;
+   public static String NameFromSelect;
     private static class ViewHolder {
         TextView name;
 
@@ -82,6 +80,7 @@ public class UsersAdapter extends ArrayAdapter<Client> {
                 getContext().startActivity(intent);
                 Toast.makeText(getContext(), String.valueOf(user.getId()), Toast.LENGTH_LONG).show();
                 idFromSelect = user.getId();
+                NameFromSelect=user.name;
                 //   PhoneFromSelect =user.getPhone();
 
             }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">"Comptable "</string>
+    <string name="app_name">"ComptaK "</string>
 
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
@@ -23,10 +23,13 @@
     </string-array>
 
     <string-array name="TableFormeSociete">
-        <item>Select la forme de la societe</item>
-        <item>SARL</item>
-        <item>SA</item>
-        <item>Entreprise individuelle</item>
+        <item>Select the form of the company</item>
+        <item>limited liability company (LLC)</item>
+        <item>anonimous society</item>
+        <item>Individual business</item>
         <item>SUARL</item>
+
+
     </string-array>
+    <string name="title_activity_table_facture_by_client">TableFactureByClient</string>
 </resources>

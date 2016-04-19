@@ -22,6 +22,7 @@
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
     </style>
+
     <style name="MenuButtonsStyle">
         <item name="fab_size">mini</item>
         <item name="fab_showAnimation">@anim/jump_from_down</item>
@@ -31,20 +32,28 @@
         <item name="fab_colorPressed">#F2AB00</item>
         <item name="fab_colorRipple">#D99200</item>
     </style>
+
     <style name="MenuButtonsSmall">
         <item name="fab_size">mini</item>
-        <item name="fab_colorNormal">#791634</item>
-        <item name="fab_colorPressed">#791634</item>
-        <item name="fab_colorRipple">#791634</item>
+        <item name="fab_colorNormal">#0277BD</item>
+        <item name="fab_colorPressed">#0277BD</item>
+        <item name="fab_colorRipple">#0277BD</item>
     </style>
 
     <style name="MenuButtonsSmall.Red">
-        <item name="fab_colorNormal">#791634</item>
-        <item name="fab_colorPressed">#791634</item>
-        <item name="fab_colorRipple">#791634</item>
+        <item name="fab_colorNormal">#0277BD</item>
+        <item name="fab_colorPressed">#0277BD</item>
+        <item name="fab_colorRipple">#0277BD</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

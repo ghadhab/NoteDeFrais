@@ -45,4 +45,4 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-</LinearLayout><!-- From: file:/C:/NoteDeFrais/leadtoolsDemos/src/main/res/layout/file_browser_dialog.xml --><!-- From: file:/C:/NoteDeFrais/leadtoolsDemos/build/intermediates/bundles/debug/res/layout/file_browser_dialog.xml -->
+</LinearLayout>

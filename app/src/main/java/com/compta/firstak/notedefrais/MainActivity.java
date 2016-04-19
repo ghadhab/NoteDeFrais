@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.net.ProxySelector;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,7 +47,6 @@ import leadtools.forms.ocr.OcrSettingManager;
 import leadtools.forms.ocr.OcrZone;
 import leadtools.imageprocessing.RotateCommand;
 import leadtools.imageprocessing.RotateCommandFlags;
-import leadtools.imageprocessing.color.InvertCommand;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -65,7 +63,6 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.net.Uri;
-import android.opengl.GLES10;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -79,12 +76,15 @@ import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.compta.firstak.notedefrais.Gestion_Client.Client;
+import com.android.volley.RequestQueue;
+import com.compta.firstak.notedefrais.GestionFacture.Formulaire;
+import com.compta.firstak.notedefrais.entity.ChoixPhotoResult;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.scanlibrary.ScanActivity;
+import com.scanlibrary.ScanConstants;
 
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;;
@@ -92,8 +92,6 @@ import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
-
-import javax.microedition.khronos.opengles.GL10;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -104,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
     private List<FloatingActionMenu> menus = new ArrayList<>();
     private Handler mUiHandler = new Handler();
 public static String Année;
+
+
+    private int preference;
+
+    private static final int REQUEST_CODE = 99;
 
     public static  DatePicker datePicker;
 
@@ -150,7 +153,7 @@ public static String Année;
     Boolean TestEmail;
     Boolean TestSie;
     Boolean TestDate;
-   static String imageFileName;
+  public static String imageFileName;
 
     static {
 
@@ -230,7 +233,8 @@ public static String Année;
             @Override
             public void onClick(View v) {
               /*  Toast.makeText(MainActivity.this, programFab1.getLabelText(), Toast.LENGTH_SHORT).show();*/
-            }
+
+        }
         });
 
 
@@ -338,7 +342,8 @@ public static String Année;
 
         RasterImage image = mImageViewer.getImage();
         if(image == null) {
-            Messager.showError(this, "No image loaded", null);
+            // Messager.showError(this, "No image loaded !!!", null);
+            startScan(preference);
             return;
         }
 
@@ -346,12 +351,13 @@ public static String Année;
             mIsWorking = true;
             int id = v.getId();
             if (id == R.id.btn_rotate_cw) {
-                RotateCommand command = new RotateCommand(9000, RotateCommandFlags.RESIZE.getValue(), new RasterColor(0, 0, 0));
+              RotateCommand command = new RotateCommand(9000, RotateCommandFlags.RESIZE.getValue(), new RasterColor(0, 0, 0));
                 command.run(image);
                 onSelectArea();
             } else if (id == R.id.btn_rotate_ccw) {
                 RotateCommand command = new RotateCommand(-9000, RotateCommandFlags.RESIZE.getValue(), new RasterColor(0, 0, 0));
                 command.run(image);
+
                 //onSelectArea();
             }
 
@@ -399,6 +405,21 @@ public static String Année;
                     if (file.exists())
 
                     stream = LeadStreamFactory.create(fileName);
+
+                   /* BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inJustDecodeBounds = true;
+                    BitmapFactory.decodeFile(imageFileName, options);
+                    int imageHeight = options.outHeight;
+                    int imageWidth = options.outWidth;
+                    if(imageWidth<2322 &&imageHeight<4128 ) {
+                        Opencv(imageFileName);
+                        stream=LeadStreamFactory.create(byteArray);
+                    }
+                    else{
+                        stream = LeadStreamFactory.create(imageFileName);
+                    }*/
+
+
                     loadImage(stream);
                 }
             };
@@ -419,8 +440,7 @@ public static String Année;
                     imageFileName = Utils.getGalleryPathName(this.getContentResolver(), data.getData());
                     ImageFile.add(imageFileName);
                     for (int i = 0; i < ImageFile.size(); i++) {
-                     /*   Toast.makeText(getApplicationContext(), ImageFile.get(i),
-                                Toast.LENGTH_LONG).show();*/
+
                     }
 
 
@@ -457,6 +477,17 @@ public static String Année;
                 //------------------------------------------------------------------
 
                 loadImage(stream);
+            }
+        }
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            Uri uri = data.getExtras().getParcelable(ScanConstants.SCANNED_RESULT);
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                getContentResolver().delete(uri, null, null);
+                mImageViewer.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -916,7 +947,7 @@ public static String Année;
                 }
                 for (String ss : Dictionnaire) {
 
-                   // System.out.println(ss);
+                    // System.out.println(ss);
                 }
                 reader.close();
             } catch (IOException e) {
@@ -999,5 +1030,15 @@ public static String Année;
         return super.onOptionsItemSelected(item);
     }
 
+
+
+
+
+
+    protected void startScan(int preference) {
+        Intent intent = new Intent(this, ScanActivity.class);
+        intent.putExtra(ScanConstants.OPEN_INTENT_PREFERENCE, preference);
+        startActivityForResult(intent, REQUEST_CODE);
+    }
 
 }

@@ -1,0 +1,665 @@
+[
+    {
+        "outputFile": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 41,
+                    "endOffset": 92
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 41,
+                        "endOffset": 92
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 97,
+                    "endColumn": 41,
+                    "endOffset": 134
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 97,
+                        "endColumn": 41,
+                        "endOffset": 134
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 139,
+                    "endColumn": 41,
+                    "endOffset": 176
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 139,
+                        "endColumn": 41,
+                        "endOffset": 176
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 181,
+                    "endColumn": 41,
+                    "endOffset": 218
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 181,
+                        "endColumn": 41,
+                        "endOffset": 218
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 223,
+                    "endColumn": 41,
+                    "endOffset": 260
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 223,
+                        "endColumn": 41,
+                        "endOffset": 260
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 265,
+                    "endColumn": 41,
+                    "endOffset": 302
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 265,
+                        "endColumn": 41,
+                        "endOffset": 302
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 307,
+                    "endColumn": 42,
+                    "endOffset": 345
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 307,
+                        "endColumn": 42,
+                        "endOffset": 345
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 2386,
+                    "endColumn": 52,
+                    "endOffset": 2434
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 2386,
+                        "endColumn": 52,
+                        "endOffset": 2434
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 2439,
+                    "endColumn": 51,
+                    "endOffset": 2486
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 2439,
+                        "endColumn": 51,
+                        "endOffset": 2486
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 2491,
+                    "endColumn": 41,
+                    "endOffset": 2528
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 2491,
+                        "endColumn": 41,
+                        "endOffset": 2528
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 2533,
+                    "endColumn": 41,
+                    "endOffset": 2570
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 2533,
+                        "endColumn": 41,
+                        "endOffset": 2570
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 2575,
+                    "endColumn": 43,
+                    "endOffset": 2614
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 2575,
+                        "endColumn": 43,
+                        "endOffset": 2614
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 2619,
+                    "endColumn": 52,
+                    "endOffset": 2667
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 2619,
+                        "endColumn": 52,
+                        "endOffset": 2667
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 2672,
+                    "endColumn": 37,
+                    "endOffset": 2705
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 2672,
+                        "endColumn": 37,
+                        "endOffset": 2705
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 2710,
+                    "endColumn": 53,
+                    "endOffset": 2759
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 2710,
+                        "endColumn": 53,
+                        "endOffset": 2759
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 2764,
+                    "endColumn": 49,
+                    "endOffset": 2809
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 2764,
+                        "endColumn": 49,
+                        "endOffset": 2809
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 2814,
+                    "endColumn": 49,
+                    "endOffset": 2859
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 2814,
+                        "endColumn": 49,
+                        "endOffset": 2859
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 2864,
+                    "endColumn": 43,
+                    "endOffset": 2903
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 2864,
+                        "endColumn": 43,
+                        "endOffset": 2903
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 2908,
+                    "endColumn": 33,
+                    "endOffset": 2937
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 2908,
+                        "endColumn": 33,
+                        "endOffset": 2937
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 2942,
+                    "endColumn": 37,
+                    "endOffset": 2975
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 2942,
+                        "endColumn": 37,
+                        "endOffset": 2975
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 2980,
+                    "endColumn": 68,
+                    "endOffset": 3044
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 2980,
+                        "endColumn": 68,
+                        "endOffset": 3044
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 3049,
+                    "endColumn": 52,
+                    "endOffset": 3097
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 3049,
+                        "endColumn": 52,
+                        "endOffset": 3097
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 3102,
+                    "endColumn": 52,
+                    "endOffset": 3150
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 3102,
+                        "endColumn": 52,
+                        "endOffset": 3150
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 3155,
+                    "endColumn": 68,
+                    "endOffset": 3219
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 3155,
+                        "endColumn": 68,
+                        "endOffset": 3219
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 3224,
+                    "endColumn": 48,
+                    "endOffset": 3268
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 3224,
+                        "endColumn": 48,
+                        "endOffset": 3268
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 3273,
+                    "endColumn": 59,
+                    "endOffset": 3328
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 3273,
+                        "endColumn": 59,
+                        "endOffset": 3328
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 3333,
+                    "endColumn": 49,
+                    "endOffset": 3378
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 3333,
+                        "endColumn": 49,
+                        "endOffset": 3378
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 3383,
+                    "endColumn": 33,
+                    "endOffset": 3412
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 3383,
+                        "endColumn": 33,
+                        "endOffset": 3412
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 31,
+                    "startColumn": 4,
+                    "startOffset": 3417,
+                    "endLine": 38,
+                    "endColumn": 12,
+                    "endOffset": 3835
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 3417,
+                        "endLine": 38,
+                        "endColumn": 12,
+                        "endOffset": 3835
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 3840,
+                    "endLine": 44,
+                    "endColumn": 12,
+                    "endOffset": 4125
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 39,
+                        "startColumn": 4,
+                        "startOffset": 3840,
+                        "endLine": 44,
+                        "endColumn": 12,
+                        "endOffset": 4125
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 45,
+                    "startColumn": 4,
+                    "startOffset": 4130,
+                    "endLine": 48,
+                    "endColumn": 12,
+                    "endOffset": 4344
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 45,
+                        "startColumn": 4,
+                        "startOffset": 4130,
+                        "endLine": 48,
+                        "endColumn": 12,
+                        "endOffset": 4344
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 49,
+                    "startColumn": 4,
+                    "startOffset": 4349,
+                    "endLine": 54,
+                    "endColumn": 12,
+                    "endOffset": 4634
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 49,
+                        "startColumn": 4,
+                        "startOffset": 4349,
+                        "endLine": 54,
+                        "endColumn": 12,
+                        "endOffset": 4634
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 55,
+                    "startColumn": 4,
+                    "startOffset": 4639,
+                    "endLine": 64,
+                    "endColumn": 12,
+                    "endOffset": 5141
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 55,
+                        "startColumn": 4,
+                        "startOffset": 4639,
+                        "endLine": 64,
+                        "endColumn": 12,
+                        "endOffset": 5141
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 65,
+                    "startColumn": 4,
+                    "startOffset": 5146,
+                    "endLine": 72,
+                    "endColumn": 12,
+                    "endOffset": 5564
+                },
+                "from": {
+                    "file": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 65,
+                        "startColumn": 4,
+                        "startOffset": 5146,
+                        "endLine": 72,
+                        "endColumn": 12,
+                        "endOffset": 5564
+                    }
+                }
+            }
+        ]
+    }
+]

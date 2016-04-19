@@ -27,10 +27,10 @@
             android:paddingLeft="10dp"
             fab:menu_labels_ellipsize="end"
             fab:menu_labels_singleLine="true"
-            fab:menu_backgroundColor="#254680"
-            fab:menu_colorNormal="#791634"
-            fab:menu_colorPressed="#791634"
-            fab:menu_colorRipple="#791634"
+            fab:menu_backgroundColor="#00000000"
+            fab:menu_colorNormal="#0277BD"
+            fab:menu_colorPressed="#0277BD"
+            fab:menu_colorRipple="#0277BD"
             fab:menu_labels_position="left"
             android:layout_above="@+id/btn_rotate_cw">
 

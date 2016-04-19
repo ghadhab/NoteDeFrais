@@ -11,4 +11,4 @@
         android:src="@drawable/leadlogo"
         android:contentDescription="@string/app_name"/>
 
-</LinearLayout><!-- From: file:/C:/NoteDeFrais/leadtoolsDemos/src/main/res/layout/splash_screen.xml --><!-- From: file:/C:/NoteDeFrais/leadtoolsDemos/build/intermediates/bundles/debug/res/layout/splash_screen.xml -->
+</LinearLayout>

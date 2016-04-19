@@ -14,12 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
-   <!-- android:listSelector="@drawable/ripple"-->
     <com.github.clans.fab.FloatingActionButton
         android:id="@+id/buttonAjouter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginRight="16dp"
         android:src="@drawable/ajouter"
         app:fab_elevationCompat="8dp"
@@ -28,7 +27,7 @@
         fab:menu_labels_singleLine="true"
         android:layout_alignParentRight="true"
         fab:menu_labels_position="left"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true" />
 
     <include
         android:id="@+id/view_details_network"

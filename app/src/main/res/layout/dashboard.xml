@@ -14,7 +14,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="18dp"
                 android:layout_marginTop="24dp"
-                android:text="Firstak"
                 android:textSize="20dp"
                 android:textColor="@color/white_color" />
 
@@ -31,31 +30,61 @@
 
             <Spinner
                 android:id="@+id/ListFacture"
-                android:layout_width="288dp"
-                android:layout_height="39dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:layout_below="@+id/Logo"
-                android:layout_marginTop="25dp"
                 android:background="@drawable/facture"
                 android:layout_centerInParent="true" />
+
+
+
             <ImageButton
                 android:id="@+id/Add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:src="@drawable/addfacture"
-                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
                 android:background="@android:color/transparent"
                 android:layout_below="@+id/ListFacture"
-                />
+                android:layout_marginRight="80dp"
+                android:layout_marginLeft="50dp"></ImageButton>
             <ImageButton
                 android:id="@+id/ImageFactureTraiter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/Add"
+                android:layout_below="@+id/ListFacture"
+                android:layout_toRightOf="@+id/Add"
                 android:background="@android:color/transparent"
                 android:layout_marginTop="25dp"
-                android:layout_centerInParent="true"
                 android:src="@drawable/tableau"
                 />
+    <ImageButton
+        android:id="@+id/ecritureCompta_Immo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ImageFactureTraiter"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="50dp"
+        android:src="@drawable/desk"
+        />
+    <ImageButton
+        android:id="@+id/ecritureCompta_Dec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ImageFactureTraiter"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@+id/ecritureCompta_Immo"
+        android:src="@drawable/liste"
+        />
+    <include
+        android:id="@+id/view_details_network"
+        layout="@layout/view_network_failed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
 

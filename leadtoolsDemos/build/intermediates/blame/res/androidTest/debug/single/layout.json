@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\splash_screen.xml",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\layout\\splash_screen.xml"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\save_format_dialog.xml",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\layout\\save_format_dialog.xml"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\file_browser_dialog.xml",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\layout\\file_browser_dialog.xml"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\file_browser_element.xml",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\layout\\file_browser_element.xml"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\save_file_elements.xml",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\layout\\save_file_elements.xml"
+    }
+]

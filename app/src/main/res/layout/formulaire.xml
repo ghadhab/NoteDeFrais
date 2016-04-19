@@ -11,9 +11,9 @@
             android:id="@+id/FournisseurText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="48dp"
+            android:layout_marginLeft="60dp"
             android:layout_marginTop="24dp"
-            android:text="Fournisseur"
+            android:text="Provider"
             android:textColor="@color/white"
            />
         <AutoCompleteTextView
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="18dp"
             android:layout_marginTop="24dp"
-            android:text="No Facture"
+            android:text="Invoce Number"
             android:textColor="@color/white"
             android:layout_toRightOf="@+id/etat_NFacture"
             android:layout_below="@+id/FournisseurText"/>
@@ -74,7 +74,7 @@
             android:layout_alignLeft="@+id/NoFacture_Text"
             android:layout_below="@+id/NoFacture"
             android:layout_marginTop="26dp"
-            android:text="Matricule Fiscal"
+            android:text="Tax Registration"
             android:textColor="@color/white"
             android:layout_toRightOf="@+id/etat_MatriculeFiscale"
           />
@@ -138,7 +138,7 @@
             android:layout_below="@+id/MF"
             android:textColor="@color/white"
             android:layout_marginTop="26dp"
-            android:text="TVA"
+            android:text="VAT"
             android:layout_toRightOf="@+id/etat_Tva"/>
 
         <AutoCompleteTextView
@@ -169,7 +169,7 @@
             android:layout_alignLeft="@+id/TVA_Text"
             android:layout_below="@+id/TVA"
             android:layout_marginTop="26dp"
-            android:text="Tottal T.T.C"
+            android:text="Incl Tax"
             android:textColor="@color/white"
             android:layout_toRightOf="@+id/etat_TotalTTC"/>
 
@@ -202,7 +202,7 @@
             android:layout_below="@+id/TottalTTC"
             android:layout_marginTop="26dp"
             android:textColor="@color/white"
-            android:text="HTVA"
+            android:text="Excl Tax"
             android:layout_toRightOf="@+id/etat_HTVA"/>
 
         <AutoCompleteTextView
@@ -234,7 +234,7 @@
             android:layout_below="@+id/HTVA"
             android:textColor="@color/white"
             android:layout_marginTop="26dp"
-            android:text="No Tel"
+            android:text="Phone Number"
             android:layout_toRightOf="@+id/etat_NTel"/>
 
         <AutoCompleteTextView
@@ -298,7 +298,7 @@
             android:layout_below="@+id/Fax"
             android:textColor="@color/white"
             android:layout_marginTop="26dp"
-            android:text="Email"
+            android:text="E-mail"
             android:layout_toRightOf="@+id/etat_Email"/>
 
 
@@ -332,7 +332,7 @@
             android:layout_below="@+id/Email"
             android:layout_marginTop="26dp"
             android:textColor="@color/white"
-            android:text="Site Web"
+            android:text="Website"
             android:layout_toRightOf="@+id/etat_Site"/>
 
 
@@ -391,7 +391,7 @@
             android:layout_below="@+id/Date"
             android:textColor="@color/white"
             android:layout_marginTop="26dp"
-            android:text="Désignation"
+            android:text="Designation"
             android:layout_toRightOf="@+id/etat_Designation"/>
 
 

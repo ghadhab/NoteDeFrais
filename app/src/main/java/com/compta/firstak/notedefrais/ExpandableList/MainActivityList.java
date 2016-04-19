@@ -12,12 +12,9 @@ import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
-import android.widget.Toast;
 
-import com.compta.firstak.notedefrais.Formulaire;
-import com.compta.firstak.notedefrais.MainActivity;
 import com.compta.firstak.notedefrais.R;
-import com.compta.firstak.notedefrais.TableFacture;
+import com.compta.firstak.notedefrais.GestionFacture.TableFacture;
 
 public class MainActivityList extends Activity {
 
@@ -95,6 +92,8 @@ public class MainActivityList extends Activity {
 								listDataHeader.get(groupPosition)).get(
 								childPosition), Toast.LENGTH_SHORT)
 						.show();*/
+				Intent intent = new Intent(MainActivityList.this,
+						TableFacture.class);
 				strname = listDataChild.get(
 						listDataHeader.get(groupPosition)).get(
 						childPosition);
@@ -104,6 +103,8 @@ public class MainActivityList extends Activity {
 							if (strname1 == TableFacture.CodeComptable.get(k)) {
 
 								Code1 = TableFacture.CodeComptable.get(k - 1);
+								intent.putExtra("strname1", strname1);
+								intent.putExtra("Code1", Code1);
 							}
 						}
 					if(TableFacture.enableid23==true) {
@@ -111,6 +112,8 @@ public class MainActivityList extends Activity {
 						if (strname2 == TableFacture.CodeComptable.get(k)) {
 
 							Code2 = TableFacture.CodeComptable.get(k - 1);
+							intent.putExtra("strname2", strname2);
+							intent.putExtra("Code2", Code2);
 						}
 					}
 						if(TableFacture.enableid15==true) {
@@ -118,6 +121,8 @@ public class MainActivityList extends Activity {
 							if (strname3 == TableFacture.CodeComptable.get(k)) {
 
 								Code3 = TableFacture.CodeComptable.get(k - 1);
+								intent.putExtra("strname3", strname3);
+								intent.putExtra("strname3", strname3);
 							}
 						}
 					if(TableFacture.enableid25==true) {
@@ -125,13 +130,16 @@ public class MainActivityList extends Activity {
 						if (strname4 == TableFacture.CodeComptable.get(k)) {
 
 							Code4 = TableFacture.CodeComptable.get(k - 1);
+
+							intent.putExtra("strname4", strname4);
+							intent.putExtra("Code4", Code4);
 						}
 					}
 				}
-				Intent intent = new Intent(MainActivityList.this,
-						TableFacture.class);
+
+
 				startActivity(intent);
-				finish();
+				//finish();
 				return false;
 			}
 		});

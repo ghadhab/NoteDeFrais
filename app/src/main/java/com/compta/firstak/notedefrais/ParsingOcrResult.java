@@ -24,25 +24,28 @@ import java.util.Calendar;
  * Created by mohamed on 02/07/2015.
  */
 public class ParsingOcrResult extends Activity {
-      public  String MatriculeFiscale;
-    public  String MF;
-     public  String TVA;
-    public  String Tel;
-     public  String Fax;
-    public  String Email;
-    public  String SiteWeb;
-    public static String DesignationAtMin;
-    public static String HtvaString;
-    static String  Designation,Code;
-    public  String NoFacture;
-     public  String Date;
+      public  String MatriculeFiscale="";
+    public  String MF="";
+     public  String TVA="";
+    public  String Tel="";
+     public  String Fax="";
+    public  String Email="";
+    public  String SiteWeb="";
+    public static String DesignationAtMin="";
+    public static String HtvaString="";
+   public static String  Designation,Code;
+    public  String NoFacture="";
+     public  String Date="";
     public  Double TotalTTC=0.0;
     public  Double HTVA=0.0;
      public  Double Tottal=0.0;
     public static Double  Number=0.0;
-    static  String  Poucentage;
-  //  static  int TvaNumber;
-   // static int p=0;
+    static  String  Poucentage="";
+   public static Double timbre;
+public  static Integer NumIsPhoneFax;
+   public static ArrayList<String> TvaTab = new ArrayList<String>();
+    public static ArrayList<String> PrixTab = new ArrayList<String>();
+
   Boolean TestNfacture;
     Boolean TestMatriculeFiscale;
     Boolean TestMF;
@@ -105,7 +108,7 @@ public class ParsingOcrResult extends Activity {
     }
 
     public  String[] ocrWords;
-    public static Double TVAd;
+    public static Double TVAd=0.0;
 
     public String getMatriculeFiscale() {
         return MatriculeFiscale;
@@ -194,7 +197,7 @@ public class ParsingOcrResult extends Activity {
         int entier5=0;
         int entier6=0;
         int entier7=0;
-        Double timbre=0.0;
+        timbre=0.0;
 
 
 
@@ -206,7 +209,7 @@ public class ParsingOcrResult extends Activity {
         resultOcr.ocrWords = Result0.split("\\s+");
         for (String ss : resultOcr.ocrWords) {
 
-           // System.out.println(ss);
+            System.out.println(ss);
         }
         for (int i = 0; i < resultOcr.ocrWords.length; i++) {
 
@@ -236,8 +239,8 @@ public class ParsingOcrResult extends Activity {
                 }
             }*/
 
-            if(resultOcr.ocrWords[i].length()>5){
-                if((resultOcr.ocrWords[i].replace("/","").replace("-","").replace(" ","").length()==13)||(resultOcr.ocrWords[i].replace("/","").replace("-","").replace(" ","").length()==12)){
+            if(resultOcr.ocrWords[i].length()>0){
+                if((resultOcr.ocrWords[i].replace("/","").replace("-", "").replace("_","").replace(" ", "").replace("[","1").replace("]","1").length()==13)||(resultOcr.ocrWords[i].replace("/","").replace("-", "").replace("_","").replace(" ", "").replace("[","1").replace("]","1").length()==12)){
                     String a=resultOcr.ocrWords[i].substring(0, 6);
                     String b=resultOcr.ocrWords[i].substring(resultOcr.ocrWords[i].length()-1);
                     if(tryParseTVA(a)&&tryParseTVA(b)){
@@ -246,7 +249,7 @@ public class ParsingOcrResult extends Activity {
                     }
 
                 }
-                if((resultOcr.ocrWords[i].replace("/","").replace("-", "").replace(" ","").length()==8)||(resultOcr.ocrWords[i].replace("/","").replace("-","").replace(" ","").length()==7)){
+                if((resultOcr.ocrWords[i].replace("/","").replace("-", "").replace("_","").replace(" ", "").replace("[","1").replace("]","1").length()==8)||(resultOcr.ocrWords[i].replace("/","").replace("-", "").replace("_","").replace(" ", "").replace("[","1").replace("]","1").length()==7)){
                     String a=resultOcr.ocrWords[i].substring(0, 6);
                     String b=resultOcr.ocrWords[i].substring(resultOcr.ocrWords[i].length()-1);
                     if(tryParseTVA(a)&&tryParseTVA(b)==false){
@@ -262,8 +265,6 @@ public class ParsingOcrResult extends Activity {
             }*/
 
 
-
-
             //---------------------MF-----------------------------
 
             if(ComputeDistanceMf<=minValue1){
@@ -274,29 +275,34 @@ public class ParsingOcrResult extends Activity {
                    if(resultOcr.MF.endsWith("000")) {
                        resultOcr.TestMF = true;
                    }
+
                 }
                 else{
                     resultOcr.MF="";
                     resultOcr.TestMF=false;
                 }
             }
+
             //---------------------TVA-----------------------------
-            if(ComputeDistanceTva<=minValue2){
+         /*   if(ComputeDistanceTva<=minValue2){
                 minValue2=ComputeDistanceTva;
-               /* if(ComputeDistanceTva==entier2 && Isnumber(resultOcr.ocrWords[i+1])){
-                    resultOcr.TVA=resultOcr.ocrWords[i+1];
-                }*/
               if( resultOcr.TVA==null){
                   resultOcr.TVA="0.0";
                   resultOcr.TestTVA=false;
                 }
-            }
-            if(resultOcr.ocrWords[i].contains("%")){
-                resultOcr.TVA=resultOcr.ocrWords[i];
-                String TvaString =  resultOcr.TVA.replace("%","");
-                resultOcr.TestTVA=true;
-//                TvaNumber=Integer.getInteger(TvaString);
-                Log.i("TVA1 : ", resultOcr.TVA);
+            }*/
+
+            if(resultOcr.ocrWords[i].contains("%")) {
+                String TvaClean = resultOcr.ocrWords[i].replace("l", "1").replace("[", "1").replace("]", "1").replace("z", "2").replace("o", "0").replace("%","");
+                if (tryParseTVA(TvaClean)) {
+                    resultOcr.TVA = TvaClean+"%";
+                    if(!TvaTab.contains(resultOcr.TVA)) {
+                        TvaTab.add(resultOcr.TVA);
+                    }
+                    String TvaString = resultOcr.TVA.replace("%", "");
+                    resultOcr.TestTVA = true;
+                    Log.i("TVA1 : ", resultOcr.TVA);
+                }
             }
             //---------------------Fax-----------------------------
            /* if(ComputeDistanceFax<=minValue3) {
@@ -333,7 +339,7 @@ public class ParsingOcrResult extends Activity {
                         Tel = Tel1;
                     } else {*/
 
-           if (resultOcr.ocrWords[i].contains("tel") || resultOcr.ocrWords[i].contains("tél") ||resultOcr.ocrWords[i].contains("+216")||resultOcr.ocrWords[i].contains("gsm")) {
+           if (resultOcr.ocrWords[i].contains("tel")||resultOcr.ocrWords[i].contains("téi") || resultOcr.ocrWords[i].contains("tél") ||resultOcr.ocrWords[i].contains("+216")||resultOcr.ocrWords[i].contains("gsm")||resultOcr.ocrWords[i].contains("mobile")&&resultOcr.ocrWords[i].length()>5) {
                 String Tel2 = GetNumeroTelOrFax(resultOcr.ocrWords, i);
               String Tel3=resultOcr.ocrWords[i+1];
                 if (Tel2.length() == 8 || (Tel2.length() == 11 && Tel2.contains("216"))) {
@@ -347,7 +353,7 @@ public class ParsingOcrResult extends Activity {
                    resultOcr.TestTel=false;
                     }
                 }
-                //Log.i("Teeeel : ", Tel);
+
             }
             // }
             //    }
@@ -358,6 +364,7 @@ public class ParsingOcrResult extends Activity {
             if(Isnumber(resultOcr.ocrWords[i]) && (resultOcr.ocrWords[i].contains(".") || resultOcr.ocrWords[i].contains(","))){
                 resultOcr.TotalTTC=Number;
                 Log.i("Total ttc : ",Double.toString( resultOcr.TotalTTC));
+                PrixTab.add(Double.toString(resultOcr.TotalTTC));
                 if( resultOcr.TotalTTC>maxNumber){
                     maxNumber= resultOcr.TotalTTC;
                     //Log.i("Total ttc : ",Double.toString(TotalTTC));
@@ -384,7 +391,7 @@ public class ParsingOcrResult extends Activity {
             }*/
             if(resultOcr.ocrWords[i].contains("/")||resultOcr.ocrWords[i].contains("-")){
                     boolean isDate,isDate1 = false;
-                    String date1 = resultOcr.ocrWords[i].replace("o","0");
+                    String date1 = resultOcr.ocrWords[i].replace("o","0").replace("z","2").replace("l", "1").replace("[","1").replace("]","1");
                     String datePattern = "\\d{1,2}/\\d{1,2}/\\d{2,4}";
                     String datePattern1 = "\\d{1,2}-\\d{1,2}-\\d{2,4}";
                     isDate = date1.matches(datePattern);
@@ -403,7 +410,7 @@ public class ParsingOcrResult extends Activity {
 
             if(resultOcr.ocrWords[i].contains("/")||resultOcr.ocrWords[i].contains("-")){
                 boolean isDate,isDate1 = false;
-                String date1 = resultOcr.ocrWords[i].replace("o","0");
+                String date1 = resultOcr.ocrWords[i].replace("o","0").replace("z", "2").replace("l", "1").replace("[","1").replace("]","1");
                 String datePattern = "\\d{1,2}/\\d{1,2}/\\d{2,4}";
                 String datePattern1 = "\\d{1,2}-\\d{1,2}-\\d{2,4}";
                 isDate = date1.matches(datePattern);
@@ -423,8 +430,14 @@ public class ParsingOcrResult extends Activity {
                 if(ComputeDistanceFacture==entier6){
                     resultOcr.NoFacture=resultOcr.ocrWords[i+1];
                 }else  ||(resultOcr.ocrWords[i].contains("n"))&&Isnumber(resultOcr.ocrWords[i+1])*/
-            if(resultOcr.ocrWords[i].contains("no")||(resultOcr.ocrWords[i].contains("n°"))){
-                    resultOcr.NoFacture=resultOcr.ocrWords[i+1];
+            if(resultOcr.ocrWords[i].contains("no")||(resultOcr.ocrWords[i].contains("n°"))||(resultOcr.ocrWords[i].contains("n:"))){
+                if(resultOcr.ocrWords[i+1].length()>2) {
+                    try {
+                        resultOcr.NoFacture = resultOcr.ocrWords[i + 1];
+                    } catch (Exception e) {
+
+                    }
+                }
                 }
           //  }
 
@@ -448,44 +461,22 @@ public class ParsingOcrResult extends Activity {
                     resultOcr.TestMail=false;
                 }
             }
+
+            //---------------------TIMBRE---------------------------
             if(resultOcr.ocrWords[i].contains("timbr")){
 timbre=0.5;
             }
 
         }
 
+        //------------------------------------------HTVA----------------------------------------
         resultOcr.Tottal=maxNumber;
-       /* if( resultOcr.TVA!="") {
-            try {
-                if (resultOcr.TVA.contains(".") || resultOcr.TVA.contains(",") || resultOcr.TVA.contains("%")) {
-                    if (resultOcr.TVA.contains("%")) {
-
-                        TVAi =(int) Double.parseDouble(resultOcr.TVA.replace("%", "").replace("#", ""));
-                        int a=TVAi;
-                    } else {
-                        TVAi = Integer.parseInt(resultOcr.TVA);
-                    }
-                    if (resultOcr.Tottal != null && TVAi != null && timbre!=0.0 ) {
-                        resultOcr.HTVA = (((resultOcr.Tottal-timbre / (1 + (TVAi / 100))) * 100) / 100);
-                    }
-                    else if(resultOcr.Tottal != null && TVAi != null && timbre==0.0) {
-                        resultOcr.HTVA = (((resultOcr.Tottal / (1 + (TVAi / 100))) * 100) / 100);
-                    }
-                    else {
-                        resultOcr.HTVA = Double.parseDouble(HtvaString);
-                    }
-                }
-            }
-            catch(Exception e){
-
-            }
-        }*/
 
         if( resultOcr.TVA!="") {
                 if (resultOcr.TVA.contains(".") || resultOcr.TVA.contains(",") || resultOcr.TVA.contains("%")) {
                     if (resultOcr.TVA.contains("%")) {
                         Log.i("TVA%","R"+resultOcr.TVA+"R");
-String TVAA=resultOcr.TVA.replace("%", "").replace("#", "").replace("l","1").replace("o","0");
+String TVAA=resultOcr.TVA.replace("%", "").replace("#", "").replace("l","1").replace("o","0").replace("z","2").replace("[","1").replace("]","1");
                         if (tryParseTVA(TVAA)){
                             TVAd = Double.parseDouble(TVAA);
                             if (resultOcr.Tottal != null && TVAd != null && timbre!=0.0 ) {
@@ -519,22 +510,17 @@ String TVAA=resultOcr.TVA.replace("%", "").replace("#", "").replace("l","1").rep
         entier7=minValue7;
 
 
-
         return resultOcr;
 
     }
  public static boolean tryParseTVA(String value) {
         try {
-Log.i("double","l"+value+"l");
           Double a= Double.parseDouble(value);
             return true;
         } catch (NumberFormatException e) {
             return false;
         }
     }
-
-
-
 
 
     public static String GetSubString(String[] words, String[] wordsOfPlanComptable, int index)
@@ -553,14 +539,14 @@ Log.i("double","l"+value+"l");
             result += words[index];
             index++;
         }
-        return result;
+        return result.replace("+", "").replace("-", "").replace(".", "").replace(")", "").replace("(", "").replace(" ", "").replace("/","").replace("fax","").replace("tel","").replace("[","1").replace("]","1").replace("l","1").replace("o","0").replace("z","2").replace("s","8");
     }
 
     public static boolean IsPhoneFaxNumber(String word)
     {
         boolean IsPhoneFax = true;
-        try{
-            Integer.parseInt(word.replace("+", "").replace("-", "").replace(".", "").replace(" ", "").replace("/","").replace("fax","").replace("tel","").replace("[","1").replace("]","1").replace("l","1".replace("o","0")));
+        try {
+            Integer.parseInt(word.replace("+", "").replace(")", "").replace("(", "").replace("-", "").replace(".", "").replace(" ", "").replace("/", "").replace("fax", "").replace("tel", "").replace("[", "1").replace("]", "1").replace("l", "1").replace("o", "0").replace("z", "2").replace("s","8"));
         }catch(NumberFormatException e){
             IsPhoneFax = false;
         }
@@ -637,7 +623,7 @@ Log.i("double","l"+value+"l");
             String[] MotClé = ResultDesignation.split("\\s+");
             for (int k = 0; k < DesignationText.length - MotClé.length; k++) {
                 int computeDistance = getLevenshteinDistance(ResultDesignation, GetSubString(DesignationText, MotClé, k));
-                System.out.println("Substring   "+  GetSubString(DesignationText, MotClé, k)+"      Désignationnnn:     "+ Designation+"   Distance=   "+computeDistance);
+                //-----System.out.println("Substring   "+  GetSubString(DesignationText, MotClé, k)+"      Désignationnnn:     "+ Designation+"   Distance=   "+computeDistance);
                 if (computeDistance < minDistance || (computeDistance == minDistance && DesignationText.length > DesignationAtMin.length())) {
                     minDistance = computeDistance;
                     DesignationAtMin = Designation.toString();
@@ -655,38 +641,5 @@ Log.i("double","l"+value+"l");
         }
        // Log.i("  ", "distaaaaaaaaance " + Integer.toString(minDistance) + "       " + DesignationAtMin.toString()   );
     }
- /*  public static void ParseDesignation(String DesignatationTextMain) {
-       int computeDistance=0;
-       int minDistance = Integer.MAX_VALUE;
-       String textLower2 =  DesignatationTextMain.toLowerCase();
-       String replacement2 = " ";
-       String delimiterChars2 = "[|?~'*()<\\\":>+\\\\[\\\\]']";
-       String Result2 = textLower2.replaceAll(delimiterChars2, replacement2);
-       String[] DesignationText = Result2.split("\\s+");
-       for(int j=1;j<MainActivity.Dictionnaire.size();j++) {
-           Designation=MainActivity.Dictionnaire.get(j);
-           String textLower1 = Designation.toLowerCase();
-
-           String replacement1 = " ";
-           String delimiterChars1 = "[|?~'*()<\\\":>+\\\\[\\\\]']";
-           String ResultDesignation = textLower1.replaceAll(delimiterChars1, replacement1);
-           //String[] MotClé = ResultDesignation.split("\\s+");
-                computeDistance = getLevenshteinDistance(ResultDesignation, Result2);
-               if (computeDistance < minDistance || (computeDistance == minDistance && DesignationText.length > DesignationAtMin.length())) {
-                   minDistance = computeDistance;
-                   DesignationAtMin = Designation.toString();
-                   Code=MainActivity.Dictionnaire.get(j - 1);
-                   String Poucentage=String.valueOf((computeDistance * 100) / DesignationAtMin.length());
-                   Log.i("LOOOG",Designation + "   " + computeDistance + " DistanceMin     " + minDistance + "   Pourcentage : " + Poucentage);
-               }
-               if (ResultDesignation == Result2) {
-                   DesignationAtMin = Designation.toString();
-                   Code=MainActivity.Dictionnaire.get(j - 1);
-               }
-           }
-       Log.i("  ", "distaaaaaaaaance " + Integer.toString(minDistance) + "       " + DesignationAtMin.toString() + "    Code  " + Code);
-
-   }
-*/
 
 }

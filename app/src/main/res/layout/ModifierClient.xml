@@ -1,0 +1,223 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background">
+
+    <!-- we're using scroll view to see all contents -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <!-- EditText for plain text input -->
+            <ImageButton
+                android:id="@+id/Logo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="250dp"
+                android:layout_centerHorizontal= "true"
+                />
+            <TextView
+                android:id="@+id/textViewRaisonSocialeClientText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Logo"
+                android:textColor="@color/white"
+                android:text="Raison Sociale"
+  />
+
+            <EditText
+                android:id="@+id/editTextRaisonSocialaClient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/textViewRaisonSocialeClientText"
+                android:singleLine="true" >
+            </EditText>
+            <TextView
+                android:id="@+id/textViewEmailAddress"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/editTextRaisonSocialaClient"
+                android:text="Email Client" />
+
+            <EditText
+                android:id="@+id/editTextEmailAddressInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/textViewEmailAddress"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:id="@+id/textViewPhoneNumber"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/editTextEmailAddressInput"
+                android:text=" Phone Number " />
+
+            <EditText
+                android:id="@+id/editTextPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/textViewPhoneNumber"
+                android:inputType="phone" />
+
+            <TextView
+                android:id="@+id/textViewFax"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/editTextPhoneNumber"
+                android:text="Fax Client" />
+
+            <EditText
+                android:id="@+id/editTextFax"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/textViewFax"
+                android:inputType="phone" />
+
+
+            <TextView
+                android:id="@+id/textViewAdresse"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/editTextFax"
+                android:text="Adresse du client" />
+
+            <EditText
+                android:id="@+id/editTextAdresse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/textViewAdresse"
+                android:inputType="text" />
+
+            <TextView
+            android:id="@+id/textViewMF"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+                android:textColor="@color/white"
+            android:layout_below="@+id/editTextAdresse"
+            android:text="Matricule Fiscale" />
+
+            <EditText
+                android:id="@+id/editTextMF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/textViewMF"
+                android:inputType="text" />
+            <TextView
+                android:id="@+id/textViewRC"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/editTextMF"
+                android:text="Registre de commerce" />
+
+            <EditText
+                android:id="@+id/editTextRC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/textViewRC"
+                android:inputType="text" />
+            <TextView
+                android:id="@+id/textViewCapital"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/editTextRC"
+                android:text="Capital" />
+
+            <EditText
+                android:id="@+id/editTextCapital"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewCapital"
+                android:inputType="text" />
+            <TextView
+            android:id="@+id/textViewActivite"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+                android:textColor="@color/white"
+            android:layout_below="@+id/editTextCapital"
+            android:text="Activité " />
+            <EditText
+                android:id="@+id/editTextActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/textViewActivite"
+                android:inputType="text" />
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/editTextActivity"
+                android:text="constitution  " />
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/textViewDate"
+                android:inputType="date"
+                />
+
+            <TextView
+                android:id="@+id/textViewFormeSociete"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/editTextDate"
+                android:textColor="@color/white"
+                android:text="Forme de la societe  "
+                />
+
+           <EditText
+               android:id="@+id/editTextFormeSociete"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textColor="@color/white"
+               android:layout_below="@+id/textViewFormeSociete"
+               />
+
+
+    <Button
+        android:id="@+id/ValiderClient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valider Client"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editTextFormeSociete" />
+
+            <include
+                android:id="@+id/view_details_network"
+                layout="@layout/view_network_failed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -23,4 +23,4 @@
         android:text="@string/save"
         android:enabled="false" />
 
-</LinearLayout><!-- From: file:/C:/NoteDeFrais/leadtoolsDemos/src/main/res/layout/save_file_elements.xml --><!-- From: file:/C:/NoteDeFrais/leadtoolsDemos/build/intermediates/bundles/debug/res/layout/save_file_elements.xml -->
+</LinearLayout>

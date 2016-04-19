@@ -1,4 +1,4 @@
-include ':app', ':library_List'
+include ':app', ':library_List', ':scanlibrary'
 include ':leadtoolsDemos'
 include ':libraries:opencv'
 include ':lib_button_menu'

@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\rotate_cw.png",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\rotate_cw.png"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_lead.png",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_lead.png"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\rotate_ccw.png",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\rotate_ccw.png"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\image_camera.png",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\image_camera.png"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\open.png",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\open.png"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\save.png",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\save.png"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\image_gallery.png",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\image_gallery.png"
+    }
+]

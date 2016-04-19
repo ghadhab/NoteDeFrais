@@ -124,4 +124,4 @@
             android:text="@string/saveformat_save" />
     </RelativeLayout>
 
-</LinearLayout><!-- From: file:/C:/NoteDeFrais/leadtoolsDemos/src/main/res/layout/save_format_dialog.xml -->
+</LinearLayout>

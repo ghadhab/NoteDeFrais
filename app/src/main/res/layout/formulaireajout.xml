@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/Logo"
                 android:textColor="@color/white"
-                android:text="Raison Sociale"
+                android:text="Company name"
   />
 
             <EditText
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:layout_below="@+id/editTextRaisonSocialaClient"
-                android:text="Email Client" />
+                android:text="E-mail Client" />
 
             <EditText
                 android:id="@+id/editTextEmailAddressInput"
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:layout_below="@+id/editTextFax"
-                android:text="Adresse du client" />
+                android:text="Address client" />
 
             <EditText
                 android:id="@+id/editTextAdresse"
@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
                 android:textColor="@color/white"
             android:layout_below="@+id/editTextAdresse"
-            android:text="Matricule Fiscale" />
+            android:text="Tax registration number" />
 
             <EditText
                 android:id="@+id/editTextMF"
@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:layout_below="@+id/editTextMF"
-                android:text="Registre de commerce" />
+                android:text="Trade register" />
 
             <EditText
                 android:id="@+id/editTextRC"
@@ -159,7 +159,7 @@
             android:layout_height="wrap_content"
                 android:textColor="@color/white"
             android:layout_below="@+id/editTextCapital"
-            android:text="Activité " />
+            android:text="Activity " />
             <EditText
                 android:id="@+id/editTextActivity"
                 android:layout_width="match_parent"
@@ -189,7 +189,7 @@
                 android:layout_height="fill_parent"
                 android:layout_below="@+id/editTextDate"
                 android:textColor="@color/white"
-                android:text="Forme de la societe  "
+                android:text="Form of the company  "
                 />
 
             <Spinner
@@ -203,7 +203,7 @@
         android:id="@+id/Ajouter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ajouter Client"
+        android:text="Add Client"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

@@ -11,19 +11,10 @@
   		android:layout_height="fill_parent"
   		android:id="@+id/list"
 		/>
-<ImageButton android:id="@+id/buttonAjouter"
-android:src="@drawable/ajouter"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:background="@android:color/transparent"
-android:layout_alignParentRight="true"
-	android:layout_alignParentBottom="true"/>
-	<ImageButton android:id="@+id/btnDeletteAllClient"
-		android:src="@drawable/delete"
+	<include
+		android:id="@+id/view_details_network"
+		layout="@layout/view_network_failed"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:background="@android:color/transparent"
-		android:layout_alignParentLeft="true"
-		android:layout_alignParentBottom="true"/>
-	</RelativeLayout>
+		android:layout_height="wrap_content" />
+</RelativeLayout>
 

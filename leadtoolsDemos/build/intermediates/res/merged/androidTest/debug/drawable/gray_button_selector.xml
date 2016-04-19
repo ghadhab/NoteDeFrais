@@ -12,4 +12,4 @@
             <corners android:radius="3dp" />
         </shape>
     </item>
-</selector><!-- From: file:/C:/NoteDeFrais/leadtoolsDemos/src/main/res/drawable/gray_button_selector.xml --><!-- From: file:/C:/NoteDeFrais/leadtoolsDemos/build/intermediates/bundles/debug/res/drawable/gray_button_selector.xml -->
+</selector>

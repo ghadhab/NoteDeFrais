@@ -13,19 +13,20 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="18dp"
             android:layout_marginTop="24dp"
-            android:text="Fournisseur"
+            android:text="Provider"
             android:textColor="@color/white"
            />
-        <EditText
+        <TextView
             android:id="@+id/Fournisseur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:ems="10"
+            android:layout_alignTop="@+id/FournisseurText"
             android:imeOptions="actionSearch"
             android:textColor="@color/white"
             android:inputType="text">
-        </EditText>
+        </TextView>
 
 
         <TextView
@@ -33,13 +34,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="18dp"
-            android:layout_marginTop="34dp"
-            android:text="No Facture"
+            android:layout_marginTop="24dp"
+            android:text="Invoice Number"
             android:textColor="@color/white"
             android:layout_toRightOf="@+id/etat_NFacture"
             android:layout_below="@+id/FournisseurText"/>
 
-        <EditText
+        <TextView
             android:id="@+id/NoFacture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +50,7 @@
             android:imeOptions="actionSearch"
             android:textColor="@color/white"
             android:inputType="text">
-        </EditText>
+        </TextView>
 
         <TextView
             android:id="@+id/Matricule_fiscale_Text"
@@ -58,12 +59,12 @@
             android:layout_alignLeft="@+id/NoFacture_Text"
             android:layout_below="@+id/NoFacture"
             android:layout_marginTop="26dp"
-            android:text="Matricule Fiscal"
+            android:text="Tax Registration Number"
             android:textColor="@color/white"
             android:layout_toRightOf="@+id/etat_MatriculeFiscale"
           />
 
-        <EditText
+        <TextView
             android:id="@+id/MatriculeFiscale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,7 +74,7 @@
             android:imeOptions="actionSearch"
             android:textColor="@color/white"
             android:inputType="text">
-        </EditText>
+        </TextView>
 
 
         <TextView
@@ -87,7 +88,7 @@
             android:text="MF"
             android:layout_toRightOf="@+id/etat_MF"/>
 
-        <EditText
+        <TextView
             android:id="@+id/MF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,7 +98,7 @@
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="text">
-        </EditText>
+        </TextView>
 
         <TextView
             android:id="@+id/TVA_Text"
@@ -107,10 +108,10 @@
             android:layout_below="@+id/MF"
             android:textColor="@color/white"
             android:layout_marginTop="26dp"
-            android:text="TVA"
+                android:text="VAT"
             android:layout_toRightOf="@+id/etat_Tva"/>
 
-        <EditText
+        <TextView
             android:id="@+id/TVA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,7 +121,7 @@
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="text">
-        </EditText>
+        </TextView>
 
 
 
@@ -131,11 +132,11 @@
             android:layout_alignLeft="@+id/TVA_Text"
             android:layout_below="@+id/TVA"
             android:layout_marginTop="26dp"
-            android:text="Tottal T.T.C"
+            android:text="Incl Tax"
             android:textColor="@color/white"
             android:layout_toRightOf="@+id/etat_TotalTTC"/>
 
-        <EditText
+        <TextView
             android:id="@+id/TottalTTC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -145,7 +146,7 @@
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="text">
-        </EditText>
+        </TextView>
 
 
 
@@ -157,10 +158,10 @@
             android:layout_below="@+id/TottalTTC"
             android:layout_marginTop="26dp"
             android:textColor="@color/white"
-            android:text="HTVA"
+            android:text="Excl Tax"
             android:layout_toRightOf="@+id/etat_HTVA"/>
 
-        <EditText
+        <TextView
             android:id="@+id/HTVA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -170,7 +171,7 @@
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="text">
-        </EditText>
+        </TextView>
 
 
 
@@ -182,10 +183,10 @@
             android:layout_below="@+id/HTVA"
             android:textColor="@color/white"
             android:layout_marginTop="26dp"
-            android:text="No Tel"
+            android:text="Phone Number"
             android:layout_toRightOf="@+id/etat_NTel"/>
 
-        <EditText
+        <TextView
             android:id="@+id/Tel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -195,7 +196,7 @@
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="text">
-        </EditText>
+        </TextView>
 
 
 
@@ -207,10 +208,10 @@
             android:layout_below="@+id/Tel"
             android:textColor="@color/white"
             android:layout_marginTop="26dp"
-            android:text="No Fax"
+            android:text="Fax Number"
             android:layout_toRightOf="@+id/etat_NFax"/>
 
-        <EditText
+        <TextView
             android:id="@+id/Fax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -220,7 +221,7 @@
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="text">
-        </EditText>
+        </TextView>
 
 
         <TextView
@@ -231,11 +232,11 @@
             android:layout_below="@+id/Fax"
             android:textColor="@color/white"
             android:layout_marginTop="26dp"
-            android:text="Email"
+            android:text="E-mail"
             android:layout_toRightOf="@+id/etat_Email"/>
 
 
-        <EditText
+        <TextView
             android:id="@+id/Email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -245,7 +246,7 @@
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="text">
-        </EditText>
+        </TextView>
 
 
 
@@ -257,11 +258,11 @@
             android:layout_below="@+id/Email"
             android:layout_marginTop="26dp"
             android:textColor="@color/white"
-            android:text="Site Web"
+            android:text="Website"
             android:layout_toRightOf="@+id/etat_Site"/>
 
 
-        <EditText
+        <TextView
             android:id="@+id/Web"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -271,7 +272,7 @@
             android:ems="10"
             android:imeOptions="actionSearch"
             android:inputType="text">
-        </EditText>
+        </TextView>
 
 
 
@@ -287,7 +288,7 @@
             android:layout_toRightOf="@+id/etat_Date"/>
 
 
-        <EditText
+        <TextView
             android:id="@+id/Date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -296,7 +297,7 @@
             android:textColor="@color/white"
             android:layout_alignTop="@+id/Date_Text"
             android:ems="10">
-        </EditText>
+        </TextView>
 
 
 
@@ -308,11 +309,11 @@
             android:layout_below="@+id/Date"
             android:textColor="@color/white"
             android:layout_marginTop="26dp"
-            android:text="Désignation"
+            android:text="Designation"
             android:layout_toRightOf="@+id/etat_Designation"/>
 
 
-        <EditText
+        <TextView
             android:id="@+id/Designation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -322,16 +323,6 @@
             android:ems="10"
             />
 
-
-        <!--android:onClick="onDateClicked"-->
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/Designation"
-            android:layout_below="@+id/Designation"
-            android:layout_marginTop="21dp"
-            android:text="submit" />
 
         <include
             android:id="@+id/view_details_network"

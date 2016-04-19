@@ -15,7 +15,6 @@ import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -45,19 +44,15 @@ import com.compta.firstak.notedefrais.FormeDeLaSociete.SA;
 import com.compta.firstak.notedefrais.R;
 import com.compta.firstak.notedefrais.app.AppConfig;
 import com.compta.firstak.notedefrais.app.AppController;
-import com.compta.firstak.notedefrais.app.JSONParser;
+import com.compta.firstak.notedefrais.entity.Client;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -263,7 +258,7 @@ isclicked=true;
         }
         if (position == 2) {
             GetFormeSociete="SA";
-            Intent intent = new Intent(AjouterClient.this,
+           Intent intent = new Intent(AjouterClient.this,
                    SA.class);
             startActivity(intent);
             AddClientJsonObject();
@@ -271,7 +266,7 @@ isclicked=true;
         }
         if(position==3){
             GetFormeSociete="Entreprise Individuelle";
-            Intent intent = new Intent(AjouterClient.this,
+         Intent intent = new Intent(AjouterClient.this,
                     PresidentDeConseil.class);
             startActivity(intent);
             AddClientJsonObject();

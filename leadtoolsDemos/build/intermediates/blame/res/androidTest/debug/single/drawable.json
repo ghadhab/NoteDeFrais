@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\gray_button_selector.xml",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable\\gray_button_selector.xml"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\blue_button_selector.xml",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable\\blue_button_selector.xml"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\blue_background.xml",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable\\blue_background.xml"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\leadlogo.png",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable\\leadlogo.png"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\gray_background.xml",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable\\gray_background.xml"
+    },
+    {
+        "merged": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\dialog_background.xml",
+        "source": "C:\\NoteDeFrais\\leadtoolsDemos\\build\\intermediates\\bundles\\debug\\res\\drawable\\dialog_background.xml"
+    }
+]
