@@ -1,74 +1,71 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/popup_element5"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#444444"
     android:orientation="vertical"
-    android:padding="10sp" >
+    android:padding="6dp"
+ >
 
-    <TextView
-        android:id="@+id/textViewNomAssocie"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:text="Associe unique:" />
+        android:layout_marginTop="3dp">
     <EditText
         android:id="@+id/EditTextNomAssociesuarl"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
+        android:textColor="@color/black"
+        android:hint="Associe unique"
         />
-    <TextView
-        android:id="@+id/textViewNumberAssocies"
-        android:layout_width="wrap_content"
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:text="Nombre de parts sociales:" />
+        android:layout_marginTop="3dp">
     <EditText
         android:id="@+id/EditTextNombrePartSuarl"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
+        android:textColor="@color/black"
         android:inputType="numberDecimal"
+        android:hint="Nombre de parts sociales"
         />
-    <TextView
-        android:id="@+id/textViewValeur"
-        android:layout_width="wrap_content"
+</android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:text="Nombre Nominale :" />
+        android:layout_marginTop="3dp">
     <EditText
         android:id="@+id/EditTextNombreNominale"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
+        android:textColor="@color/black"
         android:inputType="numberDecimal"
+        android:hint="Nombre Nominale"
         />
-    <TextView
-        android:id="@+id/textViewTotal"
-        android:layout_width="wrap_content"
+</android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:text="Total :" />
+        android:layout_marginTop="3dp">
     <EditText
         android:id="@+id/EditTextTotalsuarl"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
+        android:textColor="@color/black"
         android:inputType="numberDecimal"
+        android:hint="Total"
         />
+    </android.support.design.widget.TextInputLayout>
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
         >
         <Button
             android:id="@+id/CancelSuarl"
@@ -77,7 +74,8 @@
             android:layout_gravity="left"
             android:text="Cancel"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"/>
+            style="@style/Widget.AppCompat.Button.Borderless"
+          />
 
         <Button
             android:id="@+id/ValiderSuarl"
@@ -85,7 +83,9 @@
             android:layout_height="wrap_content"
             android:text="Valider"
             android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"/>
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:textColor="@color/colorAccent"
+            />
     </RelativeLayout>
 </LinearLayout>
 

@@ -11,11 +11,14 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.renderscript.Sampler;
+import android.support.v7.widget.AppCompatEditText;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
@@ -29,6 +32,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -534,7 +538,7 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
 
 
     //--------------------------------------------EntrepriseIndividuelle ------------------------------------------------------
-
+/*
     private PopupWindow pwindo3;
     private void initiatePopupWindowEntrepriseIndividuelle() {
         try {
@@ -574,10 +578,48 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }*/
+
+    private void initiatePopupWindowEntrepriseIndividuelle() {
+        final Dialog dialog = new Dialog(PresidentDeConseil.this,R.style.AlertDialogCustom);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.popupentrepriseindividuelle);
+
+        btnValiderPopup3 = (Button) dialog.findViewById(R.id.ValiderIndivideuelle);
+        btnCancelPopup3 = (Button) dialog.findViewById(R.id.CancelIndivideuelle);
+        EditTextNomIndividelle=(EditText)dialog.findViewById(R.id.EditTextNomNomIndividuelle);
+        EditTextPrenomIndividelle=(EditText)dialog.findViewById(R.id.EditTextPrenomIndividuelle);
+        EditTextMatriculeFiscaleEI=(EditText)dialog.findViewById(R.id.EditTextMatriculeFiscale);
+        EditTextAdresseEI=(EditText)dialog.findViewById(R.id.EditTextAdresseEI);
+        btnValiderPopup3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                NomIndividuelle=EditTextNomIndividelle.getText().toString();
+                PrenomIndividuelle=EditTextPrenomIndividelle.getText().toString();
+                MatriculeFiscaleEI=EditTextMatriculeFiscaleEI.getText().toString();
+                AdresseEI=EditTextAdresseEI.getText().toString();
+                addItemList3();
+                lv.setAdapter(adapter);
+                CreateNewEntrepriseIndiv();
+                dialog.dismiss();
+            }
+        });
+
+        btnCancelPopup3.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.getWindow().getAttributes().windowAnimations = R.style.MyDialogAnimation;
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.show();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
     }
 
 
 //--------------------------------------------SARL------------------------------------------------------
+
 
 
     private PopupWindow pwindo4;
@@ -688,50 +730,49 @@ TextView txtRaisonSocialeActioannaire,txtViewMatriculeFiscaleActioannaire,txtVie
 
 
 
+
+
     //--------------------------------------------SUARL------------------------------------------------------
-    private PopupWindow pwindo5;
     private void initiatePopupWindowSuarl() {
-        try {
-            LayoutInflater inflater = (LayoutInflater) PresidentDeConseil.this
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View layout = inflater.inflate(R.layout.popupsuarl,
-                    (ViewGroup) findViewById(R.id.popup_element5));
-            pwindo5 = new PopupWindow(layout,900 , 1200, true);
-            pwindo5.showAtLocation(layout, Gravity.CENTER, 0, 0);
+        final Dialog dialog = new Dialog(PresidentDeConseil.this,R.style.AlertDialogCustom);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.popupsuarl);
 
-            btnValiderPopup5 = (Button) layout.findViewById(R.id.ValiderSuarl);
-            btnCancelPopup5 = (Button) layout.findViewById(R.id.CancelSuarl);
-            EditTextAssociesuarl=(EditText)layout.findViewById(R.id.EditTextNomAssociesuarl);
-            EditTextNombrePartSuarl=(EditText)layout.findViewById(R.id.EditTextNombrePartSuarl);
-            EditTextNombreNominale=(EditText)layout.findViewById(R.id. EditTextNombreNominale);
-            EditTextTotalsuarl=(EditText)layout.findViewById(R.id.EditTextTotalsuarl);
+        btnValiderPopup5 = (Button) dialog.findViewById(R.id.ValiderSuarl);
+        btnCancelPopup5 = (Button) dialog.findViewById(R.id.CancelSuarl);
+        EditTextAssociesuarl=(EditText)dialog.findViewById(R.id.EditTextNomAssociesuarl);
+        EditTextNombrePartSuarl=(EditText)dialog.findViewById(R.id.EditTextNombrePartSuarl);
+        EditTextNombreNominale=(EditText)dialog.findViewById(R.id. EditTextNombreNominale);
+        EditTextTotalsuarl=(EditText)dialog.findViewById(R.id.EditTextTotalsuarl);
 
-            btnValiderPopup5.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
+        btnValiderPopup5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
-                    NomAssociesuarl=EditTextAssociesuarl.getText().toString();
-                    NombrePartSuarl = Integer.parseInt(EditTextNombrePartSuarl.getText().toString());
-                    NombreNominale = Double.parseDouble(EditTextNombreNominale.getText().toString());
-                    TotalAssociesuarl = Integer.parseInt(EditTextTotalsuarl.getText().toString());
-                    addItemList5();
-                    lv.setAdapter(adapter);
-                    CreateNewSuarl();
-                    pwindo5.dismiss();
+                NomAssociesuarl = EditTextAssociesuarl.getText().toString();
+                NombrePartSuarl = Integer.parseInt(EditTextNombrePartSuarl.getText().toString());
+                NombreNominale = Double.parseDouble(EditTextNombreNominale.getText().toString());
+                TotalAssociesuarl = Integer.parseInt(EditTextTotalsuarl.getText().toString());
+                addItemList5();
+                lv.setAdapter(adapter);
+                CreateNewSuarl();
+                dialog.dismiss();
 
-                }
-            });
+            }
+        });
 
-            btnCancelPopup5.setOnClickListener(new View.OnClickListener() {
+        btnCancelPopup5.setOnClickListener(new View.OnClickListener() {
 
-                public void onClick(View v) {
-                    pwindo5.dismiss();
-                }
-            });
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.getWindow().getAttributes().windowAnimations = R.style.MyDialogAnimation;
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.show();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
     }
+
+
 
 
     private void updateLabel() {

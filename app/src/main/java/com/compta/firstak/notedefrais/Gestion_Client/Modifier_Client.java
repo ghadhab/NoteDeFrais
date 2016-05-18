@@ -21,8 +21,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+
 import com.compta.firstak.notedefrais.R;
-import com.compta.firstak.notedefrais.adapter.UsersAdapter;
 import com.compta.firstak.notedefrais.app.AppConfig;
 import com.compta.firstak.notedefrais.app.AppController;
 

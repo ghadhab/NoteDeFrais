@@ -32,4 +32,6 @@
 
     </string-array>
     <string name="title_activity_table_facture_by_client">TableFactureByClient</string>
+    <string name="button_enregistrer">Enregistrer</string>
+    <string name="button_cancel">Cancel</string>
 </resources>

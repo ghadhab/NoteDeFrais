@@ -42,4 +42,15 @@
     <color name="app_primary_dark">#37474F</color>
     <color name="marron">#33230B</color>
     <color name="myblack0_7">#B3000000</color>
+
+    <integer-array name="mycolors">
+        <item>@color/green_progress</item>
+        <item>@color/white_color</item>
+        <item>@color/jaune_bar</item>
+    </integer-array>
+    <color name="green_progress">#00a265</color>
+
+    <color name="jaune_bar">#feda3d</color>
+    <color name="colorAccent">#144888</color>
+
 </resources>

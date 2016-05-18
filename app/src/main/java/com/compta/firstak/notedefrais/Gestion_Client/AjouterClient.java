@@ -248,7 +248,7 @@ isclicked=true;
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         pos=position;
-        if(position==1){
+       /* if(position==1){
             GetFormeSociete="SARL";
             Intent intent = new Intent(AjouterClient.this,
                     PresidentDeConseil.class);
@@ -277,7 +277,7 @@ isclicked=true;
                     PresidentDeConseil.class);
             startActivity(intent);
             AddClientJsonObject();
-        }
+        }*/
 
     }
 
@@ -369,12 +369,46 @@ isclicked=true;
 
                                 if (client!=null)
                                 {
+                                    if(pos==1){
+                                        GetFormeSociete="SARL";
+                                        Intent intent = new Intent(AjouterClient.this,
+                                                PresidentDeConseil.class);
+                                        startActivity(intent);
+                                      //  AddClientJsonObject();
+
+                                    }
+                                    if (pos == 2) {
+                                        GetFormeSociete="SA";
+                                        Intent intent = new Intent(AjouterClient.this,
+                                                SA.class);
+                                        startActivity(intent);
+                                       // AddClientJsonObject();
+
+                                    }
+                                    if(pos==3){
+                                        GetFormeSociete="Entreprise Individuelle";
+                                        Intent intent = new Intent(AjouterClient.this,
+                                                PresidentDeConseil.class);
+                                        startActivity(intent);
+                                       // AddClientJsonObject();
+                                    }
+                                    if(pos==4){
+                                        GetFormeSociete="SUARL";
+                                        Intent intent = new Intent(AjouterClient.this,
+                                                PresidentDeConseil.class);
+                                        startActivity(intent);
+                                       // AddClientJsonObject();
+                                    }
+                                }
+
+                               /* if (client!=null)
+                                {
                                     // Prepare data intent
                                     Intent data = new Intent();
                                     data.putExtra("client", client);
                                     // Activity finished ok, return the data
                                     setResult(RESULT_OK, data);
-                                }
+                                }*/
                                 finish();
                             } catch (JSONException e) {
                                 e.printStackTrace();
