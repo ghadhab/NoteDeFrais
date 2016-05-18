@@ -210,6 +210,7 @@ public  static Integer NumIsPhoneFax;
         for (String ss : resultOcr.ocrWords) {
 
             System.out.println(ss);
+
         }
         for (int i = 0; i < resultOcr.ocrWords.length; i++) {
 
@@ -247,6 +248,7 @@ public  static Integer NumIsPhoneFax;
                         resultOcr.MatriculeFiscale= resultOcr.ocrWords[i];
                         resultOcr.TestMatriculeFiscale=true;
                     }
+
 
                 }
                 if((resultOcr.ocrWords[i].replace("/","").replace("-", "").replace("_","").replace(" ", "").replace("[","1").replace("]","1").length()==8)||(resultOcr.ocrWords[i].replace("/","").replace("-", "").replace("_","").replace(" ", "").replace("[","1").replace("]","1").length()==7)){
