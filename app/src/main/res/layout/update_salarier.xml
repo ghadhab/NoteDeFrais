@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:fillViewport="false">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <!--<TextView
+            android:id="@+id/NomEtAdresse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Nom et Adresse societe :"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:id="@+id/Periode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Periode :"
+            android:textColor="@color/white"
+            android:layout_below="@+id/NomEtAdresse"/>
+        <DatePicker
+            android:id="@+id/date_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            android:textColor="@color/white"
+            android:layout_weight="4"
+            android:layout_toRightOf="@+id/Periode"
+            />
+-->
+        <TextView
+            android:id="@+id/Fiche_de_paie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Creation Salarié"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:id="@+id/MatriculeFiscale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Matricule :"
+            android:ems="10"
+            android:textColor="@color/white"
+            android:layout_above="@+id/Nom_text"
+            android:layout_alignParentLeft="true">
+        </TextView>
+
+        <EditText
+            android:id="@+id/MatriculeFiscale_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Fiche_de_paie"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/MatriculeFiscale"/>
+
+
+        <TextView
+            android:id="@+id/Nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom :"
+            android:ems="10"
+            android:textColor="@color/white"
+            android:layout_below="@+id/MatriculeFiscale"
+          >
+        </TextView>
+
+        <EditText
+            android:id="@+id/Nom_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/MatriculeFiscale_text"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/Nom"/>
+        <TextView
+            android:id="@+id/Prenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prenom :"
+            android:ems="10"
+            android:textColor="@color/white"
+            android:layout_below="@+id/Nom"
+            >
+        </TextView>
+
+        <EditText
+            android:id="@+id/Prenom_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Prenom"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/Prenom"/>
+
+
+        <TextView
+            android:id="@+id/Email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email :"
+            android:ems="10"
+            android:textColor="@color/white"
+            android:layout_below="@+id/Prenom">
+        </TextView>
+
+        <EditText
+            android:id="@+id/Email_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Prenom_text"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/Email"/>
+
+        <TextView
+            android:id="@+id/Cin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CIN :"
+            android:ems="10"
+            android:textColor="@color/white"
+            android:layout_below="@+id/Email">
+        </TextView>
+
+        <EditText
+            android:id="@+id/CIN_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Email_text"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/Cin"/>
+
+        <TextView
+            android:id="@+id/Adresse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adresse :"
+            android:ems="10"
+            android:textColor="@color/white"
+            android:layout_below="@+id/Cin">
+        </TextView>
+
+        <EditText
+            android:id="@+id/Adressetext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/CIN_text"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/Adresse"/>
+
+
+
+        <TextView
+            android:id="@+id/Fonction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fonction :"
+            android:ems="10"
+            android:textColor="@color/white"
+            android:layout_below="@+id/Adresse">
+        </TextView>
+
+        <EditText
+            android:id="@+id/Fonction_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Adressetext"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/Adresse"/>
+
+
+
+        <TextView
+            android:id="@+id/Salaire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:layout_below="@+id/Fonction"
+            android:text="Salaire :"
+           />
+
+        <EditText
+            android:id="@+id/Salaire_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_below="@+id/Fonction_text"
+            android:inputType="number"
+            android:layout_toRightOf="@+id/Salaire"/>
+
+
+
+        <TextView
+            android:id="@+id/Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:layout_below="@+id/Salaire"
+            android:text="Date de naissance : " />
+        <EditText
+            android:id="@+id/Date_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_below="@+id/Salaire_text"
+            android:layout_toRightOf="@+id/Date"
+            />
+
+        <TextView
+            android:id="@+id/CNSS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:layout_below="@+id/Date"
+            android:text="N° CNSS :" />
+        <EditText
+            android:id="@+id/CNSS_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_below="@+id/Date_text"
+            android:layout_toRightOf="@+id/CNSS"
+            />
+        <TextView
+            android:id="@+id/Situation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:layout_below="@+id/CNSS"
+            android:layout_alignParentLeft="true"
+            android:text="Situation :" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Celibataire"
+            android:id="@+id/Celibataire"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/CNSS_text"/>
+
+        <RadioButton
+            android:id="@+id/Mariee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mariée"
+            android:layout_gravity="right"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/CNSS_text"/>
+        <TextView
+            android:id="@+id/NbrEnfant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:layout_below="@+id/Situation"
+            android:layout_alignParentLeft="true"
+            android:text="Nombre Enfants :" />
+        <EditText
+            android:id="@+id/NbrEnfant_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_below="@+id/Mariee"
+            android:layout_toRightOf="@+id/NbrEnfant"
+            android:inputType="numberDecimal"
+            />
+
+      <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ajouter"
+          android:layout_centerHorizontal="true"
+          android:layout_below="@+id/NbrEnfant_text"/>
+        <!-- android:layout_centerHorizontal="true"  android:layout_below="@+id/MatriculeFiscale_text"-->
+
+        <include
+            android:id="@+id/view_details_network"
+            layout="@layout/view_network_failed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</ScrollView>

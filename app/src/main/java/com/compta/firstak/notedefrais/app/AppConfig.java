@@ -2,8 +2,10 @@ package com.compta.firstak.notedefrais.app;
 
 public class AppConfig {
 	//public static String urlRacine="http://197.2.4.98:5689/Comptabilitee/rest/";
-
-	public static String urlRacine=AppController.getInstance().getUrlRacine();
+/////URL DU NOTRE SERVEUR LOCAL
+	//public static String urlRacine=AppController.getInstance().getUrlRacine();
+	////URL CLOUD
+	public static String urlRacine="http://164.132.57.190:8585/Comptabilitee/rest/";
 	//public static String urlRacine="http://192.168.1.17:8082/Comptabilitee/rest/";
 
 	// Server user login url

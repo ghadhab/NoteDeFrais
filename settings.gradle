@@ -4,5 +4,6 @@ include ':libraries:opencv'
 include ':lib_button_menu'
 include ':library-Swipe'
 include  ':volley'
+include ':libraryCircularProgressBar'
 
 
