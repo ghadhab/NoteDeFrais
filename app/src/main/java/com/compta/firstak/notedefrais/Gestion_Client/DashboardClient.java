@@ -23,19 +23,19 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.compta.firstak.notedefrais.GestionFacture.FournisseurDec;
+import com.compta.firstak.notedefrais.Gestion_Salarie.Fiche_Paie;
+import com.compta.firstak.notedefrais.Gestion_Salarie.Get_Salarier;
+import com.compta.firstak.notedefrais.Gestion_Salarie.Salarier_Swipe;
 import com.compta.firstak.notedefrais.MainActivity;
 import com.compta.firstak.notedefrais.R;
 import com.compta.firstak.notedefrais.entity.Facture;
 import com.compta.firstak.notedefrais.GestionFacture.GetFacture;
-import com.compta.firstak.notedefrais.GestionFacture.ListImageButtonDec;
 import com.compta.firstak.notedefrais.GestionFacture.TableFacture;
-import com.compta.firstak.notedefrais.GestionFacture.TableFacture_Immo;
 import com.compta.firstak.notedefrais.adapter.FactureAdapter;
 import com.compta.firstak.notedefrais.adapter.UsersAdapter;
 import com.compta.firstak.notedefrais.app.AppConfig;
 import com.compta.firstak.notedefrais.app.AppController;
 import com.compta.firstak.notedefrais.service.JsonService;
-import com.scanlibrary.ScanActivity;
 
 import org.json.JSONArray;
 
@@ -62,7 +62,6 @@ public  static int REQUEST_NUM_FACTURE=12;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
-
         getNom=(TextView)findViewById(R.id.GetNom);
         getNom.setText(UsersAdapter.NameFromSelect);
 
@@ -104,8 +103,11 @@ Add=(ImageButton)findViewById(R.id.Add);
         Tableau_Immo.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent intent = new Intent(DashboardClient.this,
+                /*Intent intent = new Intent(DashboardClient.this,
                         TableFacture_Immo.class);
+                startActivity(intent);*/
+                Intent intent = new Intent(DashboardClient.this,
+                        Salarier_Swipe.class);
                 startActivity(intent);
                 //finish();
             }

@@ -39,7 +39,7 @@
             android:id="@+id/Fiche_de_paie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Creation Salarié"
+            android:text="Modifier Salarié"
             android:textSize="25dp"
             android:textColor="@color/white"
             android:layout_centerHorizontal="true"
@@ -283,7 +283,7 @@
             android:id="@+id/submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ajouter"
+            android:text="Modifier"
           android:layout_centerHorizontal="true"
           android:layout_below="@+id/NbrEnfant_text"/>
         <!-- android:layout_centerHorizontal="true"  android:layout_below="@+id/MatriculeFiscale_text"-->

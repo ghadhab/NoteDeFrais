@@ -3,6 +3,7 @@ package com.compta.firstak.notedefrais.Gestion_Salarie;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -24,19 +26,24 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.compta.firstak.notedefrais.Gestion_Client.DashboardClient;
 import com.compta.firstak.notedefrais.R;
 import com.compta.firstak.notedefrais.adapter.UsersAdapter;
 import com.compta.firstak.notedefrais.app.AppConfig;
 import com.compta.firstak.notedefrais.app.AppController;
+import com.compta.firstak.notedefrais.entity.Salarier;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 /**
  * Created by mohamed on 09/05/2016.
@@ -48,7 +55,7 @@ public class Fiche_Paie extends Activity{
     public static String adresse,email,fonction,matricule,nbrEnfant,nom,numCnss,prenom,salaireBrut,situation,dateNaissance,NbrEnfant,Cin;
     private Button actualiserbutton;
     private RelativeLayout networkFailed;
-    String reqAddSalarie, TypeDactionnaire;
+    String reqAddSalarie, SituationSalarie;
     TextView NbreText;
 
     @Override
@@ -79,7 +86,7 @@ public class Fiche_Paie extends Activity{
         radioCelib.setOnCheckedChangeListener(new RadioButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TypeDactionnaire="Celibataire";
+                SituationSalarie="celibataire";
                 radioMarie.setChecked(false);
                 NbrEnfant_edit.setVisibility(View.GONE);
                 NbreText.setVisibility(View.GONE);
@@ -90,7 +97,7 @@ public class Fiche_Paie extends Activity{
         radioMarie.setOnCheckedChangeListener(new RadioButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TypeDactionnaire = "Mariée";
+                SituationSalarie = "marie";
                 radioCelib.setChecked(false);
                 NbrEnfant_edit.setVisibility(View.VISIBLE);
                 NbreText.setVisibility(View.VISIBLE);
@@ -138,18 +145,20 @@ public class Fiche_Paie extends Activity{
                 email= email_edit.getText().toString();
                 fonction=  fonction_edit.getText().toString();
                 matricule=  matricule_edit.getText().toString();
-                nbrEnfant=  NbrEnfant_edit.getText().toString();
                 nom= nom_edit.getText().toString();
                 numCnss=  numCnss_edit.getText().toString();
                 prenom=  prenom_edit.getText().toString();
                 salaireBrut= salaireBrut_edit.getText().toString();
                 dateNaissance=  DatePaie_edit.getText().toString();
+                //dateNaissance=formatDateTime(Fiche_Paie.this, DatePaie_edit.getText().toString());
                 NbrEnfant= NbrEnfant_edit.getText().toString();
                 Cin= Cin_edit.getText().toString();
-
+                Toast.makeText(Fiche_Paie.this,dateNaissance, Toast.LENGTH_LONG).show();
                 AddSalarieJsonObject();
 
-
+                Intent intent = new Intent(Fiche_Paie.this,
+                        Salarier_Swipe.class);
+                Fiche_Paie.this.startActivity(intent);
             }
         });
 
@@ -223,7 +232,8 @@ public class Fiche_Paie extends Activity{
                postParam.put("numCnss", numCnss);
                postParam.put("prenom", prenom);
                postParam.put("salaireBrut", salaireBrut);
-               postParam.put("situation", TypeDactionnaire);
+               postParam.put("situation", SituationSalarie);
+               Toast.makeText(Fiche_Paie.this, SituationSalarie, Toast.LENGTH_LONG).show();
                postParam.put("dateNaissance", dateNaissance);
 
                 Log.i("postParam", postParam.toString());
@@ -283,4 +293,40 @@ public class Fiche_Paie extends Activity{
                 .getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
+
+
+
+    public static String formatDateTime(Context context, String timeToFormat) {
+
+        String finalDateTime = "";
+
+        SimpleDateFormat iso8601Format = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss");
+
+        Date date = null;
+        if (timeToFormat != null) {
+            try {
+                date = iso8601Format.parse(timeToFormat);
+            } catch (ParseException e) {
+                date = null;
+            }
+
+            if (date != null) {
+                long when = date.getTime();
+                int flags = 0;
+                flags |= android.text.format.DateUtils.FORMAT_SHOW_TIME;
+                flags |= android.text.format.DateUtils.FORMAT_SHOW_DATE;
+                flags |= android.text.format.DateUtils.FORMAT_ABBREV_MONTH;
+                flags |= android.text.format.DateUtils.FORMAT_SHOW_YEAR;
+
+                finalDateTime = android.text.format.DateUtils.formatDateTime(context,
+                        when + TimeZone.getDefault().getOffset(when), flags);
+            }
+        }
+        return finalDateTime;
+    }
+
+
+
 }

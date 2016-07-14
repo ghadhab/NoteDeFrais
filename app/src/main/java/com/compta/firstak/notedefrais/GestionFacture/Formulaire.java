@@ -523,13 +523,13 @@ catch(Exception e){
             // Tag used to cancel the request
             reqAddFacture = "json_obj_req_Add_Client";
             Log.i("UrlAddClientById", AppConfig.AddURLAddFacture);
-            JSONObject obj=null;
-            try {
+                           JSONObject obj=null;
+                try {
 
-                obj = new JSONObject();
-                obj.put("id", String.valueOf(UsersAdapter.idFromSelect));
+                    obj = new JSONObject();
+                    obj.put("id", String.valueOf(UsersAdapter.idFromSelect));
 
-                // obj = new JSONObject(String.valueOf(AjouterClient.id));
+                    // obj = new JSONObject(String.valueOf(AjouterClient.id));
 
                 Log.d("My App", obj.toString());
 

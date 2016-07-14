@@ -7,36 +7,159 @@ import android.os.Parcelable;
  * Created by mohamed on 12/01/2016.
  */
 public class Salarier implements Parcelable {
+    public String getAdresse() {
+        return adresse;
+    }
 
-    public String name;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFonction() {
+        return fonction;
+    }
+
+    public void setFonction(String fonction) {
+        this.fonction = fonction;
+    }
+
+    public String getMatricule() {
+        return matricule;
+    }
+
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
+    }
+
+    public String getNbrEnfant() {
+        return nbrEnfant;
+    }
+
+    public void setNbrEnfant(String nbrEnfant) {
+        this.nbrEnfant = nbrEnfant;
+    }
+
+    public String getCin() {
+        return Cin;
+    }
+
+    public void setCin(String cin) {
+        Cin = cin;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getNumCnss() {
+        return numCnss;
+    }
+
+    public void setNumCnss(String numCnss) {
+        this.numCnss = numCnss;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getSalaireBrut() {
+        return salaireBrut;
+    }
+
+    public void setSalaireBrut(String salaireBrut) {
+        this.salaireBrut = salaireBrut;
+    }
+
+    public String getSituation() {
+        return situation;
+    }
+
+    public void setSituation(String situation) {
+        this.situation = situation;
+    }
+
+    public String getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(String dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int id;
-    public String email;
-    public String phone;
-    public String fax;
     public String adresse;
-    public String matriculeFiscale;
-    public String registre;
-    public String capital;
-    public String activite;
-    public String constitution;
-    public String formeSociete;
-    public String archivage;
+    public String email;
+    public String fonction;
+    public String matricule;
+    public String nbrEnfant;
+    public String nom;
+    public String numCnss;
+    public String prenom;
+    public String salaireBrut;
+    public String situation;
+    public String dateNaissance;
+    public String NbrEnfant;
+    public String Cin;
 
+    public Salarier(int id,String adresse,String email,String fonction, String matricule,String nbrEnfant,String nom,String numCnss,String prenom, String salaireBrut,String situation,String dateNaissance, String NbrEnfant ,String Cin ) {
+        this.adresse = adresse;
+        this.id = id;
+        this.email=email;
+        this.fonction=fonction;
+        this.matricule=matricule;
+        this.nbrEnfant=nbrEnfant;
+        this.nom=nom;
+        this.numCnss=numCnss;
+        this.prenom=prenom;
+        this.salaireBrut=salaireBrut;
+        this.situation=situation;
+        this.dateNaissance=dateNaissance;
+        this.NbrEnfant=NbrEnfant;
+        this.Cin=Cin;
+    }
 
+    public Salarier() {
+
+    }
     protected Salarier(Parcel in) {
-        name = in.readString();
-        id = in.readInt();
-        email = in.readString();
-        phone = in.readString();
-        fax = in.readString();
         adresse = in.readString();
-        matriculeFiscale = in.readString();
-        registre = in.readString();
-        capital = in.readString();
-        activite = in.readString();
-        constitution = in.readString();
-        formeSociete = in.readString();
-        archivage = in.readString();
+        email = in.readString();
+        fonction = in.readString();
+        matricule = in.readString();
+        nbrEnfant = in.readString();
+        nom = in.readString();
+        numCnss = in.readString();
+        prenom = in.readString();
+        salaireBrut = in.readString();
+        situation = in.readString();
+        dateNaissance = in.readString();
+        NbrEnfant = in.readString();
+        Cin = in.readString();
     }
 
     public static final Creator<Salarier> CREATOR = new Creator<Salarier>() {
@@ -51,133 +174,6 @@ public class Salarier implements Parcelable {
         }
     };
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public String getFax() {
-        return fax;
-    }
-
-    public void setFax(String fax) {
-        this.fax = fax;
-    }
-
-    public String getMatriculeFiscale() {
-        return matriculeFiscale;
-    }
-
-    public void setMatriculeFiscale(String matriculeFiscale) {
-        this.matriculeFiscale = matriculeFiscale;
-    }
-
-    public String getRegistre() {
-        return registre;
-    }
-
-    public void setRegistre(String registre) {
-        this.registre = registre;
-    }
-
-    public String getCapital() {
-        return capital;
-    }
-
-    public void setCapital(String capital) {
-        this.capital = capital;
-    }
-
-    public String getActivite() {
-        return activite;
-    }
-
-    public void setActivite(String activite) {
-        this.activite = activite;
-    }
-
-    public String getConstitution() {
-        return constitution;
-    }
-
-    public void setConstitution(String constitution) {
-        this.constitution = constitution;
-    }
-
-    public String getFormeSociete() {
-        return formeSociete;
-    }
-
-    public void setFormeSociete(String formeSociete) {
-        this.formeSociete = formeSociete;
-    }
-
-    public String getArchivage() {
-        return archivage;
-    }
-
-    public void setArchivage(String archivage) {
-        this.archivage = archivage;
-    }
-
-
-
-        public Salarier(int id, String name, String email, String phone, String fax, String adresse, String matriculeFiscale, String registre, String capital, String activite, String constitution, String formeSociete, String archivage) {
-            this.name = name;
-            this.id = id;
-            this.email=email;
-            this.phone=phone;
-            this.fax=fax;
-            this.adresse=adresse;
-            this.matriculeFiscale=matriculeFiscale;
-            this.registre=registre;
-            this.capital=capital;
-            this.activite=activite;
-            this.constitution=constitution;
-            this.formeSociete=formeSociete;
-            this.archivage=archivage;
-        }
-
-    public Salarier() {
-
-    }
-
-
     @Override
     public int describeContents() {
         return 0;
@@ -185,18 +181,18 @@ public class Salarier implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeInt(id);
-        dest.writeString(email);
-        dest.writeString(phone);
-        dest.writeString(fax);
         dest.writeString(adresse);
-        dest.writeString(matriculeFiscale);
-        dest.writeString(registre);
-        dest.writeString(capital);
-        dest.writeString(activite);
-        dest.writeString(constitution);
-        dest.writeString(formeSociete);
-        dest.writeString(archivage);
+        dest.writeString(email);
+        dest.writeString(fonction);
+        dest.writeString(matricule);
+        dest.writeString(nbrEnfant);
+        dest.writeString(nom);
+        dest.writeString(numCnss);
+        dest.writeString(prenom);
+        dest.writeString(salaireBrut);
+        dest.writeString(situation);
+        dest.writeString(dateNaissance);
+        dest.writeString(NbrEnfant);
+        dest.writeString(Cin);
     }
 }

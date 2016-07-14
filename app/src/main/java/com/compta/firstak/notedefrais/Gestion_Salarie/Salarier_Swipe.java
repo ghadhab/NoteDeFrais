@@ -22,22 +22,28 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.compta.firstak.notedefrais.Gestion_Client.AjouterClient;
-import com.compta.firstak.notedefrais.Gestion_Client.Modifier_Client;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.compta.firstak.notedefrais.R;
+import com.compta.firstak.notedefrais.adapter.SalarierAdapter;
 import com.compta.firstak.notedefrais.adapter.UsersAdapter;
 import com.compta.firstak.notedefrais.app.AppConfig;
 import com.compta.firstak.notedefrais.app.AppController;
 import com.compta.firstak.notedefrais.entity.Client;
+import com.compta.firstak.notedefrais.entity.Salarier;
 import com.compta.firstak.notedefrais.service.JsonService;
+import com.compta.firstak.notedefrais.util.MultipartRequest;
 import com.github.clans.fab.FloatingActionButton;
 import com.wdullaer.swipeactionadapter.SwipeActionAdapter;
 import com.wdullaer.swipeactionadapter.SwipeDirection;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -45,20 +51,21 @@ import java.util.ArrayList;
 public class Salarier_Swipe extends ListActivity implements SwipeActionAdapter.SwipeActionListener {
     private Button actualiserbutton;
     private RelativeLayout networkFailed;
-    public static ArrayList<Client> items;
+    public static ArrayList<Salarier> items;
     protected static SwipeActionAdapter mAdapter;
     private int mPreviousVisibleItem;
     ListView lv;
     public static int REQUESTADD=22;
-public static  int idFromModifier;
-    private  String reqUpdateClient,reqGetIp;
+public static  int idFromModifier , idFromGetPaie;
+    private  String reqUpdateClient,reqGetIp,reqGetFicheDePaie;
+   public static String Salaire;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // We'll define a custom screen layout here (the one shown above), but
         // typically, you could just use the standard ListActivity layout.
-        setContentView(R.layout.activity_swipe);
+        setContentView(R.layout.salarie_swipe);
 ///URLGetAllClients
         actualiserbutton = (Button) findViewById(R.id.button1);
         networkFailed = (RelativeLayout) findViewById(R.id.network_failed);
@@ -70,13 +77,6 @@ public static  int idFromModifier;
             }
         }, 12000);
 
-
-        /*ArrayAdapter<String> stringAdapter = new ArrayAdapter<>(
-                this,
-                R.layout.row_bg,
-                R.id.text,
-                items
-        );*/
 
 
         lv = getListView();
@@ -99,7 +99,7 @@ public static  int idFromModifier;
 
             public void onClick(View v) {
                 Intent intent = new Intent(Salarier_Swipe.this,
-                        AjouterClient.class);
+                        Fiche_Paie.class);
               //  startActivity(intent);
                 startActivityForResult(intent,REQUESTADD);
                 //finish();
@@ -131,8 +131,8 @@ public static  int idFromModifier;
             if (requestCode == REQUESTADD) {
                 Log.i("fromAjoutClient", "true");
                 if (data.getExtras() != null) {
-                    Client addedClient = data.getExtras().getParcelable("client");
-                    items.add(addedClient);
+                    Salarier addedSalarier = data.getExtras().getParcelable("Salarier");
+                    items.add(addedSalarier);
                     mAdapter.notifyDataSetChanged();
                 }
             }
@@ -176,49 +176,29 @@ public static  int idFromModifier;
         for (int i = 0; i < positionList.length; i++) {
             SwipeDirection direction = directionList[i];
             int position = positionList[i];
-            Intent intent = new Intent(Salarier_Swipe.this,
-                    Modifier_Client.class);
-            Client item =items.get(position);
+           Intent intent = new Intent(Salarier_Swipe.this,
+                    Update_Salarier.class);
+            Salarier item =items.get(position);
             switch (direction) {
                 case DIRECTION_FAR_LEFT:
-                    try {
-                        String number = item.getPhone();
-                        Intent callIntent = new Intent(Intent.ACTION_CALL);
-                        intent.setData(Uri.parse("tel:" +number));
-                        startActivity(callIntent);
-                        Toast.makeText(Salarier_Swipe.this,item.getName()+"  "+String.valueOf(item.getId())+"   tel"+item.getPhone()+"t",Toast.LENGTH_LONG).show();
-                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                            return;
-                        }
-                        Salarier_Swipe.this.startActivity(callIntent);
-                    } catch (ActivityNotFoundException activityException) {
+                    idFromGetPaie=item.getId();
+                    GetFicheDePaieJsonObject();
 
-                    }
                     break;
                 case DIRECTION_NORMAL_LEFT:
-                    try {
-                        String number = item.getPhone();
-                        Intent callIntent = new Intent(Intent.ACTION_CALL);
-                        callIntent.setData(Uri.parse("tel:" + number));
-                        startActivity(callIntent);
-                        Toast.makeText(Salarier_Swipe.this,item.getName()+"  "+String.valueOf(item.getId())+"   tel"+item.getPhone()+"t",Toast.LENGTH_LONG).show();
-                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                            return;
-                        }
-                        Salarier_Swipe.this.startActivity(callIntent);
-                    } catch (ActivityNotFoundException activityException) {
+                    idFromGetPaie=item.getId();
+                    GetFicheDePaieJsonObject();
 
-                    }
                     break;
                 case DIRECTION_FAR_RIGHT:
                     startActivity(intent);
                       idFromModifier=item.getId();
-                    Toast.makeText(Salarier_Swipe.this,item.getName()+"  "+String.valueOf(item.getId()),Toast.LENGTH_LONG).show();
+                    Toast.makeText(Salarier_Swipe.this,item.getNom()+"  "+String.valueOf(item.getId()),Toast.LENGTH_LONG).show();
                     break;
                 case DIRECTION_NORMAL_RIGHT:
                     idFromModifier=item.getId();
-                    startActivity(intent);
-                    Toast.makeText(Salarier_Swipe.this,item.getName()+"  "+String.valueOf(item.getId()),Toast.LENGTH_LONG).show();
+                  startActivity(intent);
+                    Toast.makeText(Salarier_Swipe.this,item.getNom()+"  "+String.valueOf(item.getId()),Toast.LENGTH_LONG).show();
                     break;
             }
         }
@@ -234,17 +214,16 @@ public static  int idFromModifier;
         });
         //String url=AppController.getInstance().getUrlRacine()+AppConfig.URLGetAllClients;
         if (isNetworkAvailable()) {
-            JsonArrayRequest jreq = new JsonArrayRequest(AppConfig.URLGetAllClients,
+            JsonArrayRequest jreq = new JsonArrayRequest(AppConfig.URLGetAllSalaries,
                     new Response.Listener<JSONArray>() {
 
                         @Override
                         public void onResponse(JSONArray response) {
-                            Log.i("ResponseWsGetFourniseur", response.toString());
-                            items=JsonService.getClients(response);
+                            items=JsonService.getSalarie(response);
 
-                            UsersAdapter usersAdapter=new UsersAdapter(Salarier_Swipe.this,items,Salarier_Swipe.this);
+                            SalarierAdapter salarierAdapter=new SalarierAdapter(Salarier_Swipe.this,items,Salarier_Swipe.this);
 
-                            mAdapter = new SwipeActionAdapter(usersAdapter);
+                            mAdapter = new SwipeActionAdapter(salarierAdapter);
                             mAdapter.setSwipeActionListener(Salarier_Swipe.this)
                                     .setDimBackgrounds(true)
                                     .setListView(getListView());
@@ -292,6 +271,68 @@ public static  int idFromModifier;
     public RelativeLayout getViewNetworkFailed()
     {
         return networkFailed;
+    }
+
+
+
+
+
+
+    void GetFicheDePaieJsonObject() {
+        actualiserbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetFicheDePaieJsonObject();
+            }
+        });
+        if (isNetworkAvailable()) {
+          /*  if (progressDialog==null)
+            {
+                progressDialog = MyCustomProgressDialog.ctor(Formulaire.this, "Chargement ... ");
+                progressDialog.show();
+            }*/
+
+            networkFailed.setVisibility(View.GONE);
+            // Tag used to cancel the request
+            Log.i("UrlGetFacture", AppConfig.Get_ficheDePaie(idFromGetPaie));
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.GET,
+                    AppConfig.Get_ficheDePaie(idFromGetPaie), null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject FactureJsonFromJson) {
+                            Log.d("RespWSGetSalarier", FactureJsonFromJson.toString());
+
+                            try {
+                                Salaire=  FactureJsonFromJson.get("salaireNet").toString();
+                                Toast.makeText(Salarier_Swipe.this,"Fiche de Paie :   "+Salaire,Toast.LENGTH_LONG).show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorMessageVolley","Error: "+error.getMessage());
+                    VolleyLog.d("TAGVolley", "Error: " + error.getMessage());
+                   /* progressDialog.dismiss();
+                    progressDialog=null;*/
+                    // hide the progress dialog
+                    Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                            R.anim.abc_slide_in_bottom);
+                    networkFailed.startAnimation(animationTranslate);
+                    networkFailed.setVisibility(View.VISIBLE);
+                }
+            });
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(jsonObjReq, reqGetFicheDePaie);
+        } else {
+            Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.abc_slide_in_bottom);
+            networkFailed.startAnimation(animationTranslate);
+            networkFailed.setVisibility(View.VISIBLE);
+        }
     }
 
 }

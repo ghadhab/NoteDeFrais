@@ -186,7 +186,7 @@
             android:textColor="@color/white"
             android:ems="10"
             android:layout_below="@+id/Fonction"
-            android:text="Salaire Client :"
+            android:text="Salaire :"
            />
 
         <EditText
@@ -233,6 +233,51 @@
             android:layout_below="@+id/Date_text"
             android:layout_toRightOf="@+id/CNSS"
             />
+        <TextView
+            android:id="@+id/Situation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:layout_below="@+id/CNSS"
+            android:layout_alignParentLeft="true"
+            android:text="Situation :" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Celibataire"
+            android:id="@+id/Celibataire"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/CNSS_text"/>
+
+        <RadioButton
+            android:id="@+id/Mariee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mariée"
+            android:layout_gravity="right"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/CNSS_text"/>
+        <TextView
+            android:id="@+id/NbrEnfant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:layout_below="@+id/Situation"
+            android:layout_alignParentLeft="true"
+            android:text="Nombre Enfants :" />
+        <EditText
+            android:id="@+id/NbrEnfant_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_below="@+id/Mariee"
+            android:layout_toRightOf="@+id/NbrEnfant"
+            android:inputType="numberDecimal"
+            />
 
       <Button
             android:id="@+id/submit"
@@ -240,7 +285,7 @@
             android:layout_height="wrap_content"
             android:text="Ajouter"
           android:layout_centerHorizontal="true"
-          android:layout_below="@+id/CNSS_text"/>
+          android:layout_below="@+id/NbrEnfant_text"/>
         <!-- android:layout_centerHorizontal="true"  android:layout_below="@+id/MatriculeFiscale_text"-->
 
         <include

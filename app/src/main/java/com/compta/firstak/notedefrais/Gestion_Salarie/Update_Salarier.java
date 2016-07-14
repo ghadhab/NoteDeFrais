@@ -26,7 +26,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.compta.firstak.notedefrais.Gestion_Client.AjouterClient;
+import com.compta.firstak.notedefrais.Gestion_Client.MainActivitySwipe;
 import com.compta.firstak.notedefrais.R;
+import com.compta.firstak.notedefrais.adapter.SalarierAdapter;
 import com.compta.firstak.notedefrais.adapter.UsersAdapter;
 import com.compta.firstak.notedefrais.app.AppConfig;
 import com.compta.firstak.notedefrais.app.AppController;
@@ -53,13 +56,17 @@ public class Update_Salarier extends Activity{
     public static String adresse,email,fonction,matricule,nbrEnfant,nom,numCnss,prenom,salaireBrut,situation,dateNaissance,NbrEnfant,Cin;
     private Button actualiserbutton;
     private RelativeLayout networkFailed;
-    String reqAddSalarie, TypeDactionnaire;
+    String reqGetSalarie, TypeDactionnaire,reqUpdateSalarier;
     TextView NbreText;
+     RadioButton radioCelib;
+    RadioButton radioMarie;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_paie);
+        setContentView(R.layout.update_salarier);
+
+
 
 
         adresse_edit=(EditText)findViewById(R.id.Adressetext);
@@ -79,12 +86,12 @@ public class Update_Salarier extends Activity{
         NbrEnfant_edit=(EditText)findViewById(R.id.NbrEnfant_text);
          NbreText=(TextView)findViewById(R.id.NbrEnfant);
 
-        final RadioButton radioCelib = (RadioButton) findViewById(R.id.Celibataire);
-        final RadioButton radioMarie = (RadioButton)findViewById(R.id.Mariee);
+       radioCelib = (RadioButton) findViewById(R.id.Celibataire);
+        radioMarie = (RadioButton)findViewById(R.id.Mariee);
         radioCelib.setOnCheckedChangeListener(new RadioButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TypeDactionnaire="Celibataire";
+                TypeDactionnaire="celibataire";
                 radioMarie.setChecked(false);
                 NbrEnfant_edit.setVisibility(View.GONE);
                 NbreText.setVisibility(View.GONE);
@@ -95,7 +102,7 @@ public class Update_Salarier extends Activity{
         radioMarie.setOnCheckedChangeListener(new RadioButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TypeDactionnaire = "Mariée";
+                TypeDactionnaire = "marie";
                 radioCelib.setChecked(false);
                 NbrEnfant_edit.setVisibility(View.VISIBLE);
                 NbreText.setVisibility(View.VISIBLE);
@@ -134,6 +141,12 @@ public class Update_Salarier extends Activity{
         });
 
 
+
+        GetSalarieJsonObject();
+
+
+
+
       Button  AjouterClient = (Button) findViewById(R.id.submit);
         AjouterClient.setOnClickListener(new View.OnClickListener() {
 
@@ -151,12 +164,16 @@ public class Update_Salarier extends Activity{
                 //dateNaissance=formatDateTime(Fiche_Paie.this, DatePaie_edit.getText().toString());
                 NbrEnfant= NbrEnfant_edit.getText().toString();
                 Cin= Cin_edit.getText().toString();
-                Toast.makeText(Update_Salarier.this,dateNaissance, Toast.LENGTH_LONG).show();
-                AddSalarieJsonObject();
+            // Toast.makeText(Update_Salarier.this,dateNaissance, Toast.LENGTH_LONG).show();
+
+
+                UpdateClientJsonObject();
+
 
                 Intent intent = new Intent(Update_Salarier.this,
                         Salarier_Swipe.class);
                 Update_Salarier.this.startActivity(intent);
+                finish();
             }
         });
 
@@ -192,62 +209,55 @@ public class Update_Salarier extends Activity{
 
     }
 
-    void AddSalarieJsonObject() {
+    void GetSalarieJsonObject() {
         actualiserbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddSalarieJsonObject();
+                GetSalarieJsonObject();
             }
         });
         if (isNetworkAvailable()) {
+          /*  if (progressDialog==null)
+            {
+                progressDialog = MyCustomProgressDialog.ctor(Formulaire.this, "Chargement ... ");
+                progressDialog.show();
+            }*/
             networkFailed.setVisibility(View.GONE);
             // Tag used to cancel the request
-            reqAddSalarie = "json_obj_req_Add_Salarie";
-            Log.i("UrlAddSalarie", AppConfig.urlAddSalarie);
-            JSONObject obj=null;
-            try {
-
-                obj = new JSONObject();
-                obj.put("id", String.valueOf(UsersAdapter.idFromSelect));
-
-                // obj = new JSONObject(String.valueOf(AjouterClient.id));
-
-                Log.d("My App", obj.toString());
-
-            } catch (Throwable t) {
-
-            }
-            final JSONObject postParam = new JSONObject();
-           try {
-               postParam.put("client", obj);
-                postParam.put("adresse", adresse);
-                postParam.put("cin", Cin);
-                postParam.put("email", email);
-                postParam.put("fonction", fonction);
-                postParam.put("matricule", matricule);
-                postParam.put("nbrEnfant", nbrEnfant);
-                postParam.put("nom", nom);
-               postParam.put("numCnss", numCnss);
-               postParam.put("prenom", prenom);
-               postParam.put("salaireBrut", salaireBrut);
-               postParam.put("situation", TypeDactionnaire);
-               postParam.put("dateNaissance", dateNaissance);
-
-                Log.i("postParam", postParam.toString());
-
-                //Log.i("UrlAddFournisseur", AppConfig.AddURLAddFacture);
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.POST,AppConfig.urlAddSalarie,
-                    postParam,
+            Log.i("UrlGetFacture", AppConfig.getURLGetSalarierById(Salarier_Swipe.idFromModifier));
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.GET,
+                    AppConfig.getURLGetSalarierById(Salarier_Swipe.idFromModifier), null,
                     new Response.Listener<JSONObject>() {
                         @Override
-                        public void onResponse(JSONObject ADDClientJsonFromJson) {
-                            Log.d("RespWSAddFournisseur",  ADDClientJsonFromJson.toString());
+                        public void onResponse(JSONObject FactureJsonFromJson) {
+                            Log.d("RespWSGetSalarier", FactureJsonFromJson.toString());
+
+                            try {
+                                adresse_edit.setText(FactureJsonFromJson.get("adresse").toString());
+                                email_edit.setText(FactureJsonFromJson.get("email").toString());
+                                fonction_edit.setText(FactureJsonFromJson.get("fonction").toString());
+                                matricule_edit.setText(FactureJsonFromJson.get("matricule").toString());
+                                NbrEnfant_edit.setText(FactureJsonFromJson.get("nbrEnfant").toString());
+                                nom_edit.setText(FactureJsonFromJson.get("nom").toString());
+                                numCnss_edit.setText(FactureJsonFromJson.get("numCnss").toString());
+                                prenom_edit.setText(FactureJsonFromJson.get("prenom").toString());
+                                salaireBrut_edit.setText(FactureJsonFromJson.get("salaireBrut").toString());
+                                DatePaie_edit.setText(FactureJsonFromJson.get("dateNaissance").toString());
+                                Cin_edit.setText(FactureJsonFromJson.get("cin").toString());
+                                //salarie .setSituation(json_data_article.getString("situation"));
+                                if(FactureJsonFromJson.get("situation").toString()=="celibataire"){
+                                    radioCelib.setChecked(true);
+                                    TypeDactionnaire="celibataire";
+                                }
+                                if(FactureJsonFromJson.get("situation").toString()=="marie"){
+                                    radioMarie.setChecked(true);
+                                    TypeDactionnaire="marie";
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
 
                         }
                     }, new Response.ErrorListener() {
@@ -255,26 +265,17 @@ public class Update_Salarier extends Activity{
                 public void onErrorResponse(VolleyError error) {
                     Log.i("ErrorMessageVolley","Error: "+error.getMessage());
                     VolleyLog.d("TAGVolley", "Error: " + error.getMessage());
+                   /* progressDialog.dismiss();
+                    progressDialog=null;*/
+                    // hide the progress dialog
                     Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
                             R.anim.abc_slide_in_bottom);
                     networkFailed.startAnimation(animationTranslate);
                     networkFailed.setVisibility(View.VISIBLE);
                 }
-            }) {
-
-
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    HashMap<String, String> headers = new HashMap<String, String>();
-                    // headers.put("Content-Type", "application/json; charset=utf-8");
-                    return headers;
-                }
-
-                ;
-            };
-
+            });
             // Adding request to request queue
-            AppController.getInstance().addToRequestQueue(jsonObjReq, reqAddSalarie);
+            AppController.getInstance().addToRequestQueue(jsonObjReq, reqGetSalarie);
         } else {
             Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
                     R.anim.abc_slide_in_bottom);
@@ -282,6 +283,8 @@ public class Update_Salarier extends Activity{
             networkFailed.setVisibility(View.VISIBLE);
         }
     }
+
+
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager)
@@ -294,35 +297,100 @@ public class Update_Salarier extends Activity{
 
 
 
-    public static String formatDateTime(Context context, String timeToFormat) {
 
-        String finalDateTime = "";
-
-        SimpleDateFormat iso8601Format = new SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss");
-
-        Date date = null;
-        if (timeToFormat != null) {
+    void UpdateClientJsonObject() {
+        actualiserbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UpdateClientJsonObject();
+            }
+        });
+        if (isNetworkAvailable()) {
+            networkFailed.setVisibility(View.GONE);
+            // Tag used to cancel the request
+            reqUpdateSalarier = "json_obj_req_Update_Client";
+            Log.i("UrlUpdateClientById", AppConfig.UpdateURLSalairierById);
+            ////
+            JSONObject obj=null;
             try {
-                date = iso8601Format.parse(timeToFormat);
-            } catch (ParseException e) {
-                date = null;
+
+                obj = new JSONObject();
+                obj.put("id", String.valueOf(Salarier_Swipe.idFromModifier));
+
+                // obj = new JSONObject(String.valueOf(AjouterClient.id));
+
+                Log.d("My App", obj.toString());
+
+            } catch (Throwable t) {
+
             }
 
-            if (date != null) {
-                long when = date.getTime();
-                int flags = 0;
-                flags |= android.text.format.DateUtils.FORMAT_SHOW_TIME;
-                flags |= android.text.format.DateUtils.FORMAT_SHOW_DATE;
-                flags |= android.text.format.DateUtils.FORMAT_ABBREV_MONTH;
-                flags |= android.text.format.DateUtils.FORMAT_SHOW_YEAR;
 
-                finalDateTime = android.text.format.DateUtils.formatDateTime(context,
-                        when + TimeZone.getDefault().getOffset(when), flags);
+
+            JSONObject postParam = new JSONObject();
+            try {
+                postParam.put("client", obj);
+                postParam.put("id", Salarier_Swipe.idFromModifier);
+                postParam.put("adresse", adresse);
+                postParam.put("email", email);
+                postParam.put("fonction", fonction);
+                postParam.put("matricule", matricule);
+                postParam.put("nbrEnfant", nbrEnfant);
+                postParam.put("nom", nom);
+                postParam.put("numCnss", numCnss);
+                postParam.put("prenom", prenom);
+                postParam.put("salaireBrut", salaireBrut);
+                postParam.put("situation", TypeDactionnaire);
+                Toast.makeText(Update_Salarier.this, TypeDactionnaire, Toast.LENGTH_LONG).show();
+                postParam.put("dateNaissance",dateNaissance);
+                postParam.put("cin", Cin);
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
+
+            Log.i("putParam",postParam.toString());
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.PUT,
+                    AppConfig.UpdateURLSalairierById,  postParam,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject UpdateSalarierJsonFromJson) {
+                            Log.d("RespWSUpdateClient",  UpdateSalarierJsonFromJson.toString());
+
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("ErrorMessageVolley","Error: "+error.getMessage());
+                    VolleyLog.d("TAGVolley", "Error: " + error.getMessage());
+                    Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                            R.anim.abc_slide_in_bottom);
+                    networkFailed.startAnimation(animationTranslate);
+                    networkFailed.setVisibility(View.VISIBLE);
+                }
+            }){
+
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    // headers.put("Content-Type", "application/json");
+                    return headers;
+                }
+            };
+
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(jsonObjReq, reqUpdateSalarier);
+        } else {
+            Animation animationTranslate = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.abc_slide_in_bottom);
+            networkFailed.startAnimation(animationTranslate);
+            networkFailed.setVisibility(View.VISIBLE);
         }
-        return finalDateTime;
     }
+
 
 
 

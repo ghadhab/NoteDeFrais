@@ -7,6 +7,7 @@ public class AppConfig {
 	////URL CLOUD
 	public static String urlRacine="http://164.132.57.190:8585/Comptabilitee/rest/";
 	//public static String urlRacine="http://192.168.1.17:8082/Comptabilitee/rest/";
+	public static String urlAddSalarie=urlRacine+"salaries";
 
 	// Server user login url
 	public static String URL_LOGIN = "http://192.168.43.247/comptable/android_login_api/";
@@ -16,8 +17,12 @@ public class AppConfig {
 
 	public static String URL_GET_ALL_FOURNISEUR = urlRacine+"fournisseur/findall";
 public static String UpdateURLUpdateClientById = urlRacine+"clients";
+
+	public static String UpdateURLSalairierById = urlRacine+"salaries";
+
 	public static String AddURLAddClient = urlRacine+"clients";
 	public static String URLGetAllClients = urlRacine+"clients/findall";
+	public static String URLGetAllSalaries = urlRacine+"salaries/findall";
 
 	public static String AddURLAddFacture = urlRacine+"facture";
 
@@ -45,6 +50,14 @@ public static String UpdateURLUpdateClientById = urlRacine+"clients";
 		return URL_GET_ClientById+id_client;
 	}
 
+	public static  String getURLGetSalarierById(int id_Salarier)
+	{
+		String URL_GET_SalarierById = urlRacine+"salaries/find/";
+		return URL_GET_SalarierById+id_Salarier;
+	}
+
+
+
 	public static  String URL_GET_FOURNISEUR(String MatriculeFiscal)
 	{
 		String URL_Archivage_ClientById = urlRacine+"fournisseur/findMatriculeFiscal/";
@@ -62,6 +75,12 @@ public static String UpdateURLUpdateClientById = urlRacine+"clients";
 	{
 		String URL_Archivage_ClientById = urlRacine+"clients/desactiver/";
 		return URL_Archivage_ClientById+id_client;
+	}
+
+	public static  String DeleteURLSalarierById(int id_Salarie)
+	{
+		String URL_Archivage_ClientById = urlRacine+"salaries/";
+		return URL_Archivage_ClientById+id_Salarie;
 	}
 
 
@@ -103,6 +122,12 @@ public static String UpdateURLUpdateClientById = urlRacine+"clients";
 		return URL_Get_referenceAmortissement_by_num_Compte+numcompte;
 	}
 
+
+	public static  String  Get_ficheDePaie(int id_Salarie)
+	{
+		String URL_GetFicheDePaie_SalarieById = urlRacine+"salaries/getFichePaie/";
+		return URL_GetFicheDePaie_SalarieById+id_Salarie;
+	}
 
 
 }

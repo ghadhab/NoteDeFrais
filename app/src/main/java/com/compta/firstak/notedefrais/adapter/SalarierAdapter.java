@@ -23,11 +23,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.compta.firstak.notedefrais.Gestion_Client.DashboardClient;
-import com.compta.firstak.notedefrais.entity.Client;
 import com.compta.firstak.notedefrais.Gestion_Client.MainActivitySwipe;
+import com.compta.firstak.notedefrais.Gestion_Salarie.Get_Salarier;
+import com.compta.firstak.notedefrais.Gestion_Salarie.Salarier_Swipe;
 import com.compta.firstak.notedefrais.R;
 import com.compta.firstak.notedefrais.app.AppConfig;
 import com.compta.firstak.notedefrais.app.AppController;
+import com.compta.firstak.notedefrais.entity.Client;
+import com.compta.firstak.notedefrais.entity.Salarier;
 
 import org.json.JSONObject;
 
@@ -38,10 +41,10 @@ import java.util.Map;
 /**
  * Created by mohamed on 12/01/2016.
  */
-public class SalarierAdapter extends ArrayAdapter<Client> {
+public class SalarierAdapter extends ArrayAdapter<Salarier> {
     // View lookup cache
     public static int idFromSelect;
-    private MainActivitySwipe activity;
+    private Salarier_Swipe activity;
     private int idFromLongSelect;
    public static String NameFromSelect;
     private static class ViewHolder {
@@ -49,7 +52,7 @@ public class SalarierAdapter extends ArrayAdapter<Client> {
 
     }
 
-    public SalarierAdapter(Context context, ArrayList<Client> users, MainActivitySwipe activity) {
+    public SalarierAdapter(Context context, ArrayList<Salarier> users, Salarier_Swipe activity) {
         super(context, R.layout.item_user, users);
         this.activity=activity;
     }
@@ -57,7 +60,7 @@ public class SalarierAdapter extends ArrayAdapter<Client> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        final Client user = getItem(position);
+        final Salarier user = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         ViewHolder viewHolder; // view lookup cache stored in tag
         if (convertView == null) {
@@ -71,16 +74,16 @@ public class SalarierAdapter extends ArrayAdapter<Client> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         // Populate the data into the template view using the data object
-        viewHolder.name.setText(user.name);
+        viewHolder.name.setText(user.nom);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(),
-                        DashboardClient.class);
+                        Get_Salarier.class);
                 getContext().startActivity(intent);
                 Toast.makeText(getContext(), String.valueOf(user.getId()), Toast.LENGTH_LONG).show();
                 idFromSelect = user.getId();
-                NameFromSelect=user.name;
+                NameFromSelect=user.nom;
                 //   PhoneFromSelect =user.getPhone();
 
             }
@@ -96,7 +99,7 @@ public class SalarierAdapter extends ArrayAdapter<Client> {
                 adb.setIcon(android.R.drawable.ic_dialog_alert);
                 adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        ArchivageClientJsonObject();
+                        SupprimerSalarierJsonObject();
                         // items.remove(pos);
                         remove(user);
                         notifyDataSetChanged();
@@ -117,36 +120,27 @@ public class SalarierAdapter extends ArrayAdapter<Client> {
         return convertView;
     }
 
-    void ArchivageClientJsonObject() {
+    void SupprimerSalarierJsonObject() {
         activity.getViewActualiserbutton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArchivageClientJsonObject();
+                SupprimerSalarierJsonObject();
             }
         });
         if (isNetworkAvailable()) {
             activity.getViewNetworkFailed().setVisibility(View.GONE);
             // Tag used to cancel the request
-            String reqDesactiverClient = "json_obj_req_Update_Client";
-            Log.i("UrlArchivageClientById", AppConfig.DesactiverURLArchivageClientById(idFromLongSelect));
-            ////
-           /* JSONObject postParam = new JSONObject();
-            try {
-                postParam.put("id", idFromSelect);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }*/
+            String reqDesactiverClient = "json_obj_UrlDeleteById";
+            Log.i("UrlDeleteById", AppConfig.DeleteURLSalarierById(idFromLongSelect));
 
             //Log.i("putParam",postParam.toString());
-            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.GET,
-                    AppConfig.DesactiverURLArchivageClientById(idFromLongSelect),  null,
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest ( Request.Method.DELETE,
+                    AppConfig.DeleteURLSalarierById(idFromLongSelect),  null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject UpdateClientJsonFromJson) {
                             Log.d("RespWSArchivageClient",  UpdateClientJsonFromJson.toString());
 
-                            //postParam.get(id);
                         }
                     }, new Response.ErrorListener() {
                 @Override

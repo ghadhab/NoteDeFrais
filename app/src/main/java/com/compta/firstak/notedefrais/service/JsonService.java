@@ -9,6 +9,7 @@ import com.compta.firstak.notedefrais.entity.Facture;
 import com.compta.firstak.notedefrais.entity.Client;
 import com.compta.firstak.notedefrais.entity.EcritureRow;
 import com.compta.firstak.notedefrais.entity.Fournisseur;
+import com.compta.firstak.notedefrais.entity.Salarier;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,6 +58,47 @@ public class JsonService {
         }
         return clientsList;
     }
+
+
+
+
+    public static ArrayList<Salarier> getSalarie(JSONArray jArraySalarie) {
+
+        ArrayList<Salarier> salarierList= new ArrayList<Salarier>();
+        try {
+
+            System.out.println("sssssssssssss *****JARRAY*****" + jArraySalarie.length());
+            JSONObject json_data_article;
+            for (int index = 0; index < jArraySalarie.length(); index++) {
+                json_data_article = jArraySalarie.getJSONObject(index);
+                Salarier salarie=new Salarier();
+
+                salarie.setId(json_data_article.getInt("id"));
+                salarie.setAdresse(json_data_article.getString("adresse"));
+                salarie.setEmail(json_data_article.getString("email"));
+                salarie.setFonction(json_data_article.getString("fonction"));
+                salarie.setMatricule(json_data_article.getString("matricule"));
+                salarie.setNbrEnfant(json_data_article.getString("nbrEnfant"));
+                salarie.setNom(json_data_article.getString("nom"));
+                salarie.setNumCnss(json_data_article.getString("numCnss"));
+                salarie.setPrenom(json_data_article.getString("prenom"));
+                salarie.setSalaireBrut(json_data_article.getString("salaireBrut"));
+                salarie.setSituation(json_data_article.getString("situation"));
+              //salarie.setDateNaissance(json_data_article.getString("dateNaissance"));
+                salarie.setDateNaissance("23/10/1988");
+                salarie.setCin(json_data_article.getString("cin"));
+                salarierList.add(salarie);
+            }
+
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return salarierList;
+    }
+
+
+
 
     public static ArrayList<Facture> getListFactures(JSONArray jArrayFactures) {
 
