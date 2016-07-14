@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item >
+        <shape>
+            <solid android:color="@android:color/darker_gray"/>
+            <stroke android:color="@color/colorAccent" android:width="1.8dp"/>
+        </shape>
+    </item>
+    <item android:right="10dp"><bitmap android:gravity="right" android:src="@mipmap/date_from" />
+    </item>
+</layer-list>
