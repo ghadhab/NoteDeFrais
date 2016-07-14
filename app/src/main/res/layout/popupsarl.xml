@@ -6,148 +6,137 @@
     android:id="@+id/popup_element4"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#444444"
     android:orientation="vertical"
-    android:padding="10sp" >
-    <TextView
-        android:id="@+id/textViewNomAssocie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:text="Associe:" />
+    android:padding="10sp"
+    >
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/EditTextNomAssocie"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
         android:layout_marginTop="5sp"
+        android:textColor="@color/black"
+        android:inputType="text"
+        android:hint="Associe"
         />
-    <TextView
-        android:id="@+id/textViewNumberAssocie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:text="Nombre de parts sociale:" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/EditTextNumberAssocie"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="5sp"
         android:inputType="numberDecimal"
+        android:hint="Nombre de parts sociale"
         />
-    <TextView
-        android:id="@+id/textViewValeur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:text="Valeur Nominale :" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/EditTextNbrNominale"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="5sp"
         android:inputType="numberDecimal"
+        android:hint="Valeur Nominale"
         />
-    <TextView
-        android:id="@+id/textViewTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:text="Total :" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/EditTextTotal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="5sp"
         android:inputType="numberDecimal"
+        android:hint="Total"
         />
-    <TextView
-        android:id="@+id/textViewPartCapitalSarl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:text="Part dans le capital:" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/EditTextPartCapitalSarl"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="5sp"
         android:inputType="numberDecimal"
+        android:hint="Part dans le capital"
         />
+    </android.support.design.widget.TextInputLayout>
     <TextView
         android:id="@+id/textViewGerant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="30sp"
         android:text="Gerant" />
-    <TextView
-        android:id="@+id/textViewNometPrenomGerant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="30sp"
-        android:text="Nom et Prenom :" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/EditTextNometPrenomGerant"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="5sp"
         android:inputType="text"
+        android:hint="Nom et Prenom"
         />
+    </android.support.design.widget.TextInputLayout>
     <TextView
         android:id="@+id/textViewMandat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="5sp"
         android:text="Mandat :" />
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp">
-    <TextView
-        android:id="@+id/textViewDuSarl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:text="Du :" />
-    <EditText
-        android:id="@+id/editextDuSarl"
-        android:layout_width="150sp"
-        android:layout_height="wrap_content"
-    android:layout_toRightOf="@+id/textViewDuSarl"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:inputType="date"/>
-    <TextView
-        android:id="@+id/textViewAuSarl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:layout_toRightOf="@+id/editextDuSarl"
-        android:text="Au:" />
-    <EditText
-        android:id="@+id/editTextAuSarl"
-        android:layout_width="150sp"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/textViewAuSarl"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:inputType="date"/>
-    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/editextDuSarl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            android:inputType="date"
+            android:text="Du"
+            android:background="@drawable/line_from_selector"/>
+
+        <Button
+            android:id="@+id/editTextAuSarl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/buttonDuMandat"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            android:inputType="date"
+            android:text="Au"
+            android:background="@drawable/line_to_selector"/>
+    </LinearLayout>
+
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

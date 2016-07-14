@@ -1,94 +1,84 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/popup_element"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#444444"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10sp" >
-    <TextView
-        android:id="@+id/txtViewDG"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:text="Select :" />
-    <EditText
-        android:id="@+id/EditTextDG"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        />
-    <TextView
-        android:id="@+id/txtViewPresidentDeConseil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
-        android:text="Nom et Prenom" />
-    <EditText
-        android:id="@+id/EditTextPresidentDeConseil"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginTop="5sp"
- />
+    android:padding="6dp" >
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp">
-        <TextView
-            android:id="@+id/textViewDuMandat"
+        android:layout_marginTop="3dp">
+        <EditText
+            android:id="@+id/EditTextPresidentDeConseil"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nom et Prenom"
+            android:textColor="@color/black"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/ButtonDG"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="4dp"
+        android:text="Select "
+        android:background="@drawable/line_spinner_selector"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonDuMandat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_marginTop="5sp"
-            android:text="Du :" />
-        <EditText
-            android:id="@+id/editextDuMandat"
-            android:layout_width="150sp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/textViewDuMandat"
-            android:textColor="@color/white"
-            android:layout_marginTop="5sp"
-            android:inputType="date"/>
-        <TextView
-            android:id="@+id/textViewAuMandat"
+android:layout_weight="0.4"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            android:inputType="date"
+            android:text="Du"
+            android:background="@drawable/line_from_selector"/>
+
+        <Button
+            android:id="@+id/buttonAuMandat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5sp"
-            android:layout_toRightOf="@+id/editextDuMandat"
-            android:textColor="@color/white"
-            android:text="Au:" />
-        <EditText
-            android:id="@+id/editTextAuMandat"
-            android:layout_width="150sp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/textViewAuMandat"
-            android:textColor="@color/white"
-            android:layout_marginTop="5sp"
-            android:inputType="date"/>
-    </RelativeLayout>
+            android:layout_weight="0.4"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/buttonDuMandat"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            android:inputType="date"
+            android:text="Au"
+            android:background="@drawable/line_to_selector"/>
+    </LinearLayout>
 <RelativeLayout
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp">
     <Button
         android:id="@+id/Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:text="Cancel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"/>
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_alignParentLeft="true" />
 
     <Button
     android:id="@+id/Valider"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
         android:text="Valider"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"/>
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_alignParentRight="true" />
 </RelativeLayout>
 </LinearLayout>
 
